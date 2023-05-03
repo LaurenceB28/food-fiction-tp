@@ -1,4 +1,4 @@
-<div class="form" action="index.html">
+<div class="form" action="">
     <div class="logoCenter">
         <img id="logoForm" src="assets/img/logo/LOGO_Food_Fiction.png" id="logoNav" alt="logo" />
     </div>

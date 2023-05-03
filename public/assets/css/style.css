@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap');
 
-html {
+/* html {
   scroll-behavior: smooth;
 }
-
+ */
 
 body {
   margin: 0;
@@ -176,3 +176,7 @@ footer{
   color: #000000;
   text-decoration:none; 
 }
+
+/*FORM*/
+
+/*CONNEXION*/

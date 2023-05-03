@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="assets/img/logo/LOGO_Food_Fiction.png" id="logoNav" alt="logo" /></a>
+            <img src="/public/assets/img/logo/LOGO_Food_Fiction.png" id="logoNav" alt="logo" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,10 +18,10 @@
                     <a class="nav-link" href="#">Animations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Connexion</a>
+                    <a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">S'incrire</a>
+                    <a class="nav-link" href="/controllers/signUpCtrl.php">S'inscrire</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">
@@ -35,25 +35,3 @@
         </div>
     </div>
 </nav>
-<!-- PREMIER CONTAINER -->
-<h1>Vos catégories préférées</h1>
-<div class="container">
-    <div class="card" style="width: 18rem">
-        <img src="assets/img/SERIES/Hannibal/hannibal1.webp" class="object-fit-fill border rounded" alt="..." />
-        <div class="card-body">
-            <p class="card-text text-center">R.I.Pailles</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem">
-        <img src="assets/img/SERIES/Friends/ross sandwish.png" class="object-fit-contain border rounded" alt="..." />
-        <div class="card-body">
-            <p class="card-text text-center">Mon sandwish</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem">
-        <img src="assets/img/SERIES/Desperate Housewives/bree.webp" class="object-fit-fill border rounded" alt="..." />
-        <div class="card-body">
-            <p class="card-text text-center">Recettes desesperées</p>
-        </div>
-    </div>
-</div>
