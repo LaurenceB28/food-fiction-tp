@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://fontawesome.com/icons/facebook?f=brands&s=solid&pc=%23ffffff" />
     <link rel="stylesheet" href="https://fontawesome.com/icons/instagram?f=brands&s=solid&pc=%23ffffff" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swarel=stylesheet" />
-    <link rel="stylesheet" href="/public/assets/css/style.css"/>
+    <link rel="stylesheet" href="/public/assets/css/style.css" />
     <?php
-    echo '<link rel="stylesheet" href="/public/assets/css/'.$login.'"> ';
-    echo '<link rel="stylesheet" href="/public/assets/css/'.$form.'">';
+    if (isset($stylesheet)) {
+        echo '<link rel="stylesheet" href="/public/assets/css/' . $stylesheet . '"> ';
+    }
     ?>
     <title>Food Fiction</title>
 </head>
