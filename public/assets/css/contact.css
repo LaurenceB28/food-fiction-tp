@@ -1,42 +1,19 @@
-.form-label {
-  color: #ffc137;
+#form{
+	margin: auto;
 }
 
-#logoFORM{
-    justify-content: center; 
+.form-label{
+	color: #ffc137;
 }
 
-form {
-  background-color: #373b68;
-  border-radius: 20px;
-  box-sizing: border-box;
-  width: 50%;
-  height: 450px;
-  background-color: #373b68;
-  margin: auto;
-}
-input{
-    width: 100%;
-    padding: 15px;
-  }
-
-  #exampleFormControlInput1{
-    justify-content: center;
-  }
-
-h2 {
-  text-align: center;
-  font-weight: bold;
+#logo{
+width: 12%;
 }
 
-#logoForm {
-  width: 12%;
-  justify-content: center;
+p{
+  color: #ffc137; 
 }
 
-#file{
-    color: #ffc137
-}
-#files {
-  color: #ffc137;
+.card {
+  border-radius: 1rem;
 }
