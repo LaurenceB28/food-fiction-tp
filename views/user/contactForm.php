@@ -1,4 +1,4 @@
-<form class="form" action="" method="get">
+<form class="form" action="" method="get" enctype="multipart/form-data">
     <div class="col-12 col-md-6">
         <div class="card bg-dark text-white">
             <div class="card-body text-center">
@@ -22,7 +22,7 @@
                         <button class="btn btn-outline-warning btn-md px-3" type="submit">Envoyer</button>
                     </div>
                     <div>
-                        <p class="mb-0">Pas encore de compte? <a href="/controllers/contactFormCtrl.php" class="text-white-50 fw-bold">S'inscrire</a></p>
+                        <p class="mb-0">Pas encore de compte? <a href="/controllers/signUpCtrl.php" class="text-white-50 fw-bold">S'inscrire</a></p>
                     </div>
                 </div>
             </div>
