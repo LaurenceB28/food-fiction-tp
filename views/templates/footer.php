@@ -12,8 +12,8 @@
         </div>
         <div class="socialNetworks">
             <h4>Nos Réseaux :</h4>
-            <img src="assets/img/réseaux sociaux icones/instagramXS.svg" id="socialNetwork" alt="" />
-            <img src="assets/img/réseaux sociaux icones/facebookXS.svg" id="socialNetwork" alt="" />
+            <img src="/public/assets/img/réseaux sociaux icones/instagramXS.svg" id="socialNetwork" alt="" />
+            <img src="/public/assets/img/réseaux sociaux icones/facebookXS.svg" id="socialNetwork" alt="" />
         </div>
     </footer>
 

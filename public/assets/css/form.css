@@ -1,13 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap");
 
-/* body {
-  align-items: center;
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  font-family: "Montserrat", sans-serif;
-  height: 100vh;
-} */
 
 .logoCenter {
   display: flex;
@@ -21,12 +13,13 @@
 }
 
 .form {
-  background-color: #15172b;
+  background-color: #373b68;
   border-radius: 20px;
   box-sizing: border-box;
   height: 750px;
   padding: 20px;
   width: 450px;
+  margin: auto;
 }
 
 .title {

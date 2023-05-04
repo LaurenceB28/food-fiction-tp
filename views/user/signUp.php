@@ -1,7 +1,7 @@
 
     <div class="form" action="">
         <div class="logoCenter">
-            <img id="logoForm" src="assets/img/logo/LOGO_Food_Fiction.png" id="logoNav" alt="logo" />
+            <img id="logoForm" src="public/assets/img/logo/LOGO_Food_Fiction.png" id="logoNav" alt="logo" />
         </div>
         <div class="title">Bienvenue</div>
         <div class="subtitle">Créez un compte FICTION!</div>
