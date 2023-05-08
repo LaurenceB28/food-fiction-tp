@@ -4,10 +4,10 @@
         <div>
             <ul class="zoom" id="list">
                 <h4>Infos Utiles :</h4>
-                <li><a class="infos" href="Mentions Légales">Mentions Légales</a></li>
+                <!-- <li><a class="infos" href="Mentions Légales">Mentions Légales</a></li>
                 <li>
                     <a class="infos" href="mailto:foodfiction@example.com">Nous contacter</a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="socialNetworks">
