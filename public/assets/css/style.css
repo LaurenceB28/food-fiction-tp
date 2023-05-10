@@ -98,7 +98,7 @@ section {
 .item {
   position: relative;
   padding: 0 2px;
-  transition: $duration all;
+  transition: duration all;
 }
 
 &:hover {

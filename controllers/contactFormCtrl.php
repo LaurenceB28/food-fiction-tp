@@ -28,13 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include(__DIR__ . '/../views/templates/header.php');
 
 if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
-    include(__DIR__ . '/../views/user/form.php');
+    include(__DIR__ . '/../views/user/contactForm.php');
 } else {
     include(__DIR__ . '/../views/user/display.php');
 }
-
-include(__DIR__ . '/../views/templates/footer.php');
-
-//VIEWS
-include(__DIR__ . '/../views/templates/header.php');
-include(__DIR__ . '/../views/user/contactForm.php');

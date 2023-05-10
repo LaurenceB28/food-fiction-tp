@@ -1,26 +1,25 @@
 <form id="form" action="" method="get">
-    <div class="col-12 col-md-8 col-lg-4">
-        <div class="card bg-dark text-white" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-                <div class="mb-md-5 mt-md-4 pb-5">
-                    <div class="logo-center">
-                        <img id="logo" src="/public/assets/img/logo/LOGO_Food_Fiction.png" alt="" />
-                    </div>
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card bg-dark text-white">
+            <div class="card-body text-center">
+                <div class="mb-md-5 mt-md-4 pb-4">
                     <h2 class="fw-bold mb-2 text-uppercase">Inscrivez vous
-
+                        <div class="logo-center">
+                            <img id="logo" src="/public/assets/img/logo/LOGO_Food_Fiction.png" alt="" />
+                        </div>
                     </h2>
                     <div class="col p-2">
-                        <label class="form-label" for="Firstname">Prénom</label>
-                        <input type="text" name="Firstname" class="form-control" placeholder="Firstname">
+                        <label class="form-label" for="firstname">Prénom</label>
+                        <input type="text" name="firstname" class="form-control" placeholder="Prénom">
                     </div>
                     <div class="col p-2">
-                        <label class="form-label" for="Lastname">Nom de famille</label>
-                        <input type="text" name="Lastname" class="form-control" placeholder="Lastname">
+                        <label class="form-label" for="lastname">Nom de famille</label>
+                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Nom de famille">
                     </div>
 
                     <div class="col p-2">
-                        <label class="form-label" for="Email">Email</label>
-                        <input type="Email" name="Email" id="Email" placeholder="Email" class="form-control" />
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="email" class="form-control" />
                     </div>
                     <div class="col p-2">
                         <label class="form-label" for="typePasswordX">Mot de passe</label>

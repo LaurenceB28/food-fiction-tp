@@ -7,9 +7,6 @@ include(dirname(__FILE__) . '/../config/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
-   
-
     //FIRSTNAME
     $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
     // On vérifie que ce n'est pas vide
@@ -74,13 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include(__DIR__ . '/../views/templates/header.php');
 
 if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
-    include(__DIR__ . '/../views/user/form.php');
+    include(__DIR__ . '/../views/user/signUp.php');
 } else {
     include(__DIR__ . '/../views/user/display.php');
 }
-
-include(__DIR__ . '/../views/templates/footer.php');
-
-
-include(__DIR__.'/../views/templates/header.php');
-include(__DIR__.'/../views/user/signUp.php');
