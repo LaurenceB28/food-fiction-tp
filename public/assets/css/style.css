@@ -37,7 +37,7 @@ h2 {
   margin-top: 2%;
 }
 
-h3{
+h3 {
   font-family: 'Montserrat', sans-serif;
   font-size: 75%;
 }
@@ -56,7 +56,7 @@ h3{
   align-items: left;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   color: #ffc137;
 }
 
@@ -94,6 +94,65 @@ h3{
 
 /*CAROUSSELS*/
 .wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+section {
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  margin: 20px 0;
+}
+
+.item {
+  padding: 0 2px;
+  transition-duration: inherit;
+}
+
+.item:hover {
+  margin: 0 40px;
+  transform: scale(1.2);
+}
+
+
+a {
+  position: absolute;
+  color: #fff;
+  text-decoration: none;
+  font-size: 6em;
+  background: rgb(0, 0, 0);
+  width: 80px;
+  padding: 20px;
+  text-align: center;
+  z-index: 1;
+}
+
+a:nth-of-type(1) {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+a:nth-of-type(2) {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+/* // Remove the arrow for Mobile */
+@media only screen and (max-width: 600px) {
+  a.arrow__btn {
+    display: none;
+  }
+}
+
+/* .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 100%);
   overflow: hidden;
@@ -157,32 +216,38 @@ section {
   bottom: 0;
   right: 0;
   background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 1) 100%);
-}
+} */
 
 /*FOOTER*/
-footer{
+footer {
   display: grid;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   width: 100%;
   height: 250px;
-  background-color:#ffc137;
+  background-color: #ffc137;
 }
 
-#socialNetwork{
+#socialNetwork {
   width: 5vh;
   height: 5vh;
 }
 
-#list{
+#list {
   list-style: none;
   margin-top: 15px;
 }
 
-.infos{
+.infos {
   color: #000000;
-  text-decoration:none; 
+  text-decoration: none;
 }
 
+<<<<<<< HEAD
 
+=======
+/*FORM*/
+
+/*CONNEXION*/
+>>>>>>> 7b103f6a2cc9353173317c34d28a49ec610072e7
