@@ -19,3 +19,13 @@
 </head>
 
 <body>
+        <!-- HEADER -->
+        <header>
+        <div class="header">
+            <img id="logo" src="/public/assets/img/logo/LOGO Food Fiction.png" alt="" />
+        </div>
+    </header>
+    <!-- Navbar -->
+    <?php 
+    include(__DIR__ . '/../templates/navbar.php');
+    ?>
