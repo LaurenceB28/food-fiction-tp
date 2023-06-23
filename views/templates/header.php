@@ -15,7 +15,7 @@
         echo '<link rel="stylesheet" href="/public/assets/css/' . $stylesheet . '"> ';
     }
     ?>
-    <title>Food Fiction</title>
+    <title>Food Fictions</title>
 </head>
 
 <body>
