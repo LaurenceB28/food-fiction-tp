@@ -15,9 +15,6 @@
                     <a class="nav-link" href="#">Séries</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Animations</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a>
                 </li>
                 <li class="nav-item">

@@ -7,23 +7,20 @@ include(dirname(__FILE__) . '/../config/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
-   
-
     //FIRSTNAME
-    $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
+    $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_SPECIAL_CHARS));
     // On vérifie que ce n'est pas vide
     if (empty($lastname)) {
-        $error["lastname"] = "Vous devez entrer un nom!!";
+        $error["firstname"] = "Vous devez entrer un nom!!";
     } else { // Pour les champs obligatoires, on retourne une erreur
-        $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
+        $isOk = filter_var($firstname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
         // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
         if (!$isOk) {
             $error["lastname"] = "Le nom n'est pas au bon format!!";
         } else {
             // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
-            if (strlen($lastname) <= 2 || strlen($lastname) >= 70) {
-                $error["lastname"] = "La longueur du nom n'est pas bon";
+            if (strlen($firstname) <= 2 || strlen($firstname) >= 70) {
+                $error["firstname"] = "La longueur du nom n'est pas bon";
             }
         }
     }       
@@ -74,13 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include(__DIR__ . '/../views/templates/header.php');
 
 if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
-    include(__DIR__ . '/../views/user/form.php');
+    include(__DIR__ . '/../views/user/signUp.php');
 } else {
     include(__DIR__ . '/../views/user/display.php');
 }
-
-include(__DIR__ . '/../views/templates/footer.php');
-
-
-include(__DIR__.'/../views/templates/header.php');
-include(__DIR__.'/../views/user/signUp.php');
