@@ -1,71 +1,83 @@
 <?php
 
-class Recipes{
-    private $id_recipes;
-    private $title;
-    private $ingredient;
-    private $decription;
-    private $id_medias;
+class Recipes
+{
+	private $id_recipes;
+	private $title;
+	private $ingredient;
+	private $description;
+	private $id_medias;
 
-/**
+	private object $pdo;
+
+
+	/**
 	 * @return mixed
 	 */
-	public function getId_recipes() {
+	public function getId_recipes()
+	{
 		return $this->id_recipes;
 	}
-	
+
 	/**
 	 * @param mixed $id_recipes 
 	 * @return self
 	 */
-	public function setId_recipes($id_recipes): self {
+	public function setId_recipes($id_recipes): self
+	{
 		$this->id_recipes = $id_recipes;
 		return $this;
 	}
 
-    /**
+	/**
 	 * @return mixed
 	 */
-	public function getTitle() {
+	public function getTitle()
+	{
 		return $this->title;
 	}
-	
+
 	/**
 	 * @param mixed $title 
 	 * @return self
 	 */
-	public function setTitle($title): self {
+	public function setTitle($title): self
+	{
 		$this->title = $title;
 		return $this;
 	}
 
-        /**
+	/**
 	 * @return mixed
 	 */
-	public function getIngredient() {
+	public function getIngredient()
+	{
 		return $this->ingredient;
 	}
-	
+
 	/**
 	 * @param mixed $ingredient 
 	 * @return self
 	 */
-	public function setIngredient($ingredient): self {
+	public function setIngredient($ingredient): self
+	{
 		$this->ingredient = $ingredient;
 		return $this;
 	}
 	/**
 	 * @return mixed
 	 */
-	public function getId_medias() {
+	public function getId_medias()
+	{
 		return $this->id_medias;
 	}
-	
+
 	/**
 	 * @param mixed $id_medias 
 	 * @return self
 	 */
-	public function setId_medias($id_medias): self {
+	public function setId_medias($id_medias): self
+	{
 		$this->id_medias = $id_medias;
 		return $this;
 	}
@@ -73,37 +85,93 @@ class Recipes{
 	/**
 	 * @return mixed
 	 */
-	public function getDecription() {
-		return $this->decription;
+	public function getDescription()
+	{
+		return $this->description;
 	}
-	
+
 	/**
-	 * @param mixed $decription 
+	 * @param mixed $description 
 	 * @return self
 	 */
-	public function setDecription($decription): self {
-		$this->decription = $decription;
+	public function setDecription($description): self
+	{
+		$this->description = $description;
 		return $this;
 	}
 
-    
-    public function getAll()
-    {
-    }
+	/**
+	 * @return object
+	 */
+	public function getPdo(): object {
+		return $this->pdo;
+	}
+	
+	/**
+	 * @param object $pdo 
+	 * @return self
+	 */
+	public function setPdo(object $pdo): self {
+		$this->pdo = $pdo;
+		return $this;
+	}
 
-    public function get()
-    {
-    }
+	public static function recipes()
+	{
+		$db = connect();
+		$sth = $db->query('SELECT `id_recipes`,`title`FROM `recipes`;');
+		return $sth->fetchAll(PDO::FETCH_OBJ);
+	}
+	public static function search($search)
+	{
+		$db = connect();
+		$sql = 'SELECT * FROM `recipes` WHERE `title` LIKE  :search OR  `ingredients` LIKE :search ;';
+		$sth = $db->prepare($sql);
+		$sth->bindValue(':search', '%' . $search . '%'); //'%'=(commence par).$search. '%' permet la recherche soit par la premiere lettre ou par les suivantes ex: 'Lau' ou 'au'//
+		$sth->execute();
+		return $sth->fetchAll(PDO::FETCH_OBJ);
+	}
 
-    public function insert()
-    {
-    }
+	public static function pagination($page)
+	{
+		$db = connect();
+		$sql = 'SELECT * FROM `recipes` 
+    ORDER BY `id_recipes` 
+    LIMIT 10 OFFSET :paging ;'; /* $offset ou 0*/
+		$page = ($page - 1) * 10;
+		$sth = $db->prepare($sql);
+		$sth->bindValue(':paging', $page, PDO::PARAM_INT);
+		$sth->execute();
+		return $sth->fetchAll();
+	}
 
-    public function update()
-    {
-    }
+	public static function count()
+	{
+		$db = connect();
+		$sql = 'SELECT COUNT(*) AS `idCount` FROM `recipes`;';
+		$sth = $db->query($sql);
+		return $sth->fetch(PDO::FETCH_OBJ);
+	}
 
-    public function delete()
-    {
-    }
+	public function getAll()
+	{
+	}
+
+	public function get()
+	{
+	}
+
+	public function insert()
+	{
+	}
+
+	public function update()
+	{
+	}
+
+	public function delete()
+	{
+	}
+
+	
 }

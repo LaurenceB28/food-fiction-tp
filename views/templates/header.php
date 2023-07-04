@@ -22,7 +22,8 @@
         <!-- HEADER -->
         <header>
         <div class="header">
-            <img id="logo" src="/public/assets/img/logo/LOGO Food Fiction.png" alt="" />
+        <a class="logo" href="/controllers/homeCtrl.php">
+            <img id="logoHeader" src="/public/assets/img/logo/LOGO_Food_Fiction.png" alt="" /></a>
         </div>
     </header>
     <!-- Navbar -->

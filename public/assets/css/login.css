@@ -1,12 +1,16 @@
-.form{
-	justify-content: center;
-	margin: auto;
+.form {
+  justify-content: center;
+  margin: auto;
 }
 
-.form-label{
-	color: #ffc137;
+.form-label {
+  color: #ffc137;
 }
 
-#logo{
-width: 25%;
+#logo {
+  width: 25%;
+}
+
+#logoHeader {
+  height: 80%;
 }

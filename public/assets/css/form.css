@@ -1,11 +1,15 @@
-#form{
-	margin: auto;
+#form {
+  margin: auto;
 }
 
-.form-label{
-	color: #ffc137;
+.form-label {
+  color: #ffc137;
 }
 
-img{
-width: 25%;
+#logo {
+  width: 25%;
+}
+
+#logoHeader {
+  height: 80%;
 }

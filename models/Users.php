@@ -14,6 +14,13 @@ class Users
     private $updated_at;
     private $deleted_at;
     private $role;
+    private object $pdo;
+
+    public function __construct()
+    {
+        // hydratation de l'attribut $pdo grâce à la méthode statique "getInstance" et contenant notre objet PDO
+        $this->pdo = Database::getInstance();
+    }
 
     /**
      * @return mixed
@@ -232,4 +239,62 @@ class Users
         $this->role = $role;
         return $this;
     }
+
+    /**
+	 * @return object
+	 */
+	public function getPdo(): object {
+		return $this->pdo;
+	}
+	
+	/**
+	 * @param object $pdo 
+	 * @return self
+	 */
+	public function setPdo(object $pdo): self {
+		$this->pdo = $pdo;
+		return $this;
+	}
+
+       /**
+        * Summary of getAll
+        * @return array
+        */
+        public static function getAll(?string $search = '', int $limit = null, int $offset = 0): array // Méthode statique car il est inutile d'instancier, car pas d'hydratation
+    {
+
+        // On stocke une instance de la classe PDO dans une variable
+        $pdo = Database::getInstance();
+
+        // On créé la requête
+        $sql = 'SELECT * FROM `patients` 
+                    WHERE `lastname` LIKE :search 
+                    OR `firstname` LIKE :search';
+
+        if (!is_null($limit)) {
+            $sql .= ' LIMIT :limit OFFSET :offset';
+        }
+
+        $sql .= ';';
+
+        // On prépare la requête
+        $sth = Database::getInstance()->prepare($sql);
+
+        // On associe le marqueur nominatif à la valeur de search
+        $sth->bindValue(':search', "%$search%", PDO::PARAM_STR);
+
+        // On associe les marqueurs nominatifs aux valeurs de offset et limit
+        if (!is_null($limit)) {
+            $sth->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
+        }
+
+        $sth->execute();
+        return $sth->fetchAll();
+    }
 }
+	// {
+    //     $db = connect();
+	// 	$sth = $db->query('SELECT `id_users`,`lastname`,`firstname`,`email`,`pseudo`FROM `users`;') ;
+    //     return $sth->fetchAll(PDO::FETCH_OBJ);
+	// }
