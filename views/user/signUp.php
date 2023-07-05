@@ -1,4 +1,4 @@
-<form id="form" action="" method="get">
+<form id="form" action="" method="post">
     <div class="col-12 col-md-8 col-lg-6">
         <div class="card bg-dark text-white">
             <div class="card-body text-center">
@@ -10,7 +10,7 @@
                     </h2>
                     <div class="col p-2">
                         <label class="form-label" for="firstname">Prénom</label>
-                        <input type="text" name="firstname" class="form-control" placeholder="Prénom">
+                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Prénom">
                     </div>
                     <div class="col p-2">
                         <label class="form-label" for="lastname">Nom de famille</label>
@@ -26,8 +26,8 @@
                         <input type="password" name="password" id="password" placeholder="Mot de passe" class="form-control" />
                     </div>
                     <div class="col p-2">
-                        <label class="form-label" for="typePasswordX">Confirmer votre mot de passe</label>
-                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmer votre mot de passe" class="form-control" required />
+                        <label class="form-label" for="passwordCheck">Confirmer votre mot de passe</label>
+                        <input type="password" name="passwordCheck" id="passwordCheck" placeholder="Confirmer votre mot de passe" class="form-control" required />
                     </div>
                     <div class="col p-2">
                         <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">mot de passe oublié?</a></p>

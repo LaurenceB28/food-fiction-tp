@@ -41,42 +41,47 @@ try {
                 }
             }
         }
-                /*preparation : nettoyage et validation*/
-                $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
-                // On vérifie que ce n'est pas vide
-                if (empty($description)) {
-                    $error["description"] = "Vous devez entrer un nom!!";
-                } else { // Pour les champs obligatoires, on retourne une erreur
-                    $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-                    // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
-                    if (!$isOk) {
-                        $error["description"] = "Le nom n'est pas au bon format!!";
-                    } else {
-                        // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
-                        if (strlen($description) <= 2 || strlen($description) >= 70) {
-                            $error["description"] = "La longueur du nom n'est pas bon";
-                        }
-                    }
+        /*preparation : nettoyage et validation*/
+        $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
+        // On vérifie que ce n'est pas vide
+        if (empty($description)) {
+            $error["description"] = "Vous devez entrer un nom!!";
+        } else { // Pour les champs obligatoires, on retourne une erreur
+            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
+            // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
+            if (!$isOk) {
+                $error["description"] = "Le nom n'est pas au bon format!!";
+            } else {
+                // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
+                if (strlen($description) <= 2 || strlen($description) >= 70) {
+                    $error["description"] = "La longueur du nom n'est pas bon";
                 }
-    //     if (!empty($error)) {
-    //         $patient = new Patient();
-    //         $patient->setFirstname($firstname);
-    //         $patient->setLastname($lastname);
-    //         $patient->setBirthdate($birthdate);
-    //         $patient->setPhone($phone);
-    //         $patient->setMail($mail);
-    //         $isExist = $patient->isExist();
-    //         if ($isExist) {
-    //             $message = 'Ce patient est déja enregistré';
-    //             $block = 1;
-    //         } else {
-    //             $block = 0;
-    //             $isAdded = $patient->add();
-    //             if ($isAdded == true) {
-    //                 $message = 'Le patient est enregistré';
-    //             }
-    //         }
-    //     }
+            }
+        }
+        if (empty($error)) {
+            $recipes = new Recipes;
+            $recipes->setId_recipes($id_recipes);
+            $recipes->setTitle($title);
+            $recipes->setIngredient($ingredient);
+            $recipes->setDescription($description);
+            $recipes->setId_medias($passwordHash);
+            $recipes = $user->insert();
+
+            if ($response) {
+                $errors['global'] = 'La recette a bien été ajouté';
+            }
+            // $isExist = $recipes->isExist();
+            //         if ($isExist) {
+            //             $message = 'Cette recette est déja enregistrée';
+            //             $block = 1;
+            //         } else {
+            //             $block = 0;
+            //             $isAdded = $recipes->add();
+            //             if ($isAdded == true) {
+            //                 $message = 'Le patient est enregistré';
+            //             }
+            //         }
+        }
     }
 } catch (\Throwable $th) {
     var_dump($th);
@@ -87,6 +92,6 @@ try {
 // include __DIR__ . '/../views/user/dashboard.php';
 
 
-include(__DIR__ . '/../views/templates/header.php');// 
+include(__DIR__ . '/../views/templates/header.php'); // 
 include __DIR__ . '/../views/user/dashboard.php';
 include(__DIR__ . '/../views/user/addRecipes.php');

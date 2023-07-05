@@ -1,4 +1,4 @@
-<h3>Liste des recettes</h3>
+<h2>Liste des recettes</h2>
 
 <!-- <div>
     <button type="button" id="addRecipes" class="sticky btn btn-lg btn-info">

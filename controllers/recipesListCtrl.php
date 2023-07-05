@@ -8,13 +8,13 @@ if (!isset($_GET['page'])) {
 } else{
     $page = (int)$_GET['page'];
 }
-try {
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si une recherche est effectuée grâce à la methode POST//
     /*Search : nettoyage et validation*/
     $search = trim(filter_input(INPUT_POST, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
     /* affiche la recherche */
     $recipes = Recipes::search($search);
-    $recipes = Recipes::recipes();
+
 
 
 }else{
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si une recherche est effectuée g
     // var_dump($patientList);
     // die;
 
-}
+
 /* pagination */
 
 $limit = 10;
@@ -33,12 +33,7 @@ $nbrPages = ceil($nbrTotal / $limit);
 $pagination = Recipes::pagination($page);
 
 
-
-} catch (\Throwable $th) {
-    var_dump($th);
 }
-
-
 
 
 

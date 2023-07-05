@@ -1,8 +1,7 @@
 <?php
+require_once __DIR__ . '/../models/Users.php';
+require_once __DIR__ . '/../config/config.php';
 $stylesheet = 'form.css';
-
-
-include(dirname(__FILE__) . '/../config/config.php');
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,13 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //FIRSTNAME
     $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_SPECIAL_CHARS));
     // On vérifie que ce n'est pas vide
-    if (empty($lastname)) {
+    if (empty($firstname)) {
         $error["firstname"] = "Vous devez entrer un nom!!";
     } else { // Pour les champs obligatoires, on retourne une erreur
         $isOk = filter_var($firstname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
         // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
         if (!$isOk) {
-            $error["lastname"] = "Le nom n'est pas au bon format!!";
+            $error["firstname"] = "Le nom n'est pas au bon format!!";
         } else {
             // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
             if (strlen($firstname) <= 2 || strlen($firstname) >= 70) {
@@ -64,6 +63,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
+
+    if (empty($error)) {
+        $user = new Users;
+            $user->setLastname($lastname);
+            $user->setFirstname($firstname);
+            $user->setEmail($email);
+            $user->setPassword($passwordHash);
+            $response = $user->insert();
+    
+            if ($response) {
+                $errors['global'] = 'L\'utilisateur a bien été ajouté';
+            }
+    }
 }
 
 

@@ -1,4 +1,4 @@
-<form class="form" action="" method="get">
+<form class="form" action="" method="post">
     <div class="col-12 col-md-8 col-lg-4">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
@@ -9,8 +9,8 @@
                         </div>
                     </h2>
                     <div class="col p-2">
-                        <label class="form-label" for="Email">Email</label>
-                        <input type="Email" name="Email" id="Email" placeholder="Email" class="form-control" />
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="email" class="form-control" />
                     </div>
                     <div class="col p-2">
                         <label class="form-label" for="typePasswordX">Mot de passe</label>

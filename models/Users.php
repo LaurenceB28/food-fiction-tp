@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/../helpers/connect.php';
 class Users
 {
     private $id_users;
@@ -241,36 +241,27 @@ class Users
     }
 
     /**
-	 * @return object
-	 */
-	public function getPdo(): object {
-		return $this->pdo;
-	}
-	
-	/**
-	 * @param object $pdo 
-	 * @return self
-	 */
-	public function setPdo(object $pdo): self {
-		$this->pdo = $pdo;
-		return $this;
-	}
-
-       /**
-        * Summary of getAll
-        * @return array
-        */
-        public static function getAll(?string $search = '', int $limit = null, int $offset = 0): array // Méthode statique car il est inutile d'instancier, car pas d'hydratation
+     * @return object
+     */
+    public function getPdo(): object
     {
+        return $this->pdo;
+    }
 
-        // On stocke une instance de la classe PDO dans une variable
+    /**
+     * @param object $pdo 
+     * @return self
+     */
+    public function setPdo(object $pdo): self
+    {
+        $this->pdo = $pdo;
+        return $this;
+    }
+
+    public static function getAll(?string $search = '', int $limit = null, int $offset = 0)
+    {
         $pdo = Database::getInstance();
-
-        // On créé la requête
-        $sql = 'SELECT * FROM `patients` 
-                    WHERE `lastname` LIKE :search 
-                    OR `firstname` LIKE :search';
-
+        $sql = 'SELECT * FROM `users` WHERE `firstname` LIKE  :search OR  `lastname` LIKE :search ';
         if (!is_null($limit)) {
             $sql .= ' LIMIT :limit OFFSET :offset';
         }
@@ -278,7 +269,8 @@ class Users
         $sql .= ';';
 
         // On prépare la requête
-        $sth = Database::getInstance()->prepare($sql);
+        // $sth = Database::getInstance()->prepare($sql);
+        $sth = $pdo->prepare($sql);
 
         // On associe le marqueur nominatif à la valeur de search
         $sth->bindValue(':search', "%$search%", PDO::PARAM_STR);
@@ -292,9 +284,46 @@ class Users
         $sth->execute();
         return $sth->fetchAll();
     }
+
+    public static function count(string $search): int
+    {
+        $sql = 'SELECT COUNT(`id_users`) as `nbUsers` FROM `users`
+                    WHERE `lastname` LIKE :search 
+                    OR `firstname` LIKE :search;';
+
+        $sth = Database::getInstance()->prepare($sql);
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        $sth->execute();
+        return $sth->fetchColumn();
+    }
+
+    public function insert()
+    {
+        $pdo = Database::getInstance();
+        $sql = 'INSERT INTO `users` (`lastname`, `firstname`, `email`, `password`) 
+        VALUES (:lastname, :firstname, :email, :password);';
+        $sth = $pdo->prepare($sql);
+        //Affectation des valeurs aux marqueurs nominatifs
+        $sth->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
+        $sth->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
+        $sth->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+        $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+        // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
+        return $sth->execute();
+    }
+
+    /**
+     * Summary of getByMail
+     * @param mixed $email
+     * @return mixed
+     */
+    public static function getByMail($email)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT * FROM `users` WHERE `email`= :email ;';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':email', $email, PDO::PARAM_STR);
+        $sth->execute();
+        return $sth->fetch();
+    }
 }
-	// {
-    //     $db = connect();
-	// 	$sth = $db->query('SELECT `id_users`,`lastname`,`firstname`,`email`,`pseudo`FROM `users`;') ;
-    //     return $sth->fetchAll(PDO::FETCH_OBJ);
-	// }

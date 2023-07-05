@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/../helpers/connect.php';
 class Recipes
 {
 	private $id_recipes;
@@ -94,7 +94,7 @@ class Recipes
 	 * @param mixed $description 
 	 * @return self
 	 */
-	public function setDecription($description): self
+	public function setDescription($description): self
 	{
 		$this->description = $description;
 		return $this;
@@ -118,15 +118,15 @@ class Recipes
 
 	public static function recipes()
 	{
-		$db = connect();
-		$sth = $db->query('SELECT `id_recipes`,`title`FROM `recipes`;');
+		$pdo = Database::getInstance();
+		$sth = $pdo->query('SELECT `id_recipes`,`title`FROM `recipes`;');
 		return $sth->fetchAll(PDO::FETCH_OBJ);
 	}
 	public static function search($search)
 	{
-		$db = connect();
+		$pdo = Database::getInstance();
 		$sql = 'SELECT * FROM `recipes` WHERE `title` LIKE  :search OR  `ingredients` LIKE :search ;';
-		$sth = $db->prepare($sql);
+		$sth = $pdo->prepare($sql);
 		$sth->bindValue(':search', '%' . $search . '%'); //'%'=(commence par).$search. '%' permet la recherche soit par la premiere lettre ou par les suivantes ex: 'Lau' ou 'au'//
 		$sth->execute();
 		return $sth->fetchAll(PDO::FETCH_OBJ);
@@ -134,12 +134,12 @@ class Recipes
 
 	public static function pagination($page)
 	{
-		$db = connect();
+		$pdo = Database::getInstance();
 		$sql = 'SELECT * FROM `recipes` 
     ORDER BY `id_recipes` 
     LIMIT 10 OFFSET :paging ;'; /* $offset ou 0*/
 		$page = ($page - 1) * 10;
-		$sth = $db->prepare($sql);
+		$sth = $pdo->prepare($sql);
 		$sth->bindValue(':paging', $page, PDO::PARAM_INT);
 		$sth->execute();
 		return $sth->fetchAll();
@@ -147,9 +147,9 @@ class Recipes
 
 	public static function count()
 	{
-		$db = connect();
+		$pdo = Database::getInstance();
 		$sql = 'SELECT COUNT(*) AS `idCount` FROM `recipes`;';
-		$sth = $db->query($sql);
+		$sth = $pdo->query($sql);
 		return $sth->fetch(PDO::FETCH_OBJ);
 	}
 
