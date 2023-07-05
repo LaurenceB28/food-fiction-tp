@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/../models/Recipes.php';
+$footer = true;
+$stylesheet = 'dashboard.css';
+require_once __DIR__ . '/../models/Medias.php';
 require_once __DIR__ . '/../config/config.php';
-$styleSheet = 'stylesheet.css';
-
 try {
     // Récupération de la valeur recherchée et on nettoie
     //**** NETTOYAGE ****/
@@ -28,7 +28,7 @@ try {
     $offset = $limit * ($currentPage - 1);
 
     // Appel à la méthode statique permettant de récupérer les utilisateurs selon la recherche et la pagination
-    $recipes = Recipes::getRecipes($search, $limit, $offset);
+    $medias = Medias::getAllMedias($search, $limit, $offset);
     /*************************************************************/
 } catch (\Throwable $th) {
     var_dump($th);
@@ -36,8 +36,7 @@ try {
     die;
 }
 
-
 include(__DIR__ . '/../views/templates/header.php');
 include(__DIR__ . '/../views/user/dashboard.php');
-include(__DIR__ . '/../views/user/recipesList.php');
+include(__DIR__ . '/../views/user/mediasList.php');
 include(__DIR__ . '/../views/templates/footer.php');

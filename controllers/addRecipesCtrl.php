@@ -11,7 +11,7 @@ try {
         $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
         // On vérifie que ce n'est pas vide
         if (empty($title)) {
-            $error["title"] = "Vous devez entrer un nom!!";
+            $error["title"] = "Vous devez entrer un nom de recette!!";
         } else { // Pour les champs obligatoires, on retourne une erreur
             $isOk = filter_var($title, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
             // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
@@ -28,7 +28,7 @@ try {
         $ingredient = trim(filter_input(INPUT_POST, 'ingredient', FILTER_SANITIZE_SPECIAL_CHARS));
         // On vérifie que ce n'est pas vide
         if (empty($ingredient)) {
-            $error["ingredient"] = "Vous devez entrer un nom!!";
+            $error["ingredient"] = "Vous devez entrer au moins trois ingredients!!";
         } else { // Pour les champs obligatoires, on retourne une erreur
             $isOk = filter_var($ingredient, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
             // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
@@ -45,44 +45,37 @@ try {
         $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
         // On vérifie que ce n'est pas vide
         if (empty($description)) {
-            $error["description"] = "Vous devez entrer un nom!!";
+            $error["description"] = "Vous devez entrer les étapes de préparation!!";
         } else { // Pour les champs obligatoires, on retourne une erreur
-            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-            // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
-            if (!$isOk) {
-                $error["description"] = "Le nom n'est pas au bon format!!";
-            } else {
                 // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
-                if (strlen($description) <= 2 || strlen($description) >= 70) {
+                if (strlen($description) > 500) {
                     $error["description"] = "La longueur du nom n'est pas bon";
                 }
             }
         }
+        // var_dump($error);
+
         if (empty($error)) {
             $recipes = new Recipes;
-            $recipes->setId_recipes($id_recipes);
             $recipes->setTitle($title);
             $recipes->setIngredient($ingredient);
             $recipes->setDescription($description);
-            $recipes->setId_medias($passwordHash);
-            $recipes = $user->insert();
+            // $recipes->setId_medias($id_medias);
 
-            if ($response) {
-                $errors['global'] = 'La recette a bien été ajouté';
-            }
-            // $isExist = $recipes->isExist();
-            //         if ($isExist) {
-            //             $message = 'Cette recette est déja enregistrée';
-            //             $block = 1;
-            //         } else {
-            //             $block = 0;
-            //             $isAdded = $recipes->add();
-            //             if ($isAdded == true) {
-            //                 $message = 'Le patient est enregistré';
-            //             }
-            //         }
+            $isExist = $recipes->isExist();
+            // var_dump($isExist);
+                    if ($isExist) {
+                        $message = 'Cette recette est déja enregistrée';
+                        $block = 1;
+                    } else {
+                        $block = 0;
+                        $isAdded = $recipes->add();
+                        if ($isAdded == true) {
+                            $message = 'La recette est enregistré';
+                        }
+                    }
         }
-    }
+
 } catch (\Throwable $th) {
     var_dump($th);
 }

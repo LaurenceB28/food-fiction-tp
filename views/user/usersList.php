@@ -23,8 +23,8 @@
 
             foreach ($users as $user) { ?>
                 <tr class="table-light">
-                    <th scope="row"><?= $user->firstname ?></th>
                     <th scope="row"><?= $user->lastname ?></th>
+                    <th scope="row"><?= $user->firstname ?></th>
                     <th scope="row"><?= $user->email ?></th>
                     <!-- <th scope="row"><?= $user->pseudo ?></th> -->
                     <td><a href="/controllers/usersListCtrl.php?id_users=<?= $user->id_users ?>"><span class="btn btn-outline-danger border border-danger">Supprimer</span></a></td>

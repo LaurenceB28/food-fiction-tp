@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/controllers/signUpCtrl.php">S'inscrire</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/controllers/dashboardCtrl.php">Dashboard</a>
+                </li>
             </ul>
             <div>
     <form method="post" class="d-flex" role="search"> <!-- method="post" pour $_SERVER request method, recupère les infos du formulaire ou champ de recherche-->

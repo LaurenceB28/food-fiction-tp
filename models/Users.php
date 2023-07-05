@@ -326,4 +326,6 @@ class Users
         $sth->execute();
         return $sth->fetch();
     }
+
+    
 }

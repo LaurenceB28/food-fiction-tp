@@ -1,4 +1,3 @@
-
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
@@ -10,13 +9,19 @@
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle"></a>
-                                <a href="/controllers/addRecipesCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajouter une recette</span></a>
+                            <a href="/controllers/addRecipesCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajouter une recette</span></a>
+                        </li>
+                        <li>
+                            <a href="/controllers/addMediasCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Ajouter un Médias</span></a>
+                        </li>
+                        <li>
+                            <a href="/controllers/mediasListCtrl.php?page=1" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des médias</span></a>
                         </li>
                         <li>
                             <a href="/controllers/recipesListCtrl.php?page=1" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des recettes</span></a>
                         </li>
                         <li>
-                            <a href="/controllers/usersListCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des utilisateurs</span></a>
+                            <a href="/controllers/usersListCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des Utilisateurs</span></a>
                         </li>
                     </ul>
                     </li>
