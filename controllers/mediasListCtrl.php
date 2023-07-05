@@ -11,7 +11,7 @@ try {
     $limit = NB_ELEMENTS_BY_PAGE;
 
     // Compte le nombre d'éléments au total selon la recherche
-    $nbrRecipes = Recipes::count($search);
+    $nbrRecipes = Medias::count($search);
 
     // Calcule le nombre de pages à afficher dans la pagination
     $nbrPages = ceil($nbrRecipes / $limit);

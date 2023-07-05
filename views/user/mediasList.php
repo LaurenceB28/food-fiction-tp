@@ -1,4 +1,4 @@
-<h2>Liste des médias</h2>
+
 
 <!-- <div>
     <button type="button" id="addRecipes" class="sticky btn btn-lg btn-info">
@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
         </button>
     </div>
 <?php } ?> -->
+<h2>Liste des médias</h2>
 <div id="results">
     <table class="table table-hover">
 
