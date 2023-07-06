@@ -135,12 +135,37 @@ class Recipes
 		// On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
 		return $sth->execute();
 	}
-	public static function recipes()
-	{
-		$pdo = Database::getInstance();
-		$sth = $pdo->query('SELECT `id_recipes`,`title`FROM `recipes`;');
-		return $sth->fetchAll(PDO::FETCH_OBJ);
-	}
+	// public static function recipes()
+	// {
+	// 	$pdo = Database::getInstance();
+	// 	$sth = $pdo->query('SELECT `id_recipes`,`title`FROM `recipes`;');
+	// 	return $sth->fetchAll(PDO::FETCH_OBJ);
+	// }
+
+	/**
+	 * Summary of recipes
+	 * @param int $id_medias
+	 * @return array
+	 */
+	// public static function recipes(int $id_medias = null) :array
+	// {
+	// 	$pdo = Database::getInstance();
+	// 	$sql = 'SELECT `recipes`.`id_recipes` as `recipesId`, `medias`.`id_medias` as `mediasId`, `recipes`.*, `medias`.* 
+	// 	FROM `recipes` 
+	// 	INNER JOIN `medias` 
+	// 	ON `recipes`.`id_medias` = `medias`.`id_medias`;';
+	// 	if (!is_null($id_medias)) {
+    //         $sql .= ' WHERE `recipes`.`id_medias` = :id_medias';
+    //     }
+    //     $sql .= ' ORDER BY `recipes`.`title` DESC;';
+    //     $sth = $pdo->prepare($sql);
+    //     if (!is_null($id_medias)) {
+    //         $sth->bindValue(':id_medias', $id_medias, PDO::PARAM_INT);
+    //     }
+    //     if ($sth->execute()) {
+    //         return $sth->fetchAll();
+    //     }
+	// }
 
 	public function isExist()
 	{
@@ -175,7 +200,7 @@ class Recipes
 
     public static function count(string $search): int
     {
-        $sql = 'SELECT COUNT(`id_recipes`) as `nbRecipes` FROM `recipes`
+        $sql = 'SELECT COUNT(`id_recipes`) as `nbrRecipes` FROM `recipes`
                     WHERE `title` LIKE :search';
 
         $sth = Database::getInstance()->prepare($sql);

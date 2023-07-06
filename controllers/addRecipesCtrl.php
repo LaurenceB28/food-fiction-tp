@@ -5,6 +5,9 @@ require_once __DIR__ . '/../models/Recipes.php';
 require_once __DIR__ . '/../config/config.php';
 
 try {
+
+    $recipes = Recipes::recipes();
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         /*$title : nettoyage et validation*/
@@ -60,7 +63,7 @@ try {
             $recipes->setTitle($title);
             $recipes->setIngredient($ingredient);
             $recipes->setDescription($description);
-            // $recipes->setId_medias($id_medias);
+            $recipes->setId_medias($id_medias);
 
             $isExist = $recipes->isExist();
             // var_dump($isExist);
@@ -75,7 +78,6 @@ try {
                         }
                     }
         }
-
 } catch (\Throwable $th) {
     var_dump($th);
 }
