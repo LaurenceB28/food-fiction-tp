@@ -5,7 +5,6 @@ class Medias
     private $id_medias;
     private $title;
     private $id_types;
-
     /**
 	 * @return mixed
 	 */
@@ -54,7 +53,7 @@ class Medias
 		return $this;
 	}
 
-	public function addMedias()
+	public function insert()
 	{
 		$pdo = Database::getInstance();
 		$sql = 'INSERT INTO `medias` (`id_medias`,`title`,`id_types`) 
@@ -111,10 +110,6 @@ class Medias
     }
 
     public function get()
-    {
-    }
-
-    public function insert()
     {
     }
 

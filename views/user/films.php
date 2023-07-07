@@ -8,7 +8,7 @@
         <div class="card-body">
             <h5 class="card-title">La Bolo du Parrain</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/controllers/recipeCtrl.php" class="btn btn-primary">La recette</a>
+            <a href="/controllers/recipeCtrl.php?id=<?= $recipes->id ?>" class="btn btn-primary">La recette</a>
         </div>
     </div>
     <div class="card">
@@ -16,7 +16,7 @@
         <div class="card-body">
             <h5 class="card-title">La soupe au chou</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/controllers/recipeCtrl.php" class="btn btn-primary">La recette</a>
+            <a href="/controllers/recipeCtrl.php?id=<?= $recipes->id ?>" class="btn btn-primary">La recette</a>
         </div>
     </div>
     <div class="card">
@@ -24,7 +24,7 @@
         <div class="card-body">
             <h5 class="card-title">Tarte à la rhubarbe du Diable</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/controllers/recipeCtrl.php" class="btn btn-primary">La recette</a>
+            <a href="/controllers/recipeCtrl.php?id=<?= $recipes->id ?>" class="btn btn-primary">La recette</a>
         </div>
     </div>
 </div>
@@ -34,7 +34,7 @@
         <div class="card-body">
             <h5 class="card-title">Le Big Kahuna burger</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/controllers/recipeCtrl.php" class="btn btn-primary">La recette</a>
+            <a href="/controllers/recipeCtrl.php?id=<?= $recipes->id ?>" class="btn btn-primary">La recette</a>
         </div>
     </div>
     <div class="card">
@@ -42,7 +42,7 @@
         <div class="card-body">
             <h5 class="card-title">Le Shawarma des Avengers</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/controllers/recipeCtrl.php" class="btn btn-primary">La recette</a>
+            <a href="/controllers/recipeCtrl.php?id=<?= $recipes->id ?>" class="btn btn-primary">La recette</a>
         </div>
     </div>
     <div class="card">
@@ -50,7 +50,7 @@
         <div class="card-body">
             <h5 class="card-title">Les Onigiri de Chihiro</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/controllers/recipeCtrl.php" class="btn btn-primary">La recette</a>
+            <a href="/controllers/recipeCtrl.php?id=<?= $recipes->id ?>" class="btn btn-primary">La recette</a>
         </div>
     </div>
 </div>

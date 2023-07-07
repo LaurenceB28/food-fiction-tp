@@ -2,11 +2,12 @@
 $footer = true;
 $stylesheet = 'dashboard.css';
 require_once __DIR__ . '/../models/Medias.php';
+require_once __DIR__ . '/../models/Genres.php';
 require_once __DIR__ . '/../config/config.php';
 
 try {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+        
         /*$title : nettoyage et validation*/
         $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
         // On vérifie que ce n'est pas vide
@@ -25,9 +26,45 @@ try {
             }
         }
         if (empty($error)) {
+            /*transaction*/
+            $pdo = Database::getInstance();
+            $pdo->beginTransaction();
+            /*hydratation de l'objet medias*/
             $medias = new Medias;
             $medias->setTitle($title);
-            $isExist = $medias->isExist();
+            /*enregistrement du media dans la bdd*/
+            $isMediaSaved = $medias->insert();
+            /*enregistrement du dernier id inséré dans la bdd*/
+            $id_medias = $pdo->lastInsertId();
+            /*hydratation de l'objet genres*/
+            $genres = new Genres();
+            $genres->setId_genres($id_genres);
+            $genres->setGenres($genres);
+            /*enregistrement du type dans la bdd */
+            $isGenreSaved = $media->insert();
+            if ($isMediaExist === true && $isGenreSaved === true) {
+                $pdo->commit(); // Valide la transaction et exécute toutes les requetes
+                SessionFlash::setMessage('Le média et son genre  sont bien été ajoutés');
+            } else {
+                $pdo->rollBack(); // Annulation de toutes les requêtes exécutées avant la levée de l'exception
+                SessionFlash::setMessage('Un problème est survenu lors de l\'ajout du média et de son genre. Aucun ajout n\'a été effectué');
+            }
+        }
+    }
+    $genres = Genres::getAll();
+} catch (\Throwable $th) {
+    var_dump($th);
+}
+
+
+include(__DIR__ . '/../views/templates/header.php');
+include(__DIR__ . '/../views/user/dashboard.php');
+include(__DIR__ . '/../views/user/addMedias.php');
+include(__DIR__ . '/../views/templates/footer.php');
+
+
+/*
+$isExist = $medias->isExist();
             // var_dump($isExist);
             if ($isExist) {
                 $message = 'Ce média est déja enregistré';
@@ -38,15 +75,4 @@ try {
                 if ($isAdded == true) {
                     $message = 'Le média est enregistré';
                 }
-            }
-        }
-    }
-} catch (\Throwable $th) {
-    var_dump($th);
-}
-
-
-include(__DIR__ . '/../views/templates/header.php');
-include(__DIR__ . '/../views/user/dashboard.php');
-include(__DIR__ . '/../views/user/addMedias.php');
-include(__DIR__ . '/../views/templates/footer.php');
+            } */

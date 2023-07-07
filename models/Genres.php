@@ -3,23 +3,23 @@
 class Genres
 {
     private $id_genres;
-    private $genre;
+    private $genres;
 
     /**
      * @return mixed
      */
-    public function getGenre()
+    public function getGenres()
     {
-        return $this->genre;
+        return $this->genres;
     }
 
     /**
      * @param mixed $genre 
      * @return self
      */
-    public function setGenre($genre): self
+    public function setGenres($genres): self
     {
-        $this->genre = $genre;
+        $this->genres = $genres;
         return $this;
     }
 
@@ -41,9 +41,18 @@ class Genres
         return $this;
     }
 
-    public function getAll(){
+    public static function getAll()
+    {
+$pdo = Database::getInstance();
+
+$sql= 'SELECT * FROM `genres`;';
+$sth = Database::getInstance()->query($sql);
+return $sth->fetchAll();
+
+
+
         
-    }
+}
 
     public function get(){
         
