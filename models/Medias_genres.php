@@ -51,6 +51,14 @@ class Medias_genres
 
     public function insert()
     {
+        $pdo = Database::getInstance();
+        $sql = 'INSERT INTO `medias_genres` (`id_genres`,`id_medias`) VALUES (:id_genres, :id_medias);';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_genres', $this->id_genres);
+        $sth->bindValue(':id_medias', $this->id_medias);
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
     }
 
     public function update()

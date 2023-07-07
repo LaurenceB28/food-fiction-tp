@@ -3,11 +3,12 @@ $footer = true;
 $stylesheet = 'dashboard.css';
 require_once __DIR__ . '/../models/Medias.php';
 require_once __DIR__ . '/../models/Genres.php';
+require_once __DIR__ . '/../models/Medias_genres.php';
 require_once __DIR__ . '/../config/config.php';
 
 try {
+    $genreAll = Genres::getAll();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        
         /*$title : nettoyage et validation*/
         $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
         // On vérifie que ce n'est pas vide
@@ -25,6 +26,12 @@ try {
                 }
             }
         }
+        $type = intval(filter_input(INPUT_POST, 'types', FILTER_SANITIZE_NUMBER_INT));
+
+        $genres = filter_input(INPUT_POST, 'genres', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
+        // var_dump($genres);
+        // die;
+
         if (empty($error)) {
             /*transaction*/
             $pdo = Database::getInstance();
@@ -32,17 +39,24 @@ try {
             /*hydratation de l'objet medias*/
             $medias = new Medias;
             $medias->setTitle($title);
-            /*enregistrement du media dans la bdd*/
+            $medias->setId_types($type);
+                        /*enregistrement du media dans la bdd*/
             $isMediaSaved = $medias->insert();
             /*enregistrement du dernier id inséré dans la bdd*/
             $id_medias = $pdo->lastInsertId();
-            /*hydratation de l'objet genres*/
-            $genres = new Genres();
-            $genres->setId_genres($id_genres);
-            $genres->setGenres($genres);
+            $isGenreSaved = true;
+            foreach ($genres as $genre) {
+                $medias_genres = new Medias_genres;
+                $medias_genres->setId_genres($genre);
+                $medias_genres->setId_medias($id_medias);
+                if(!$medias_genres->insert()){
+                    $isGenreSaved = false;
+                }
+            }
+            
             /*enregistrement du type dans la bdd */
-            $isGenreSaved = $media->insert();
-            if ($isMediaExist === true && $isGenreSaved === true) {
+            // $isGenreSaved = $media->insert();
+            if ($isMediaSaved === true && $isGenreSaved === true) {
                 $pdo->commit(); // Valide la transaction et exécute toutes les requetes
                 SessionFlash::setMessage('Le média et son genre  sont bien été ajoutés');
             } else {
@@ -51,7 +65,7 @@ try {
             }
         }
     }
-    $genres = Genres::getAll();
+    
 } catch (\Throwable $th) {
     var_dump($th);
 }

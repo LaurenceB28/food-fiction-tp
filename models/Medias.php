@@ -56,13 +56,12 @@ class Medias
 	public function insert()
 	{
 		$pdo = Database::getInstance();
-		$sql = 'INSERT INTO `medias` (`id_medias`,`title`,`id_types`) 
-        VALUES (:id_medias, :title, :id_types);';
+		$sql = 'INSERT INTO `medias` (`title`,`id_types`) 
+        VALUES (:title, :id_types);';
 		$sth = $pdo->prepare($sql);
 		//Affectation des valeurs aux marqueurs nominatifs
-		$sth->bindValue(':id_medias', $this->getId_medias(), PDO::PARAM_STR);
 		$sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
-		$sth->bindValue(':id_types', $this->getId_types(), PDO::PARAM_STR);
+		$sth->bindValue(':id_types', $this->getId_types(), PDO::PARAM_INT);
 		// On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
 		return $sth->execute();
 	}
@@ -100,7 +99,7 @@ class Medias
 
     public static function count(string $search): int
     {
-        $sql = 'SELECT COUNT(`id_medias`) as `nbMedias` FROM `medias`
+        $sql = 'SELECT COUNT(`id_medias`) as `nbrMedias` FROM `medias`
                     WHERE `title` LIKE :search';
 
         $sth = Database::getInstance()->prepare($sql);
