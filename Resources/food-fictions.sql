@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 07, 2023 at 07:45 AM
+-- Generation Time: Jul 07, 2023 at 02:44 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.5
 
@@ -51,7 +51,8 @@ INSERT INTO `genres` (`id_genres`, `genre`) VALUES
 (16, 'Comédie'),
 (17, 'Policier'),
 (18, 'Animations'),
-(19, 'Zombies');
+(19, 'Zombies'),
+(20, 'Vampires');
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,9 @@ INSERT INTO `medias` (`id_medias`, `title`, `id_types`) VALUES
 (76, 'Stanger Things', 1),
 (77, 'Izombies', 1),
 (78, 'True Blood', 1),
-(79, 'The Walking Dead', 1);
+(79, 'The Walking Dead', 1),
+(83, 'buffy contre les vampires', 1),
+(101, 'Indiana Jones et le temple maudit', 2);
 
 -- --------------------------------------------------------
 
@@ -123,7 +126,8 @@ INSERT INTO `medias_genres` (`id_genres`, `id_medias`) VALUES
 (11, 75),
 (7, 76),
 (19, 77),
-(19, 79);
+(19, 79),
+(5, 101);
 
 -- --------------------------------------------------------
 
@@ -169,7 +173,7 @@ INSERT INTO `recipes` (`id_recipes`, `title`, `ingredient`, `description`, `id_m
 
 CREATE TABLE `types` (
   `id_types` int NOT NULL,
-  `type` varchar(50) DEFAULT NULL
+  `type` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
@@ -278,13 +282,13 @@ ALTER TABLE `users_recipes`
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id_genres` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_genres` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `medias`
 --
 ALTER TABLE `medias`
-  MODIFY `id_medias` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id_medias` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `recipes`
