@@ -13,7 +13,7 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Mail</th>
-                <!-- <th scope="col">Pseudo</th> -->
+                <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
                 <th>
             </tr>
@@ -27,6 +27,8 @@
                     <th scope="row"><?= $user->firstname ?></th>
                     <th scope="row"><?= $user->email ?></th>
                     <!-- <th scope="row"><?= $user->pseudo ?></th> -->
+                    <td><a href="/controllers/recipeCtrl.php?id=<?= $user->id_users ?>"><span class="btn btn-outline-info border border-info">Modifier</span></a></td>
+
                     <td><a href="/controllers/usersListCtrl.php?id_users=<?= $user->id_users ?>"><span class="btn btn-outline-danger border border-danger">Supprimer</span></a></td>
                     <td>
                 </tr>

@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
         <thead>
             <tr class="table-dark">
                 <th scope="col">Nom de la recette</th>
+                <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
                 <th>
             </tr>
@@ -29,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
             foreach ($recipes as $recipe) { ?>
                 <tr class="table-light">
                     <th scope="row"><?= $recipe->title ?></th>
+                    <td><a href="/controllers/recipeCtrl.php?id=<?= $recipe->id_recipes ?>"><span class="btn btn-outline-info border border-info">Modifier</span></a></td>
                     <td><a href="/controllers/recipesListCtrl.php?id=<?= $recipe->id_recipes ?>"><span class="btn btn-outline-danger border border-danger">Supprimer</span></a></td>
                     <td>
                 </tr>
