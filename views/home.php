@@ -5,21 +5,21 @@
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 <h1>Vos catégories préférées</h1>
 <div class="container">
-<a href="/controllers/ripaillesCtrl.php?id=<?= $recipes->id_recipes ?>">
+<a href="/controllers/ripaillesCtrl.php?genre=9<?= $recipes->genre?>">
     <div class="card" style="width: 18rem">
         <img src="/public/assets/img/SERIES/Hannibal/hannibal1.webp" class="object-fit-fill border rounded" alt="..." />
         <div class="card-body">
             <p class="card-text text-center">R.I.Pailles</p>
         </div>
     </div></a>
-    <a href="/controllers/sandwishsCtrl.php?id=<?= $recipes->id_recipes ?>">
+    <a href="/controllers/sandwishsCtrl.php?genre=2<?= $recipes->genre ?>">
     <div class="card" style="width: 18rem">
         <img src="/public/assets/img/SERIES/Friends/ross sandwish.png" class="object-fit-fill border rounded" alt="..." />
         <div class="card-body">
             <p class="card-text text-center">Mon sandwish</p>
         </div>
     </div></a>
-    <a href="/controllers/desperaterecipesCtrl.php?id=<?= $recipes->id_recipes ?>">
+    <a href="/controllers/desperaterecipesCtrl.php?genre=3<?= $recipes->genre ?>">
     <div class="card" style="width: 18rem">
         <img src="/public/assets/img/SERIES/Desperate Housewives/bree.jpg" class="object-fit-fill border rounded" alt="..." />
         <div class="card-body">

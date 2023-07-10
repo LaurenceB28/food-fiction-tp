@@ -10,3 +10,5 @@ define('NB_ELEMENTS_BY_PAGE', 10);
 define('REGEX_NO_NUMBER',"^[A-Za-z-éèêëàâäôöûüç' ]+$");
 define('REGEX_TEXTAREA','^[a-zA-Z\n\r]*$');
 define('AUTHORIZED_FILES_FORMAT', ['image/jpeg', 'image/png', 'image/pdf']);
+
+define('MAX_FILESIZE', 2*1024*1024);

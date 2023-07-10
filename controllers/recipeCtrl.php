@@ -10,7 +10,7 @@ $id_recipes = intval(filter_input(INPUT_GET, 'id_recipes', FILTER_SANITIZE_NUMBE
 $id_medias  = intval(filter_input(INPUT_GET, 'id_recipes', FILTER_SANITIZE_NUMBER_INT));
 // $medias = Medias::get($id_medias);
 $recipes = Recipes::getRecipes($id_recipes);
-$displayRecipes = Recipes::$displayRecipes($id_medias);
+$displayRecipes = Recipes::displayRecipes($id_medias);
 if ($recipes == false){
     throw new Exception('la recette n\'a pas été trouvée');
 }

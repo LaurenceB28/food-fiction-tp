@@ -103,6 +103,19 @@ class Medias
 		return $sth->fetchAll();
 	}
 
+	public static function getAll($type)
+	{
+		$pdo = Database::getInstance();
+	$sql = 'SELECT * FROM `medias` 
+	INNER JOIN `types` 
+	ON `medias`.id_types = `types`.id_types 
+	WHERE `types`.id_types = :type;';
+	$sth = $pdo->prepare($sql);
+	$sth->bindValue(':type', $type, PDO::PARAM_INT );
+	$sth->execute();
+	return $sth->fetchAll();
+}
+
 	public static function count(string $search): int
 	{
 		$sql = 'SELECT COUNT(`id_medias`) as `nbrMedias` FROM `medias`
@@ -114,17 +127,17 @@ class Medias
 		return $sth->fetchColumn();
 	}
 
-	public static function displayRecipes($id_medias)
-	{
-		$pdo = Database::getInstance();
-		$sql = 'SELECT `medias`.`id_medias` AS `idMedias`,
-    `medias`.`idRecipes` 
-    FROM `medias` 
-    WHERE  `idRecipes` = :idRecipes;';
-		$sth = $pdo->prepare($sql);
-		$sth->bindValue(':idRecipes', $id_medias, PDO::PARAM_INT);
-		return $sth->execute();
-	}
+	// public static function displayRecipes($id_medias)
+	// {
+	// 	$pdo = Database::getInstance();
+	// 	$sql = 'SELECT `medias`.`id_medias` AS `idMedias`,
+    // `medias`.`idRecipes` 
+    // FROM `medias` 
+    // WHERE  `idRecipes` = :idRecipes;';
+	// 	$sth = $pdo->prepare($sql);
+	// 	$sth->bindValue(':idRecipes', $id_medias, PDO::PARAM_INT);
+	// 	return $sth->execute();
+	// }
 
 	public function modify(): mixed
 	{
