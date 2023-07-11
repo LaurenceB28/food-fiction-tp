@@ -11,3 +11,6 @@ if (empty($_SESSION['user'])) {
     include(__DIR__ . '/../views/home.php');
     include(__DIR__ . '/../views/templates/footer.php');
 }
+
+$medias = filter_input(INPUT_GET, 'media', FILTER_SANITIZE_SPECIAL_CHARS);
+$mediaRecipes = Recipes::getAllbyMedias($medias);

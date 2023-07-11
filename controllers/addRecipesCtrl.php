@@ -10,6 +10,8 @@ try {
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+        
+
         /*$title : nettoyage et validation*/
         $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
         // On vérifie que ce n'est pas vide
@@ -56,7 +58,8 @@ try {
                 }
             }
         }
-        // var_dump($error);
+        
+
 
         if (empty($error)) {
             $recipes = new Recipes;

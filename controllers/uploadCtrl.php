@@ -46,7 +46,7 @@ try {
                 $width = 300;
                 $height = (int) round(($height_original*$width) / $width_original); //-1
             } else { //paysage
-                $height = 300;
+                $height = 192;
                 $width = (int) round(($width_original*$height) / $height_original);
             }
 

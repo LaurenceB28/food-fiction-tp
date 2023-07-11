@@ -93,6 +93,7 @@ h3 {
 }
 
 /*CAROUSSELS*/
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 100%);
@@ -116,6 +117,7 @@ section {
 .item:hover {
   margin: 0 40px;
   transform: scale(1.2);
+  transition-duration: 300ms;
 }
 
 
@@ -124,7 +126,7 @@ section {
   color: #fff;
   text-decoration: none;
   font-size: 6em;
-  /* background: rgb(0, 0, 0); */
+  background: rgb(0, 0, 0); */
   width: 50px;
   padding: 20px;
   text-align: center;
@@ -135,14 +137,14 @@ section {
   top: 0;
   bottom: 0;
   left: 0;
-  /* background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); */
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); */
 }
 
 .arrow__btn:nth-of-type(2) {
   top: 0;
   bottom: 0;
   right: 0;
-  /* background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); */
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); */
 }
 
 /* // Remove the arrow for Mobile */

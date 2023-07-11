@@ -5,6 +5,7 @@ require_once __DIR__ . '/../models/Medias.php';
 require_once __DIR__ . '/../models/Genres.php';
 require_once __DIR__ . '/../models/Medias_genres.php';
 require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../helpers/sessionFlash.php';
 
 try {
     $genreAll = Genres::getAll();
@@ -26,67 +27,95 @@ try {
                 }
             }
         }
-        $type = intval(filter_input(INPUT_POST, 'types', FILTER_SANITIZE_NUMBER_INT));
+        $picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_SPECIAL_CHARS);
+        $id_types = intval(filter_input(INPUT_POST, 'type', FILTER_SANITIZE_NUMBER_INT));
 
-        $genres = filter_input(INPUT_POST, 'genres', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
-        // var_dump($genres);
+        // var_dump($id_types);
         // die;
+        try {
+            if (!isset($_FILES['picture'])) {
+                throw new Exception("Le fichier n'existe pas");
+            }
 
+            if ($_FILES['picture']['error'] != 0) {
+                throw new Exception("Une erreur est survenue lors du transfert");
+            }
+
+            if ($_FILES['picture']['type'] != 'image/jpeg') {
+                throw new Exception("Ce fichier n'est pas au bon format");
+            }
+
+            if ($_FILES['picture']['size'] > MAX_FILESIZE) {
+                throw new Exception("Ce fichier est trop volumineux");
+            }
+
+            $extension = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
+            $from = $_FILES['picture']['tmp_name'];
+            $fileName = uniqid('picture_') . '.' . $extension;
+            $to = $_SERVER["DOCUMENT_ROOT"] . '/public/uploads/gallery/medias/' . $fileName;
+            move_uploaded_file($from, $to);
+
+            // A FAIRE APRES
+
+            // $filename = $to;
+            // $gdImage_original = imagecreatefromjpeg($filename);
+
+            // $width_original = getimagesize($filename)[0];
+            // $height_original = getimagesize($filename)[1];
+
+            // if ($width_original < 341 || $height_original < 192) {
+            //     throw new Exception("Image trop petite");
+            // }
+
+            // if ($height_original > $width_original) {
+            //     $width = 341;
+            //     $height = (int) round(($height_original * $width) / $width_original); //-1
+            // } else { //paysage
+            //     $height = 192;
+            //     $width = (int) round(($width_original * $height) / $height_original);
+            // }
+
+            // $type = IMG_BICUBIC; //IMG_NEAREST_NEIGHBOUR, IMG_BILINEAR_FIXED, IMG_BICUBIC, IMG_BICUBIC_FIXED ;
+
+            // $gdImage_scaled = imagescale($gdImage_original, $width, $height, $type);
+
+            // // imagejpeg($gdImage_scaled, $to);
+
+            // $size = 341;
+            // $x = ($width / 2) - ($size / 2);
+            // $y = ($height / 2) - ($size / 2);
+
+            // $gdImage_cropped = imagecrop($gdImage_scaled, ['x' => $x, 'y' => $y, 'width' => $size, 'height' => $size]);
+
+            // imagejpeg($gdImage_cropped, $to);
+        } catch (\Throwable $th) {
+            $error = $th->getMessage();
+        }
         if (empty($error)) {
-            /*transaction*/
-            $pdo = Database::getInstance();
-            $pdo->beginTransaction();
-            /*hydratation de l'objet medias*/
             $medias = new Medias;
             $medias->setTitle($title);
-            $medias->setId_types($type);
-                        /*enregistrement du media dans la bdd*/
-            $isMediaSaved = $medias->insert();
-            /*enregistrement du dernier id inséré dans la bdd*/
-            $id_medias = $pdo->lastInsertId();
-            $isGenreSaved = true;
-            foreach ($genres as $genre) {
-                $medias_genres = new Medias_genres;
-                $medias_genres->setId_genres($genre);
-                $medias_genres->setId_medias($id_medias);
-                if(!$medias_genres->insert()){
-                    $isGenreSaved = false;
-                }
-            }
-            
-            /*enregistrement du type dans la bdd */
-            // $isGenreSaved = $media->insert();
-            if ($isMediaSaved === true && $isGenreSaved === true) {
-                $pdo->commit(); // Valide la transaction et exécute toutes les requetes
-                SessionFlash::setMessage('Le média et son genre  sont bien été ajoutés');
+            $medias->setId_types($id_types);
+            $medias->setPicture($fileName);
+            $isExist = $medias->isExist();
+            if ($isExist) {
+                $message = 'Ce media est déja enregitré';
+                $block = 1;
             } else {
-                $pdo->rollBack(); // Annulation de toutes les requêtes exécutées avant la levée de l'exception
-                SessionFlash::setMessage('Un problème est survenu lors de l\'ajout du média et de son genre. Aucun ajout n\'a été effectué');
+                $block = 0;
+                $isAdded = $medias->insert();
+                if ($isAdded == true) {
+                    $message = 'Le média est enregistré';
+                }
             }
         }
     }
-    
 } catch (\Throwable $th) {
     var_dump($th);
 }
+
 
 
 include(__DIR__ . '/../views/templates/header.php');
 include(__DIR__ . '/../views/user/dashboard.php');
 include(__DIR__ . '/../views/user/addMedias.php');
 include(__DIR__ . '/../views/templates/footer.php');
-
-
-/*
-$isExist = $medias->isExist();
-            // var_dump($isExist);
-            if ($isExist) {
-                $message = 'Ce média est déja enregistré';
-                $block = 1;
-            } else {
-                $block = 0;
-                $isAdded = $medias->addMedias();
-                if ($isAdded == true) {
-                    $message = 'Le média est enregistré';
-                }
-            } */

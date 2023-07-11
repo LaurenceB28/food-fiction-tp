@@ -185,9 +185,10 @@ class Recipes
 	}
 
 	
-	public static function getAllMedias($medias)
+	public static function getAllbyMedias($medias)
 	{
-		$pdo = Database::getInstance();
+	
+	$pdo = Database::getInstance();
 	$sql = 'SELECT * FROM `recipes` 
 	INNER JOIN `medias` 
 	ON `recipes`.id_medias = `medias`.id_medias 
@@ -197,6 +198,23 @@ class Recipes
 	$sth->execute();
 	return $sth->fetchAll();
 }
+
+
+
+public static function getAllbyGenre($id_genres)
+{
+	$pdo = Database::getInstance();
+	$sql = 'SELECT `recipes`.`id_recipes`,`recipes`.`title` AS `recipeName` FROM `recipes` 
+	INNER JOIN `medias` ON `medias`.id_medias = `recipes`.id_medias
+    INNER JOIN `medias_genres` ON `medias_genres`.id_medias = `medias`.id_medias
+	WHERE `medias_genres`.id_genres = :id_genres';
+	$sth = $pdo->prepare($sql);
+	$sth->bindValue(':id_genres', $id_genres, PDO::PARAM_STR_CHAR );
+	$sth->execute();
+	return $sth->fetchAll();
+}
+
+
 
 	public static function count(string $search): int
 	{
