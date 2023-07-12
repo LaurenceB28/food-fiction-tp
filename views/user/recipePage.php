@@ -2,7 +2,7 @@
 <div class="container">
     <h5>Nom de la recette</h5>
     <?php foreach ($recipes as $recipe) { ?>
-        <h5><?= $repcipe->title ?></h5>
+        <h5><?= $repcipe->recipeName ?></h5>
     <?php } ?>
 
 

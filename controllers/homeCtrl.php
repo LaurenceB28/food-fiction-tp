@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/../models/Recipes.php';
+require_once __DIR__ . '/../models/Medias.php';
+
+// $mediaCarousel = Recipes:: displayRecipes($id_medias);
 
 session_start();
 // var_dump($_SESSION['user']);

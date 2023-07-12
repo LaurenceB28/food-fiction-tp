@@ -8,7 +8,7 @@ require_once __DIR__ . '/../helpers/sessionFlash.php';
 
 
 try {
-    
+
     $medias = Medias::getAllMedias();
     $recipes = Recipes::getRecipes();
 
@@ -21,35 +21,26 @@ try {
         // On vérifie que ce n'est pas vide
         if (empty($title)) {
             $error["title"] = "Vous devez entrer un nom de recette!!";
-        } else { // Pour les champs obligatoires, on retourne une erreur
-            $isOk = filter_var($title, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-            // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
-            if (!$isOk) {
-                $error["title"] = "Le nom de la recette n'est pas au bon format!!";
-            } else {
+        } else {
                 // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
-                if (strlen($title) <= 2 || strlen($title) >= 255) {
+                if (strlen($title) >= 500) {
                     $error["title"] = "La longueur du nom n'est pas bon";
                 }
             }
-        }
+        
+
         /*ingredients : nettoyage et validation*/
         $ingredient = trim(filter_input(INPUT_POST, 'ingredient', FILTER_SANITIZE_SPECIAL_CHARS));
         // On vérifie que ce n'est pas vide
         if (empty($ingredient)) {
-            $error["ingredient"] = "Vous devez entrer au moins trois ingredients!!";
+            $error["ingredient"] = "Vous devez entrer les étapes de préparation!!";
         } else { // Pour les champs obligatoires, on retourne une erreur
-            $isOk = filter_var($ingredient, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-            // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
-            if (!$isOk) {
-                $error["ingredient"] = "Le nom n'est pas au bon format!!";
-            } else {
-                // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
-                if (strlen($ingredient) <= 2 || strlen($ingredient) >= 5000) {
-                    $error["ingredient"] = "La longueur du nom n'est pas bon";
-                }
+            // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
+            if (strlen($ingredient) > 5000) {
+                $error["ingredient"] = "La longueur du nom n'est pas bon";
             }
         }
+
         /*preparation : nettoyage et validation*/
         $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
         // On vérifie que ce n'est pas vide
@@ -61,13 +52,33 @@ try {
                 $error["description"] = "La longueur du nom n'est pas bon";
             }
         }
+        // /*ingredients : nettoyage et validation*/
+        // $ingredient = trim(filter_input(INPUT_POST, 'ingredient', FILTER_SANITIZE_SPECIAL_CHARS));
+        // // On vérifie que ce n'est pas vide
+        // if (empty($ingredient)) {
+        //     $error["ingredient"] = "Vous devez entrer au moins trois ingredients!!";
+        // } else { // Pour les champs obligatoires, on retourne une erreur
+        //     $isOk = filter_var($ingredient, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
+        //     // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
+        //     if (!$isOk) {
+        //         $error["ingredient"] = "Le nom n'est pas au bon format!!";
+        //     } else {
+        //         // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
+        //         if (strlen($ingredient) >5000) {
+        //             $error["ingredient"] = "La longueur du nom n'est pas bon";
+        //         }
+        //     }
+        // }
+
     }
+
     $id_medias = intval(filter_input(INPUT_POST, 'media', FILTER_SANITIZE_NUMBER_INT));
+    // var_dump($medias);
+    // die;
+
+
     $picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_SPECIAL_CHARS);
 
-
-    // var_dump($id_medias);
-    // die;
     try {
         if (!isset($_FILES['picture'])) {
             throw new Exception("Le fichier n'existe pas");
@@ -128,6 +139,8 @@ try {
         $error = $th->getMessage();
     }
 
+    // var_dump($error);
+    // die;
     if (empty($error)) {
         $recipes = new Recipes;
         // $recipes->setId_recipes($id_recipes);
@@ -135,6 +148,7 @@ try {
         $recipes->setIngredient($ingredient);
         $recipes->setDescription($description);
         $recipes->setId_medias($id_medias);
+        $recipes->setPicture($fileName);
 
 
         // $recipes->setId_medias($id_medias);

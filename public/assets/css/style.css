@@ -26,14 +26,14 @@ body {
 
 h1 {
   font-family: 'Montserrat', sans-serif;
-  color: #ffc137;
+  color: #438d97;
   text-align: center;
   margin-top: 2%;
 }
 
 h2 {
   font-family: 'Montserrat', sans-serif;
-  color: #ffc137;
+  color: #438d97;
   margin-top: 2%;
 }
 
@@ -57,7 +57,7 @@ h3 {
 }
 
 .nav-link:hover {
-  color: #ffc137;
+  color: #438d97;
 }
 
 /*bouton stickybackup*/
@@ -70,7 +70,7 @@ h3 {
   font-size: 18px;
   border: none;
   outline: none;
-  background-color: #ffc137;
+  background-color: #438d97;
   color: white;
   cursor: pointer;
   padding: 15px;

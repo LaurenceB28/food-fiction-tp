@@ -38,32 +38,17 @@
   <section id="section1">
     <a href="#section3" class="arrow__btn">‹</a>
 
-    <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=9">
-        <img src="/public/assets/img/imgs/hannibal.webp" alt="Describe Image">
+    
+    <?php
+foreach ($recipes as $recipe) {?>
+  <div class="item">
+  <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_recipes?>">
+        <img src="<?php $recipe->picture ?>" alt="Describe Image">
       </a>
     </div>
+<?php } ?>
 
-    <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=19">
-        <img src="/public/assets/img/imgs/izombie.webp" alt="Describe Image">
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=3">
-        <img src="/public/assets/img/imgs/breaking bad.jpg" alt="Describe Image">
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=2">
-        <img src="/public/assets/img/imgs/ross sandwish.webp" alt="Describe Image">
-      </a>
-    </div>
-
-
-    <!-- <div class="item">
+  <!-- <div class="item">
     <a href="/controllers/recipeCtrl.php?genre=2">
     <img src="/public/assets/img/imgs/rachel fiancier.webp" alt="Describe Image">
     </a>
@@ -76,10 +61,10 @@
   <section id="section2">
     <a href="#section1" class="arrow__btn">‹</a>
 <?php
-foreach ($mediaRecipes as $mediaRecipe) {?>
+foreach ($medias as $media) {?>
   <div class="item">
-      <a href="/controllers/recipeCtrl.php">
-        <img src="/public/assets/img/imgs/american pie.jpg" alt="Describe Image">
+  <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_recipes?>">
+        <img src="<?php $media->picture ?>" alt="Describe Image">
       </a>
     </div>
 <?php } ?>
@@ -91,60 +76,27 @@ foreach ($mediaRecipes as $mediaRecipe) {?>
       </a>
     </div> -->
 
-    <!-- <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=7">
-        <img src="/public/assets/img/imgs/stranger things.jpg" alt="Describe Image">
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=11">
-        <img src="/public/assets/img/imgs/riverdale.jpg" alt="Describe Image">
-      </a>
-    </div> -->
-
-    <!-- <div class="item">
-    <a href="/controllers/recipeCtrl.php?genre=23">
-    <img src="/public/assets/img/imgs/chihiro.jpg" alt="Describe Image">
-    </a>
-  </div> -->
-
 
     <a href="#section3" class="arrow__btn">›</a>
   </section>
   <section id="section3">
     <a href="#section2" class="arrow__btn">‹</a>
 
-    <div class="item">
+    <?php
+foreach ($medias as $media) {?>
+  <div class="item">
+  <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_recipes?>">
+  <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_medias?>">
+        <img src="<?php $media->picture ?>" alt="Describe Image">
+      </a>
+    </div>
+<?php } ?>
+
+    <!-- <div class="item">
       <a href="/controllers/recipeCtrl.php?genre=21">
         <img src="/public/assets/img/imgs/bree.webp" alt="Describe Image">
         <a href=""></a>
-    </div>
-
-    <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=20">
-
-        <img src="/public/assets/img/imgs/true blood.jpg" alt="Describe Image">
-        <a href=""></a>
-    </div>
-
-    <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=18">
-        <img src="/public/assets/img/imgs/kung fu panda.jpg" alt="Describe Image">
-        <a href=""></a>
-    </div>
-
-    <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=19">
-        <img src="/public/assets/img/imgs/cookies walking dead.webp" alt="Describe Image">
-        <a href=""></a>
-    </div>
-
-    <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=19">
-        <img src="/public/assets/img/imgs/pulp fiction.jpg" alt="Describe Image">
-        <a href=""></a>
-    </div>
+    </div>-->
 
     <a href="#section1" class="arrow__btn">›</a>
   </section>

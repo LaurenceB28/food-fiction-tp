@@ -148,6 +148,7 @@ class Recipes
 		$sth->bindValue(':ingredient', $this->getIngredient(), PDO::PARAM_STR_CHAR);
 		$sth->bindValue(':description', $this->getDescription(), PDO::PARAM_STR_CHAR);
 		$sth->bindValue(':picture', $this->getPicture(), PDO::PARAM_STR_CHAR);
+		$sth->bindValue(':id_medias', $this->getId_medias(), PDO::PARAM_INT);
 		// On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
 		return $sth->execute();
 	}
@@ -163,6 +164,7 @@ class Recipes
   WHERE `recipes`.`id` = :id;';
 		$sth = $pdo->prepare($sql);
 		$sth->bindValue(':id_medias', $this->id_medias, PDO::PARAM_INT);
+		$sth->bindValue(':title', $this->title, PDO::PARAM_STR_CHAR);
 		$sth->bindValue(':ingredient', $this->ingredient, PDO::PARAM_STR_CHAR);
 		$sth->bindValue(':description', $this->description, PDO::PARAM_STR_CHAR);
 		return $sth->execute();
@@ -200,36 +202,36 @@ class Recipes
 		return $sth->fetchAll();
 	}
 
-	
+
 	public static function getAllbyMedias($medias)
 	{
-	
-	$pdo = Database::getInstance();
-	$sql = 'SELECT * FROM `recipes` 
+
+		$pdo = Database::getInstance();
+		$sql = 'SELECT * FROM `recipes` 
 	INNER JOIN `medias` 
 	ON `recipes`.id_medias = `medias`.id_medias 
 	WHERE `recipes`.id_medias = :media;';
-	$sth = $pdo->prepare($sql);
-	$sth->bindValue(':media', $medias, PDO::PARAM_STR_CHAR );
-	$sth->execute();
-	return $sth->fetchAll();
-}
+		$sth = $pdo->prepare($sql);
+		$sth->bindValue(':media', $medias, PDO::PARAM_STR_CHAR);
+		$sth->execute();
+		return $sth->fetchAll();
+	}
 
 
 
 
-public static function getAllbyGenre($id_genres)
-{
-	$pdo = Database::getInstance();
-	$sql = 'SELECT `recipes`.`id_recipes`,`recipes`.`title` AS `recipeName` FROM `recipes` 
+	public static function getAllbyGenre($id_genres)
+	{
+		$pdo = Database::getInstance();
+		$sql = 'SELECT `recipes`.`id_recipes`,`recipes`.`title` AS `recipeName` FROM `recipes` 
 	INNER JOIN `medias` ON `medias`.id_medias = `recipes`.id_medias
     INNER JOIN `medias_genres` ON `medias_genres`.id_medias = `medias`.id_medias
 	WHERE `medias_genres`.id_genres = :id_genres';
-	$sth = $pdo->prepare($sql);
-	$sth->bindValue(':id_genres', $id_genres, PDO::PARAM_STR_CHAR );
-	$sth->execute();
-	return $sth->fetchAll();
-}
+		$sth = $pdo->prepare($sql);
+		$sth->bindValue(':id_genres', $id_genres, PDO::PARAM_STR_CHAR);
+		$sth->execute();
+		return $sth->fetchAll();
+	}
 
 
 
