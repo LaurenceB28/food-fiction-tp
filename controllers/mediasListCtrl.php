@@ -27,7 +27,7 @@ try {
     //Définit à partir de quel enregistrement positionner le curseur (l'offset) dans la requête
     $offset = $limit * ($currentPage - 1);
 
-    // Appel à la méthode statique permettant de récupérer les utilisateurs selon la recherche et la pagination
+    // Appel à la méthode statique permettant de récupérer les medias selon la recherche et la pagination
     $medias = Medias::getAllMedias($search, $limit, $offset);
     /*************************************************************/
 } catch (\Throwable $th) {

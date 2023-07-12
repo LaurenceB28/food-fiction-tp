@@ -14,25 +14,33 @@
         <textarea class="form-control <?= isset($errors['description']) ? 'is-invalid' : '' ?>" value="<?= $description ?? '' ?>" name="description" id="description" rows="3" placeholder="Les étapes de préparation" required pattern="<?= REGEX_NO_NUMBER ?>"></textarea>
         <!-- <input type="text" name="description" class="form-control" placeholder="Description" aria-label="description" maxlength="25" required> -->
     </div>
-    <form method="post" enctype="multipart/form-data">
+    <label for="medias">Films et Séries:</label>
+    <select class="form-select" name="id_medias" id="media-select">
+        <option value="">--Choisissez le média--</option>
+        <?php foreach ($medias as $media) { ?>
+            <option value="<?= $media->id_medias?>"><?= $media->title ?></option>
+        <?php } ?>
+    </select>
 
-        <div><?= $error ?? '' ?></div>
-        <label for="profile">Photo de le recette</label>
-        <input type="file" name="profile" id="profile" required accept="image/jpeg">
+    <!-- <select class="form-select" name="idPatients" id="exampleSelect1">
+            <?php foreach ($patientList as $patient) { ?>
+                <option value="<?= $patient->id ?>"><?= $patient->lastname . ' ' . $patient->firstname ?></option>
+            <?php } ?>
+        </select> -->
 
-        <input type="submit" value="Envoyer">
-
-    </form>
-
+    <div><?= $error ?? '' ?></div>
+    <label for="picture">Photo de le recette</label>
+    <input type="file" name="picture" id="picture" required accept="image/*">
     <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
 
-    <?php
-    if (isset($block)) {
-        if ($block == 1) : ?>
-            <div class="alert alert-danger"><?= $message ?? '' ?></div>
-        <?php else : ?>
-            <div class="alert alert-success"><?= $message ?? '' ?>
-            </div>
+<?php
+if (isset($block)) {
+    if ($block == 1) : ?>
+        <div class="alert alert-danger"><?= $message ?? '' ?></div>
+    <?php else : ?>
+        <div class="alert alert-success"><?= $message ?? '' ?>
+        </div>
 
-        <?php endif ?>
-    <?php } ?>
+    <?php endif ?>
+<?php } ?>

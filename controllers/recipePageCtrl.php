@@ -15,12 +15,12 @@ if ($recipes == false){
     throw new Exception('la recette n\'a pas été trouvée');
 }
 }catch(\Throwable $th){
-    include __DIR__ . '/../views/templates/header.php';
-    include __DIR__ . '/../views/error.php';
-    include __DIR__ . '/../views/templates/footer.php';
-    die;
+    // include __DIR__ . '/../views/templates/header.php';
+    // include __DIR__ . '/../views/error.php';
+    // include __DIR__ . '/../views/templates/footer.php';
+    // die;
 }
 
 include(__DIR__ . '/../views/templates/header.php');
-include(__DIR__ . '/../views/user/recipe.php');
+include(__DIR__ . '/../views/user/recipePage.php');
 include(__DIR__ . '/../views/templates/Footer.php');

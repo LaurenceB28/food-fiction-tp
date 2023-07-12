@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../models/Recipes.php';
+
 session_start();
 // var_dump($_SESSION['user']);
 if (empty($_SESSION['user'])) {

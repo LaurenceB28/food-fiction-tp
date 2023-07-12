@@ -7,7 +7,7 @@ class Recipes
 	private $ingredient;
 	private $description;
 	private $id_medias;
-
+	private $picture;
 	private object $pdo;
 
 
@@ -96,7 +96,22 @@ class Recipes
 	 */
 	public function setDescription($description): self
 	{
-		$this->description = $description;
+		$this->picture = $description;
+		return $this;
+	}
+
+	public function getPicture()
+	{
+		return $this->picture;
+	}
+
+	/**
+	 * @param mixed $picture 
+	 * @return self
+	 */
+	public function setPicture($picture): self
+	{
+		$this->picture = $picture;
 		return $this;
 	}
 
@@ -125,13 +140,14 @@ class Recipes
 	public function add(): bool
 	{
 		$pdo = Database::getInstance();
-		$sql = 'INSERT INTO `recipes` (`title`, `ingredient`, `description`,`id_medias`) 
-        VALUES (:title, :ingredient, :description,1);';
+		$sql = 'INSERT INTO `recipes` (`title`, `ingredient`, `description`,`id_medias`, `picture`) 
+        VALUES (:title, :ingredient, :description, :id_medias, :picture);';
 		$sth = $pdo->prepare($sql);
 		//Affectation des valeurs aux marqueurs nominatifs
 		$sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR_CHAR);
 		$sth->bindValue(':ingredient', $this->getIngredient(), PDO::PARAM_STR_CHAR);
 		$sth->bindValue(':description', $this->getDescription(), PDO::PARAM_STR_CHAR);
+		$sth->bindValue(':picture', $this->getPicture(), PDO::PARAM_STR_CHAR);
 		// On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
 		return $sth->execute();
 	}
@@ -201,6 +217,7 @@ class Recipes
 
 
 
+
 public static function getAllbyGenre($id_genres)
 {
 	$pdo = Database::getInstance();
@@ -237,11 +254,6 @@ public static function getAllbyGenre($id_genres)
 		$sth = $pdo->prepare($sql);
 		$sth->bindValue(':idRecipes', $id_medias, PDO::PARAM_INT);
 		return $sth->execute();
-	}
-
-
-	public function getAll()
-	{
 	}
 
 	public function get()

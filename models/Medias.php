@@ -133,11 +133,24 @@ class Medias
 		$sth->execute();
 		return $sth->fetchAll();
 	}
+
+	public static function count(string $search): int
+	{
+		$sql = 'SELECT COUNT(`id_medias`) as `nbrMedias` FROM `medias`
+                    WHERE `title` LIKE :search';
+
+		$sth = Database::getInstance()->prepare($sql);
+		$sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+		$sth->execute();
+		return $sth->fetchColumn();
+	}
 	/**
 	 * Summary of getAll
 	 * @param mixed $type
 	 * @return array
 	 */
+
+	
 	public static function getAll($type)
 	{
 		$pdo = Database::getInstance();
@@ -150,16 +163,9 @@ class Medias
 		$sth->execute();
 		return $sth->fetchAll();
 	}
-	public static function count(string $search): int
-	{
-		$sql = 'SELECT COUNT(`id_medias`) as `nbrMedias` FROM `medias`
-                    WHERE `title` LIKE :search';
 
-		$sth = Database::getInstance()->prepare($sql);
-		$sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-		$sth->execute();
-		return $sth->fetchColumn();
-	}
+
+	
 	/**
 	 * Summary of updateMedias
 	 * @return bool
