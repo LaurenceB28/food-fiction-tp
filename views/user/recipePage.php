@@ -2,7 +2,7 @@
 <div class="container">
     <h5>Nom de la recette</h5>
     <?php foreach ($recipes as $recipe) { ?>
-        <h5><?= $repcipe->recipeName ?></h5>
+        <h5><?= $repcipe->title ?></h5>
     <?php } ?>
 
 
@@ -12,6 +12,18 @@
         <?php } ?>     -->
         <img src="/public/assets/img/341X192/super moelleux ross.jpg" alt="">
     </div>
+
+
+    <h5>Ingredients</h5>
+    <?php foreach ($recipes as $recipe) { ?>
+        <h5><?= $repcipe->ingredient ?></h5>
+    <?php } ?>
+
+    <h5>Préparation</h5>
+    <?php foreach ($recipes as $recipe) { ?>
+        <h5><?= $repcipe->description ?></h5>
+    <?php } ?>
+
 </div>
 
 <button onclick="onclick()" class="like__btn justify-content-center">
@@ -24,14 +36,18 @@
 
 <div class="col-md-6">
     <h6>Ingredients</h6>
-    <?php foreach ($recipes as $recipe) {?>
-        <ul><li><?=$recipe->ingredient?></li></ul>
-    <?php }?>
+    <?php foreach ($recipes as $recipe) { ?>
+        <ul>
+            <li><?= $recipe->ingredient ?></li>
+        </ul>
+    <?php } ?>
 
 </div>
 <div class="col-md-6">
     <h6>Préparation</h6>
-    <?php foreach ($recipes as $recipe) {?>
-        <ul><li><?=$recipe->description?></li></ul>
-    <?php }?>
+    <?php foreach ($recipes as $recipe) { ?>
+        <ul>
+            <li><?= $recipe->description ?></li>
+        </ul>
+    <?php } ?>
 </div>
