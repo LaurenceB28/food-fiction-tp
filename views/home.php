@@ -54,10 +54,10 @@
 
 
     <?php
-    foreach ($medias as $media) { ?>
+    foreach ($mediaRecipes as $mediaRecipe) { ?>
       <div class="item">
-        <a href="/controllers/recipePageCtrl.php?=<?php $media->id_recipes ?>">
-          <img src="<?php $recipe->picture ?>" alt="Describe Image">
+        <a href="/controllers/recipeMediaCtrl.php?=<?php $mediaRecipe->id_recipes ?>">
+          <img src="<?php $mediaRecipe->picture ?>" alt="Describe Image">
         </a>
       </div>
     <?php } ?>
@@ -77,7 +77,7 @@
     <?php
     foreach ($medias as $media) { ?>
       <div class="item">
-        <a href="/controllers/recipePageCtrl.php?=<?php $media->id_recipes ?>">
+        <a href="/controllers/recipeMediaCtrl.php?=<?php $media->id_recipes ?>">
           <img src="<?php $media->picture ?>" alt="Describe Image">
         </a>
       </div>
@@ -99,7 +99,7 @@
     <?php
     foreach ($medias as $media) { ?>
       <div class="item">
-        <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_recipes ?>">
+        <a href="/controllers/recipeMediaCtrl.php?=<?php $recipe->id_recipes ?>">
             <img src="<?php $media->picture ?>" alt="Describe Image">
           </a>
       </div>

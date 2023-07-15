@@ -205,11 +205,9 @@ class Recipes
 
 	public static function getAllbyMedias($medias)
 	{
-
 		$pdo = Database::getInstance();
 		$sql = 'SELECT * FROM `recipes` 
-		INNER JOIN `medias` 
-		ON `recipes`.id_medias = `medias`.id_medias 
+		INNER JOIN `medias` ON `recipes`.id_medias = `medias`.id_medias 
 		WHERE `recipes`.id_medias = :media;';
 		$sth = $pdo->prepare($sql);
 		$sth->bindValue(':media', $medias, PDO::PARAM_STR_CHAR);
@@ -239,9 +237,9 @@ class Recipes
 
 	public static function count(string $search): int
 	{
-		$sql = 'SELECT COUNT(`id_recipes`) as `nbrRecipes` FROM `recipes`
-                    WHERE `title` LIKE :search';
-
+		$sql = 'SELECT COUNT(`id_recipes`) as `nbrRecipes` 
+		FROM `recipes`
+        WHERE `title` LIKE :search';
 		$sth = Database::getInstance()->prepare($sql);
 		$sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
 		$sth->execute();
@@ -251,8 +249,7 @@ class Recipes
 	public static function displayRecipes($id_medias)
 	{
 		$pdo = Database::getInstance();
-		$sql = 'SELECT `medias`.`id_medias` AS `idMedias`,
-    	`medias`.`idRecipes` 
+		$sql = 'SELECT `medias`.`id_medias` AS `idMedias`,`medias`.`idRecipes` 
     	FROM `medias` 
     	WHERE  `idRecipes` = :idRecipes;';
 		$sth = $pdo->prepare($sql);
@@ -263,8 +260,9 @@ class Recipes
 	public function updateRecipes(): bool
 	{
 		$pdo = Database::getInstance();
-		$sql = 'UPDATE `recipes` SET
-    	`recipes`.`title`= :title,
+		$sql = 'UPDATE `recipes` 
+		SET
+		`recipes`.`title`= :title,
     	`recipes`.`ingredient`= :ingredient,
     	`recipes`.`description`= :description,
 		`recipes`.`id_medias` = :id_medias,  
