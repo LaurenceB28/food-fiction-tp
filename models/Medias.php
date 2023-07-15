@@ -81,6 +81,8 @@ class Medias
 		return $this;
 	}
 
+
+
 	public function insert()
 	{
 		$pdo = Database::getInstance();
@@ -94,10 +96,13 @@ class Medias
 		// On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
 		return $sth->execute();
 	}
+
+
 	/**
 	 * Summary of isExist
 	 * @return mixed
-	 */	public function isExist()
+	 */
+	public function isExist()
 	{
 		$pdo = Database::getInstance();
 		$sql = 'SELECT `title` FROM `medias` WHERE `title`= :title;';
@@ -106,7 +111,10 @@ class Medias
 		$sth->execute();
 		return $sth->fetch();
 	}
-	/**
+
+
+
+	/** Liste des medias séries et films et pagination
 	 * Summary of getAllMedias
 	 * @param mixed $search
 	 * @param int $limit
@@ -137,73 +145,63 @@ class Medias
 	public static function count(string $search): int
 	{
 		$sql = 'SELECT COUNT(`id_medias`) as `nbrMedias` FROM `medias`
-                    WHERE `title` LIKE :search';
-
+		WHERE `title` LIKE :search';
 		$sth = Database::getInstance()->prepare($sql);
 		$sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
 		$sth->execute();
 		return $sth->fetchColumn();
 	}
+
+
 	/**
 	 * Summary of getAll
 	 * @param mixed $type
 	 * @return array
 	 */
-
-	
 	public static function getAll($type)
 	{
 		$pdo = Database::getInstance();
 		$sql = 'SELECT * FROM `medias` 
-	INNER JOIN `types` 
-	ON `medias`.id_types = `types`.id_types 
-	WHERE `types`.id_types = :type;';
+		INNER JOIN `types` 
+		ON `medias`.id_types = `types`.id_types 
+		WHERE `types`.id_types = :type;';
 		$sth = $pdo->prepare($sql);
 		$sth->bindValue(':type', $type, PDO::PARAM_INT);
 		$sth->execute();
 		return $sth->fetchAll();
 	}
 
-
-	
-	/**
-	 * Summary of updateMedias
-	 * @return bool
-	 */
-	public function update()
+	public static function getRecipesMedia($id_medias)
 	{
 		$pdo = Database::getInstance();
-		$sql = 'UPDATE `medias` SET
-    `title`= :title,
-	`picture`= :picture,
-	`id_medias` = :id_medias ,  
-	`id_types` = :id_types ,  
-    WHERE `id_recipes`= :id_recipes;';
+		$sql = 'SELECT `medias`.`id_medias`, `medias`.`id_types`, `medias`.`picture`, `medias`.`title` AS `mediaTitle` FROM `medias` 
+		INNER JOIN `recipes` ON `recipes`.id_medias = `medias`.id_medias
+		WHERE `recipes`.id_medias = :id_medias;';
 		$sth = $pdo->prepare($sql);
-		$sth->bindValue(':title', $this->title);
-		$sth->bindValue(':id_medias', $this->id_medias);
-		return $sth->execute();
+		$sth->bindValue(':id_medias', $id_medias, PDO::PARAM_INT);
+		$sth->execute();
+		return $sth->fetchAll();
 	}
+
+
 	/**
 	 * Summary of modify
 	 * @return mixed
 	 */
-	public function modify(): mixed
+	public function updateMedia(): mixed
 	{
 		$pdo = Database::getInstance();
 		$sql = 'UPDATE `medias` 
-  	SET `medias`.`title` = :title,
-  	`medias`.`picture` = :picture,
-  `medias`.`id_types` = :id_types,
-  WHERE `medias`.`id_medias` = :id_medias;';
+  		SET `medias`.`title` = :title,
+  		`medias`.`picture` = :picture,
+  		`medias`.`id_types` = :id_types,
+ 	 	WHERE `medias`.`id_medias` = :id_medias;';
 		$sth = $pdo->prepare($sql);
 		$sth->bindValue(':id_types', $this->id_types, PDO::PARAM_INT);
 		$sth->bindValue(':title', $this->title, PDO::PARAM_STR_CHAR);
 		$sth->bindValue(':picture', $this->title);
 		return $sth->execute();
 	}
-
-
 
 
 	/**

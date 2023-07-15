@@ -1,8 +1,22 @@
 <!-- <a href="/controllers/addUserCtrl.php">Ajouter un utilisateur</a> --><!-- PREMIER CONTAINER -->
+<!-- FILMS OU SERIES-->
+<div class="cont1">
+  <a href="/controllers/mediasCtrl.php?type=2">
+    <div class="mediatype">
+      <img id="films" src="/public/assets/img/logo/FILMS.png" alt="">
+    </div>
+  </a>
+  <a href="/controllers/mediasCtrl.php?type=1">
+    <div class="mediatype">
+      <img id="series" src="/public/assets/img/logo/SÉRIES.png" alt="">
+    </div>
+  </a>
+</div>
 
+<!-- bouton bact to top-->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 <!--CATEGORIES-->
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 <h1>Vos catégories préférées</h1>
 <div class="container">
   <a href="/controllers/recipesGenresCtrl.php?genre=9">
@@ -38,17 +52,17 @@
   <section id="section1">
     <a href="#section3" class="arrow__btn">‹</a>
 
-    
-    <?php
-foreach ($recipes as $recipe) {?>
-  <div class="item">
-  <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_recipes?>">
-        <img src="<?php $recipe->picture ?>" alt="Describe Image">
-      </a>
-    </div>
-<?php } ?>
 
-  <!-- <div class="item">
+    <?php
+    foreach ($medias as $media) { ?>
+      <div class="item">
+        <a href="/controllers/recipePageCtrl.php?=<?php $media->id_recipes ?>">
+          <img src="<?php $recipe->picture ?>" alt="Describe Image">
+        </a>
+      </div>
+    <?php } ?>
+
+    <!-- <div class="item">
     <a href="/controllers/recipeCtrl.php?genre=2">
     <img src="/public/assets/img/imgs/rachel fiancier.webp" alt="Describe Image">
     </a>
@@ -60,15 +74,15 @@ foreach ($recipes as $recipe) {?>
 
   <section id="section2">
     <a href="#section1" class="arrow__btn">‹</a>
-<?php
-foreach ($medias as $media) {?>
-  <div class="item">
-  <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_recipes?>">
-        <img src="<?php $media->picture ?>" alt="Describe Image">
-      </a>
-    </div>
-<?php } ?>
-    
+    <?php
+    foreach ($medias as $media) { ?>
+      <div class="item">
+        <a href="/controllers/recipePageCtrl.php?=<?php $media->id_recipes ?>">
+          <img src="<?php $media->picture ?>" alt="Describe Image">
+        </a>
+      </div>
+    <?php } ?>
+
 
     <!-- <div class="item">
       <a href="/controllers/recipeCtrl.php?genre=6">
@@ -83,14 +97,13 @@ foreach ($medias as $media) {?>
     <a href="#section2" class="arrow__btn">‹</a>
 
     <?php
-foreach ($medias as $media) {?>
-  <div class="item">
-  <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_recipes?>">
-  <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_medias?>">
-        <img src="<?php $media->picture ?>" alt="Describe Image">
-      </a>
-    </div>
-<?php } ?>
+    foreach ($medias as $media) { ?>
+      <div class="item">
+        <a href="/controllers/recipePageCtrl.php?=<?php $recipe->id_recipes ?>">
+            <img src="<?php $media->picture ?>" alt="Describe Image">
+          </a>
+      </div>
+    <?php } ?>
 
     <!-- <div class="item">
       <a href="/controllers/recipeCtrl.php?genre=21">

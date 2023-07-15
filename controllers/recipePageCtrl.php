@@ -1,6 +1,6 @@
 <?php
-$footer = true;
-$stylesheet = 'series.css';
+
+$stylesheet = 'recipe.css';
 require_once __DIR__ . '/../models/Recipes.php';
 require_once __DIR__ . '/../config/config.php';
 

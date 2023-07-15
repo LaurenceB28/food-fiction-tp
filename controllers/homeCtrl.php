@@ -1,4 +1,5 @@
 <?php
+$footer = true;
 require_once __DIR__ . '/../models/Recipes.php';
 require_once __DIR__ . '/../models/Medias.php';
 
@@ -10,7 +11,6 @@ if (empty($_SESSION['user'])) {
     header('location: /controllers/signInCtrl.php');
     die;
 } else {
-
 
     include(__DIR__ . '/../views/templates/header.php');
     include(__DIR__ . '/../views/home.php');
