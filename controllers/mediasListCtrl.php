@@ -11,10 +11,10 @@ try {
     $limit = NB_ELEMENTS_BY_PAGE;
 
     // Compte le nombre d'éléments au total selon la recherche
-    $nbrRecipes = Medias::count($search);
+    $nbrMedias = Medias::count($search);
 
     // Calcule le nombre de pages à afficher dans la pagination
-    $nbrPages = ceil($nbrRecipes / $limit);
+    $nbrPages = ceil($nbrMedias / $limit);
 
     // A recuperer depuis paramètre d'url. Si aucune valeur, alors vaut 1
     $currentPage = intval(filter_input(INPUT_GET, 'currentPage', FILTER_SANITIZE_NUMBER_INT));

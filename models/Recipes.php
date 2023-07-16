@@ -153,24 +153,6 @@ class Recipes
 		return $sth->execute();
 	}
 
-	public function modify(): mixed
-	{
-		$pdo = Database::getInstance();
-		$sql = 'UPDATE `recipes` 
-  		SET `recipes`.`title` = :title,
-  		`recipes`.`ingredient` = :ingredient,
-  		`recipes`.`id_medias` = :id_medias,
-  		`recipes`.`description` = :description
-  		WHERE `recipes`.`id` = :id;';
-		$sth = $pdo->prepare($sql);
-		$sth->bindValue(':id_medias', $this->id_medias, PDO::PARAM_INT);
-		$sth->bindValue(':title', $this->title, PDO::PARAM_STR_CHAR);
-		$sth->bindValue(':ingredient', $this->ingredient, PDO::PARAM_STR_CHAR);
-		$sth->bindValue(':description', $this->description, PDO::PARAM_STR_CHAR);
-		return $sth->execute();
-	}
-
-
 	public function isExist()
 	{
 		$pdo = Database::getInstance();
@@ -202,6 +184,17 @@ class Recipes
 		return $sth->fetchAll();
 	}
 
+	public static function count(string $search): int
+	{
+		$sql = 'SELECT COUNT(`id_recipes`) as `nbrRecipes` 
+		FROM `recipes`
+        WHERE `title` LIKE :search';
+		$sth = Database::getInstance()->prepare($sql);
+		$sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+		$sth->execute();
+		return $sth->fetchColumn();
+	}
+
 
 	public static function getAllbyMedias($medias)
 	{
@@ -214,6 +207,33 @@ class Recipes
 		$sth->execute();
 		return $sth->fetchAll();
 	}
+
+	 /**
+     * 
+     * Méthode permettant de récupérer toutes les données de la recette
+     * @param int $id
+     * 
+     * @return mixed
+     * Retourne un objet issu de la class Recipes ou false
+     */
+    public static function get(int $id_recipes): object|bool
+    {
+        // On stocke une instance de la classe PDO dans une variable
+        $pdo = Database::getInstance();
+
+        // On créé la requête
+        $sql = 'SELECT * FROM `recipes` WHERE `id_recipes` = :id_recipes';
+
+        // On prépare la requête
+        $sth = $pdo->prepare($sql);
+
+        // On affecte chaque valeur à chaque marqueur nominatif
+        $sth->bindValue(':id_recipes', $id_recipes, PDO::PARAM_INT);
+
+        if ($sth->execute()) {
+            return $sth->fetch();  
+        }
+    }
 
 
 
@@ -232,50 +252,43 @@ class Recipes
 	}
 
 
+	
 
+	// public static function displayRecipes($id_medias)
+	// {
+	// 	$pdo = Database::getInstance();
+	// 	$sql = 'SELECT `medias`.`id_medias` AS `idMedias`,`medias`.`idRecipes` 
+    // 	FROM `medias` 
+    // 	WHERE  `idRecipes` = :idRecipes;';
+	// 	$sth = $pdo->prepare($sql);
+	// 	$sth->bindValue(':idRecipes', $id_medias, PDO::PARAM_INT);
+	// 	return $sth->execute();
+	// }
 
+	public function updateRecipes(int $id_recipes): bool
+    {
+        $sql = 'UPDATE `recipes` SET 
+                        `recipes`.`title`= :title,
+     					`recipes`.`ingredient`= :ingredient,
+     					`recipes`.`description`= :description,
+	 					`recipes`.`id_medias` = :id_medias,  
+	 					`recipes`.`picture` = :picture,
+                WHERE `recipes`.`id_recipes`= :id_recipes;';
 
-	public static function count(string $search): int
-	{
-		$sql = 'SELECT COUNT(`id_recipes`) as `nbrRecipes` 
-		FROM `recipes`
-        WHERE `title` LIKE :search';
-		$sth = Database::getInstance()->prepare($sql);
-		$sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-		$sth->execute();
-		return $sth->fetchColumn();
-	}
+        $sth = $this->pdo->prepare($sql);
+        $sth->bindValue(':title', $this->getTitle());
+        $sth->bindValue(':ingredient', $this->getIngredient());
+        $sth->bindValue(':description', $this->getDescription());
+        $sth->bindValue(':id_medias', $this->getId_medias());
+        $sth->bindValue(':picture', $this->getPicture());
+        $sth->bindValue(':id_recipes', $id_recipes, PDO::PARAM_INT);
+        // return $sth->execute();
+		if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
 
-	public static function displayRecipes($id_medias)
-	{
-		$pdo = Database::getInstance();
-		$sql = 'SELECT `medias`.`id_medias` AS `idMedias`,`medias`.`idRecipes` 
-    	FROM `medias` 
-    	WHERE  `idRecipes` = :idRecipes;';
-		$sth = $pdo->prepare($sql);
-		$sth->bindValue(':idRecipes', $id_medias, PDO::PARAM_INT);
-		return $sth->execute();
-	}
-
-	public function updateRecipes(): bool
-	{
-		$pdo = Database::getInstance();
-		$sql = 'UPDATE `recipes` 
-		SET
-		`recipes`.`title`= :title,
-    	`recipes`.`ingredient`= :ingredient,
-    	`recipes`.`description`= :description,
-		`recipes`.`id_medias` = :id_medias,  
-		`recipes`.`picture` = :picture,
-    	WHERE `recipes`.`id_recipes`= :id_recipes;';
-		$sth = $pdo->prepare($sql);
-		$sth->bindValue(':title', $this->title);
-		$sth->bindValue(':ingredient', $this->ingredient);
-		$sth->bindValue(':description', $this->ingredient);
-		$sth->bindValue(':id_medias', $this->id_medias);
-		return $sth->execute();
-	}
-
+	
 	public static function deleteRecipes($id_recipes)
 	{
 		$pdo = Database::getInstance();

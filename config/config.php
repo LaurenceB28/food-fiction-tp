@@ -12,3 +12,11 @@ define('REGEX_TEXTAREA','^[a-zA-Z\n\r]*$');
 define('AUTHORIZED_FILES_FORMAT', ['image/jpeg', 'image/png', 'image/pdf']);
 
 define('MAX_FILESIZE', 2*1024*1024);
+
+define('MESSAGES', [
+    1=>'Recette mise à jour',]);
+
+define('ERRORS', [
+    3=>'Recette non trouvée',
+    4=>'Aucune mise à jour n\'a été effectuée'
+   ]); 

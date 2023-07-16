@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
             foreach ($medias as $media) { ?>
                 <tr class="table-light">
                     <th scope="row"><?= $media->title ?></th>
-                    <td><a href="/controllers/recipeCtrl.php?id=<?= $media->id_medias ?>"><span class="btn btn-outline-info border border-info">Modifier</span></a></td>
+                    <td><a href="/controllers/updateCtrl.php?id=<?= $media->id_medias ?>"><span class="btn btn-outline-info border border-info">Modifier</span></a></td>
 
                     <td><a href="/controllers/mediasListCtrl.php?id=<?= $media->id_medias ?>"><span class="btn btn-outline-danger border border-danger">Supprimer</span></a></td>
                     <td>

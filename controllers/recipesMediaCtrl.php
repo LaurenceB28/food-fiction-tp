@@ -16,4 +16,4 @@ $recipes = Medias::getRecipesMedia($id_medias);
 
 include(__DIR__ . '/../views/templates/header.php');
 include(__DIR__ . '/../views/user/recipesMedia.php');
-include(__DIR__ . '/../views/templates/Footer.php');
+include(__DIR__ . '/../views/templates/footer.php');

@@ -13,4 +13,4 @@ $recipes = Recipes::getAllbyGenre($id_genres);
 
 include(__DIR__ . '/../views/templates/header.php');
 include(__DIR__ . '/../views/user/recipesGenres.php');
-include(__DIR__ . '/../views/templates/Footer.php');
+include(__DIR__ . '/../views/templates/footer.php');
