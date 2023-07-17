@@ -7,6 +7,7 @@ require_once __DIR__ . '/../models/Recipes.php';
 
 require_once __DIR__ . '/../config/config.php';
 $medias = filter_input(INPUT_GET, 'media', FILTER_SANITIZE_SPECIAL_CHARS);
+// $id_medias = intval(filter_input(INPUT_GET, 'id_medias', FILTER_SANITIZE_NUMBER_INT));
 // var_dump($medias);
 // die;
 $type = intval(filter_input(INPUT_GET, 'type', FILTER_SANITIZE_NUMBER_INT));
@@ -15,6 +16,7 @@ $picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_SPECIAL_CHARS);
 // die;
 $mediaRecipes = Recipes::getAllbyMedias($medias);
 $medias = Medias::getAll($type);
+// $medias = Medias::getRecipesMedia($id_medias);
 
 include(__DIR__ . '/../views/templates/header.php');
 include(__DIR__ . '/../views/user/medias.php');

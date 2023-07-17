@@ -196,14 +196,14 @@ class Recipes
 	}
 
 
-	public static function getAllbyMedias($medias)
+	public static function getAllbyMedias($id_medias)
 	{
 		$pdo = Database::getInstance();
-		$sql = 'SELECT * FROM `recipes` 
+		$sql = 'SELECT `recipes`.`title` AS `recipeName`, `recipes`.`picture`AS `recipePicture`,  `recipes`.`id_recipes` FROM `recipes` 
 		INNER JOIN `medias` ON `recipes`.id_medias = `medias`.id_medias 
-		WHERE `recipes`.id_medias = :media;';
+		WHERE `recipes`.id_medias = :id_medias;';
 		$sth = $pdo->prepare($sql);
-		$sth->bindValue(':media', $medias, PDO::PARAM_STR_CHAR);
+		$sth->bindValue(':id_medias', $id_medias, PDO::PARAM_STR_CHAR);
 		$sth->execute();
 		return $sth->fetchAll();
 	}

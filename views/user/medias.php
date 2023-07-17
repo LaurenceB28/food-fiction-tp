@@ -8,7 +8,7 @@
                 <img src="/public/uploads/gallery/medias/<?= $media->picture ?>" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title"><?= $media->title ?></h5>
-                    <a href="/controllers/recipesMediaCtrl.php?id=<?= $media->id_recipes ?>" class="btn btn-primary">Les recettes</a>
+                    <a href="/controllers/recipesMediaCtrl.php?id_medias=<?= $media->id_medias ?>" class="btn btn-primary">Les recettes</a>
                 </div>
             </div>
         <?php } ?>
