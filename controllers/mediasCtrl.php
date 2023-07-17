@@ -11,8 +11,8 @@ $medias = filter_input(INPUT_GET, 'media', FILTER_SANITIZE_SPECIAL_CHARS);
 // die;
 $type = intval(filter_input(INPUT_GET, 'type', FILTER_SANITIZE_NUMBER_INT));
 $picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_SPECIAL_CHARS);
-var_dump($picture);
-die;
+// var_dump($picture);
+// die;
 $mediaRecipes = Recipes::getAllbyMedias($medias);
 $medias = Medias::getAll($type);
 

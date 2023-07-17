@@ -174,7 +174,7 @@ class Recipes
 		// On prépare la requête
 		$sth = $pdo->prepare($sql);
 		// On associe le marqueur nominatif à la valeur de search
-		$sth->bindValue(':search', "%$search%", PDO::PARAM_STR);
+		$sth->bindValue(':search', '%'. $search .'%', PDO::PARAM_STR);
 		// On associe les marqueurs nominatifs aux valeurs de offset et limit
 		if (!is_null($limit)) {
 			$sth->bindValue(':offset', $offset, PDO::PARAM_INT);
@@ -247,6 +247,19 @@ class Recipes
 		WHERE `medias_genres`.id_genres = :id_genres';
 		$sth = $pdo->prepare($sql);
 		$sth->bindValue(':id_genres', $id_genres, PDO::PARAM_STR_CHAR);
+		$sth->execute();
+		return $sth->fetchAll();
+	}
+
+
+	public static function recipesLike($id_users)
+	{
+		$pdo = Database::getInstance();
+		$sql = 'SELECT `recipes`.`id_recipes` FROM `recipes`
+		INNER JOIN `user_recipes` ON `user_recipes`.`id_recipes` = `recipes`.id_recipes
+		WHERE `user.recipes`.id_users = :id_users ;';
+		$sth = $pdo->prepare($sql);
+		$sth->bindValue(':id_users', $id_users, PDO::PARAM_STR_CHAR);
 		$sth->execute();
 		return $sth->fetchAll();
 	}

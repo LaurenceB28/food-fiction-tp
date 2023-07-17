@@ -35,20 +35,20 @@
             <?php } ?>
         </tbody>
     </table>
-    <nav aria-label="...">
-        <ul class="pagination pagination-lg">
-            <?php
-            for ($page = 1; $page <= $nbPages; $page++) {
-                if ($page == $currentPage) { ?>
-                    <li class="page-item active" aria-current="page">
-                        <span class="page-link">
-                            <?= $page ?>
-                            <span class="visually-hidden">(current)</span>
-                        </span>
-                    </li>
-                <?php } else { ?>
-                    <li class="page-item"><a class="page-link" href="?currentPage=<?= $page ?>&search=<?= $search ?>"><?= $page ?></a></li>
-            <?php }
-            } ?>
+    <nav>
+        <ul class="pagination">
+            <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
+                <a href="/controllers/usersListCtrl.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
+            </li>
+            <?php for ($page = 1; $page <= $nbPages; $page++) : ?>
+                <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                    <a id="page" href="/controllers/usersListCtrl.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                </li>
+            <?php endfor ?>
+            <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
+            <li class="page-item <?= ($currentPage == $nbPages) ? "disabled" : "" ?>">
+                <a href="/controllers/usersListCtrl.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
+            </li>
         </ul>
     </nav>

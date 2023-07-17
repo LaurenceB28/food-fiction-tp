@@ -41,18 +41,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
     </table>
     <nav>
         <ul class="pagination">
-            <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>">
-                <a href="/controllers/mediasListCtrl.php?page=<?= $page - 1 ?>" class="page-link">Précédente</a>
+            <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
+                <a href="/controllers/mediasListCtrl.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
             </li>
-            <?php for ($page = 1; $page <= $nbrPages; $page++) : ?>
+            <?php for ($page = 1; $page <= $nbPages; $page++) : ?>
                 <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-                <li class="page-item <?= ($page == $page) ? "active" : "" ?>">
+                <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
                     <a id="page" href="/controllers/mediasListCtrl.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
                 </li>
             <?php endfor ?>
             <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
-            <li class="page-item <?= ($page == $nbrPages) ? "disabled" : "" ?>">
-                <a href="/controllers/mediasListCtrl.php?page=<?= $page + 1 ?>" class="page-link">Suivante</a>
+            <li class="page-item <?= ($currentPage == $nbPages) ? "disabled" : "" ?>">
+                <a href="/controllers/mediasListCtrl.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
             </li>
         </ul>
     </nav>

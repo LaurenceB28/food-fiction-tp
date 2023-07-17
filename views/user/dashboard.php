@@ -23,6 +23,9 @@
                         <li>
                             <a href="/controllers/usersListCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Liste des Utilisateurs</span></a>
                         </li>
+                        <li>
+                            <a href="/controllers/updateCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Modifier une recette</span></a>
+                        </li>
                     </ul>
                     </li>
                     </ul>

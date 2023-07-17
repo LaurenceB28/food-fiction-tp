@@ -273,7 +273,7 @@ class Users
         $sth = $pdo->prepare($sql);
 
         // On associe le marqueur nominatif à la valeur de search
-        $sth->bindValue(':search', "%$search%", PDO::PARAM_STR);
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
 
         // On associe les marqueurs nominatifs aux valeurs de offset et limit
         if (!is_null($limit)) {
@@ -300,14 +300,15 @@ class Users
     public function insert()
     {
         $pdo = Database::getInstance();
-        $sql = 'INSERT INTO `users` (`lastname`, `firstname`, `email`, `password`) 
-        VALUES (:lastname, :firstname, :email, :password);';
+        $sql = 'INSERT INTO `users` (`lastname`, `firstname`, `email`, `password`,`picture`) 
+        VALUES (:lastname, :firstname, :email, :password, :picture);';
         $sth = $pdo->prepare($sql);
         //Affectation des valeurs aux marqueurs nominatifs
         $sth->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
         $sth->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
         $sth->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
         $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+        $sth->bindValue(':picture', $this->getPicture(), PDO::PARAM_STR);
         // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
         return $sth->execute();
     }

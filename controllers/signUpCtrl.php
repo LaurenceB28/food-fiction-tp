@@ -3,8 +3,8 @@ require_once __DIR__ . '/../models/Users.php';
 require_once __DIR__ . '/../config/config.php';
 $stylesheet = 'form.css';
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+try {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //FIRSTNAME
     $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_SPECIAL_CHARS));
@@ -54,30 +54,94 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    
     //PASSWORD
     $password = filter_input(INPUT_POST, 'password');
     $passwordCheck = filter_input(INPUT_POST, 'passwordCheck');
-    if($password != $passwordCheck){
+        if($password != $passwordCheck){
         $error["password"] = "Les mots de passe ne correspondent pas";
-    }
+        }
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
 
-    if (empty($error)) {
-        $user = new Users;
+    //PROFIL PICTURE
+    $picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_SPECIAL_CHARS);
+        try {
+            if (!isset($_FILES['picture'])) {
+            throw new Exception("Le fichier n'existe pas");
+            }
+
+            if ($_FILES['picture']['error'] != 0) {
+            throw new Exception("Une erreur est survenue lors du transfert");
+            }
+
+            if ($_FILES['picture']['type'] != 'image/jpeg') {
+            throw new Exception("Ce fichier n'est pas au bon format");
+            }
+
+            if ($_FILES['picture']['size'] > MAX_FILESIZE) {
+            throw new Exception("Ce fichier est trop volumineux");
+            }
+
+            $extension = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
+            $from = $_FILES['picture']['tmp_name'];
+            $fileName = uniqid('picture_') . '.' . $extension;
+            $to = $_SERVER["DOCUMENT_ROOT"] . '/public/uploads/gallery/medias/' . $fileName;
+            move_uploaded_file($from, $to);
+
+            // A FAIRE APRES
+
+            // $filename = $to;
+            // $gdImage_original = imagecreatefromjpeg($filename);
+
+            // $width_original = getimagesize($filename)[0];
+            // $height_original = getimagesize($filename)[1];
+
+            // if ($width_original < 341 || $height_original < 192) {
+            //     throw new Exception("Image trop petite");
+            // }
+
+            // if ($height_original > $width_original) {
+            //     $width = 341;
+            //     $height = (int) round(($height_original * $width) / $width_original); //-1
+            // } else { //paysage
+            //     $height = 192;
+            //     $width = (int) round(($width_original * $height) / $height_original);
+            // }
+
+            // $type = IMG_BICUBIC; //IMG_NEAREST_NEIGHBOUR, IMG_BILINEAR_FIXED, IMG_BICUBIC, IMG_BICUBIC_FIXED ;
+
+            // $gdImage_scaled = imagescale($gdImage_original, $width, $height, $type);
+
+            // // imagejpeg($gdImage_scaled, $to);
+
+            // $size = 341;
+            // $x = ($width / 2) - ($size / 2);
+            // $y = ($height / 2) - ($size / 2);
+
+            // $gdImage_cropped = imagecrop($gdImage_scaled, ['x' => $x, 'y' => $y, 'width' => $size, 'height' => $size]);
+
+            // imagejpeg($gdImage_cropped, $to);
+        } catch (\Throwable $th) {
+        $error = $th->getMessage();
+        }
+
+        if (empty($error)) {
+            $user = new Users;
             $user->setLastname($lastname);
             $user->setFirstname($firstname);
             $user->setEmail($email);
             $user->setPassword($passwordHash);
+            $user->setPicture($fileName);
             $response = $user->insert();
     
             if ($response) {
                 $errors['global'] = 'L\'utilisateur a bien été ajouté';
             }
+        }
     }
+}catch (\Throwable $th) {
+    var_dump($th);
 }
-
 
 // Rendu des vues concernées
 include(__DIR__ . '/../views/templates/header.php');

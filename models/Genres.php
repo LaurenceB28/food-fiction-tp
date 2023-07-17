@@ -4,6 +4,7 @@ class Genres
 {
     private $id_genres;
     private $genres;
+    private object $pdo;
 
     /**
      * @return mixed
@@ -41,18 +42,33 @@ class Genres
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPdo()
+    {
+        return $this->pdo;
+    }
+
+    /**
+     * @param mixed $id_genres 
+     * @return self
+     */
+    public function setPdo($pdo): self
+    {
+        $this->pdo = $pdo;
+        return $this;
+    }
+
     public static function getAll()
     {
-$pdo = Database::getInstance();
+        $pdo = Database::getInstance();
 
-$sql= 'SELECT * FROM `genres`;';
-$sth = Database::getInstance()->query($sql);
-return $sth->fetchAll();
-
-
-
-        
-}
+        $sql= 'SELECT * FROM `genres`;';
+        $sth = $pdo->query($sql);
+        // $sth = Database::getInstance()->query($sql);
+        return $sth->fetchAll();   
+    }
 
     public function get(){
         

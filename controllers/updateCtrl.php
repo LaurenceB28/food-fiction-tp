@@ -12,14 +12,12 @@ try {
     /************************************************************************************/
     // var_dump($id_recipes);
     // die;
-    $recipes = Recipes::get($id_recipes);
+    $recipes = Recipes::getRecipes();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
-
         /*$title : nettoyage et validation*/
-        $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
+        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
         // On vérifie que ce n'est pas vide
         if (empty($title)) {
             $error["title"] = "Vous devez entrer un nom de recette!!";
@@ -141,7 +139,7 @@ try {
             $errors['global'] = ERRORS[4];
         }
     }
-    $recipes = Recipes::get($id_recipes);
+    $recipes = Recipes::getRecipes();
 } catch (\Throwable $th) {
     var_dump($th);
 }

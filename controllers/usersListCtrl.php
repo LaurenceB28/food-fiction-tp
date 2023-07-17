@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/Users.php';
 require_once __DIR__ . '/../config/config.php';
+$styleSheet = 'stylesheet.css';
 
 
 try {
@@ -17,7 +18,7 @@ try {
     $nbPages = ceil($nbUsers / $limit);
 
     // A recuperer depuis paramètre d'url. Si aucune valeur, alors vaut 1
-    $currentPage = intval(filter_input(INPUT_GET, 'currentPage', FILTER_SANITIZE_NUMBER_INT));
+    $currentPage = intval(filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT));
 
     // Si la valeur de la page demandée n'est pas cohérente, on réinitialise à 0
     if ($currentPage <= 0 || $currentPage > $nbPages) {

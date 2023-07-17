@@ -1,4 +1,4 @@
-<form id="form" action="" method="post">
+<form id="form" action="" method="post" enctype="multipart/form-data">
     <div class="col-12 col-md-8 col-lg-6">
         <div class="card bg-dark text-white">
             <div class="card-body text-center">
@@ -32,6 +32,8 @@
                     <div class="col p-2">
                         <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">mot de passe oublié?</a></p>
                     </div>
+                    <label for="picture">Photo de Profil</label>
+                        <input type="file" name="picture" id="picture" required accept="image/*"><br>
                     <button class="btn btn-outline-warning btn-lg px-5" type="submit">connexion</button>
                 </div>
             </div>

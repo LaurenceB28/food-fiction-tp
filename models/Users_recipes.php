@@ -4,6 +4,7 @@ class Users_recipes
 {
     private $id_users;
     private $id_recipes;
+    private object $pdo;
 
     /**
      * @return mixed
@@ -41,10 +42,40 @@ class Users_recipes
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPdo()
+    {
+        return $this->pdo;
+    }
+
+    /**
+     * @param mixed $id_genres 
+     * @return self
+     */
+    public function setPdo($pdo): self
+    {
+        $this->pdo = $pdo;
+        return $this;
+    }
+
+    // public static function recipesLike($id_users)
+	// {
+	// 	$pdo = Database::getInstance();
+	// 	$sql = 'SELECT `recipes`.`id_recipes` FROM `recipes`
+	// 	INNER JOIN `user_recipes` ON `user_recipes`.`id_recipes` = `recipes`.id_recipes
+	// 	WHERE `user.recipes`.id_users = :id_users ;';
+	// 	$sth = $pdo->prepare($sql);
+	// 	$sth->bindValue(':id_users', $id_users, PDO::PARAM_STR_CHAR);
+	// 	$sth->execute();
+	// 	return $sth->fetchAll();
+	// }
 
 
     public function getAll()
     {
+
     }
 
     public function get()
@@ -62,4 +93,5 @@ class Users_recipes
     public function delete()
     {
     }
+
 }

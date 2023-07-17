@@ -15,7 +15,7 @@
         <?php foreach ($recipes as $recipe) { ?>
             <option value="<?= $recipe->id_recipes ?>"><?= $recipe->title ?></option>
         <?php } ?>
-    </select>
+    </select> 
     <div class="form-group-mb-3">
         <label for="ingredient" class="form-label">Liste des ingredients*</label>
         <textarea class="form-control <?= isset($errors['ingredient']) ? 'is-invalid' : '' ?>" value="<?= $ingredient ?? '' ?>" name="ingredient" id="ingredient" rows="3" placeholder="Liste des ingrédients" required pattern="<?= REGEX_NO_NUMBER ?>"></textarea>
@@ -26,7 +26,6 @@
         <textarea class="form-control <?= isset($errors['description']) ? 'is-invalid' : '' ?>" value="<?= $description ?? '' ?>" name="description" id="description" rows="3" placeholder="Les étapes de préparation" required pattern="<?= REGEX_NO_NUMBER ?>"></textarea>
         <!-- <input type="text" name="description" class="form-control" placeholder="Description" aria-label="description" maxlength="25" required> -->
     </div>
-
     <!-- <div><?= $error ?? '' ?></div> -->
     <label for="picture">Photo de le recette</label>
     <input type="file" name="picture" id="picture" required accept="image/*">
