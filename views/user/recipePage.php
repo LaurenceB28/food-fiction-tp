@@ -1,27 +1,19 @@
 <?php ?>
-<div class="container">
-    <h5>Nom de la recette</h5>
-    <?php foreach ($recipes as $recipe) { ?>
-        <h5><?= $recipe->recipeTitle ?></h5>
-    <?php } ?>
-
-    <div class="rounded-12 overflow-hidden position-relative">
-        <?php foreach ($recipes as $recipe) { ?>
-        <img src="<?= $recipe->picture?>" alt="">
-        <?php } ?>
+<div class="container d-flex flex-column mb-3">
+    <div>
+        <h4 class="text-center"><?= $recipe->title ?></h5>
     </div>
-
-
-    <h5>Ingredients</h5>
-    <?php foreach ($recipes as $recipe) { ?>
-        <h5><?= $recipe->ingredient?></h5>
-    <?php } ?>
-
-    <h5>Préparation</h5>
-    <?php foreach ($recipes as $recipe) { ?>
-        <h5><?= $recipe->description?></h5>
-    <?php } ?>
-
+    <div> 
+        <img id="recipe" class="rounded mx-auto d-block" width="682px" height="384px" src="/public/uploads/gallery/medias/<?= $recipe->picture ?>" alt="">
+    </div>
+    <div>
+        <p>INGR&Eacute;DIENTS</p>
+        <p><?= $recipe->ingredient ?></p>
+    </div>
+    <div>
+    <p>PR&Eacute;PARATION</p>
+        <p><?= $recipe->description ?></p>
+    </div>
 </div>
 
 <!-- bouton like -->

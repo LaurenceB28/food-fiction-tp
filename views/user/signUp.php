@@ -34,7 +34,7 @@
                     </div>
                     <label for="picture">Photo de Profil</label>
                         <input type="file" name="picture" id="picture" required accept="image/*"><br>
-                    <button class="btn btn-outline-warning btn-lg px-5" type="submit">connexion</button>
+                    <button class="btn btn-outline-warning btn-lg px-5" type="submit">Inscription</button>
                 </div>
             </div>
         </div>

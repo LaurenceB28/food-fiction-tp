@@ -17,7 +17,7 @@
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 <!--CATEGORIES-->
-<h1>Vos catégories préférées</h1>
+<h1>Nos recommandations de la semaine</h1>
 <div class="container">
   <a href="/controllers/recipesGenresCtrl.php?genre=9">
     <div class="card" style="width: 18rem">
@@ -51,6 +51,213 @@
 <div class="wrapper">
   <section id="section1">
     <a href="#section3" class="arrow__btn">‹</a>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/american pie.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/avengers.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/beetlejuice.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/breaking bad.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/buffy.jpg" alt="Describe Image">
+  </div>
+    <a href="#section2" class="arrow__btn">›</a>
+  </section>
+  <section id="section2">
+    <a href="#section1" class="arrow__btn">‹</a>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/chihiro.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/desperate housewives.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/friends.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/glee.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/hannibal.jpg" alt="Describe Image">
+  </div>
+    <a href="#section3" class="arrow__btn">›</a>
+  </section>
+  <section id="section3">
+    <a href="#section2" class="arrow__btn">‹</a>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/harry potter.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/indiana jones.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/izombies.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/jane the virgin.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/le parrain.jpg" alt="Describe Image">
+  </div>
+    <a href="#section1" class="arrow__btn">›</a>
+  </section>
+</div>
+
+
+<h2>Les nouveautés</h2>
+<div class="wrapper">
+  <section id="section1">
+    <a href="#section3" class="arrow__btn">‹</a>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/american pie.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/avengers.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/beetlejuice.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/breaking bad.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/buffy.jpg" alt="Describe Image">
+  </div>
+    <a href="#section2" class="arrow__btn">›</a>
+  </section>
+  <section id="section2">
+    <a href="#section1" class="arrow__btn">‹</a>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/chihiro.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/desperate housewives.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/friends.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/glee.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/hannibal.jpg" alt="Describe Image">
+  </div>
+    <a href="#section3" class="arrow__btn">›</a>
+  </section>
+  <section id="section3">
+    <a href="#section2" class="arrow__btn">‹</a>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/harry potter.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/indiana jones.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/izombies.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/jane the virgin.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/le parrain.jpg" alt="Describe Image">
+  </div>
+    <a href="#section1" class="arrow__btn">›</a>
+  </section>
+</div>
+
+
+<h2>Les Tendances actuelles</h2>
+<div class="wrapper">
+  <section id="section1">
+    <a href="#section3" class="arrow__btn">‹</a>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/american pie.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/avengers.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/beetlejuice.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/breaking bad.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/buffy.jpg" alt="Describe Image">
+  </div>
+    <a href="#section2" class="arrow__btn">›</a>
+  </section>
+  <section id="section2">
+    <a href="#section1" class="arrow__btn">‹</a>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/chihiro.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/desperate housewives.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/friends.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/glee.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/hannibal.jpg" alt="Describe Image">
+  </div>
+    <a href="#section3" class="arrow__btn">›</a>
+  </section>
+  <section id="section3">
+    <a href="#section2" class="arrow__btn">‹</a>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/harry potter.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/indiana jones.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/izombies.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/jane the virgin.jpg" alt="Describe Image">
+  </div>
+    <div class="item">
+    <img width="341px" height="192px" src="/public/assets/img/le parrain.jpg" alt="Describe Image">
+  </div>
+    <a href="#section1" class="arrow__btn">›</a>
+  </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="wrapper">
+  <section id="section1">
+    <a href="#section3" class="arrow__btn">‹</a>
 
 
     <?php
@@ -60,57 +267,6 @@
           <img src="<?php $mediaRecipe->picture ?>" alt="Describe Image">
         </a>
       </div>
-    <?php } ?>
+    <?php } ?> -->
 
-    <!-- <div class="item">
-    <a href="/controllers/recipeCtrl.php?genre=2">
-    <img src="/public/assets/img/imgs/rachel fiancier.webp" alt="Describe Image">
-    </a>
-  </div> -->
-
-    <a href="#section2" class="arrow__btn">›</a>
-  </section>
-
-
-  <section id="section2">
-    <a href="#section1" class="arrow__btn">‹</a>
-    <?php
-    foreach ($medias as $media) { ?>
-      <div class="item">
-        <a href="/controllers/recipeMediaCtrl.php?=<?php $media->id_recipes ?>">
-          <img src="<?php $media->picture ?>" alt="Describe Image">
-        </a>
-      </div>
-    <?php } ?>
-
-
-    <!-- <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=6">
-        <img src="/public/assets/img/imgs/avengers.jpg" alt="Describe Image">
-      </a>
-    </div> -->
-
-
-    <a href="#section3" class="arrow__btn">›</a>
-  </section>
-  <section id="section3">
-    <a href="#section2" class="arrow__btn">‹</a>
-
-    <?php
-    foreach ($medias as $media) { ?>
-      <div class="item">
-        <a href="/controllers/recipeMediaCtrl.php?=<?php $recipe->id_recipes ?>">
-            <img src="<?php $media->picture ?>" alt="Describe Image">
-          </a>
-      </div>
-    <?php } ?>
-
-    <!-- <div class="item">
-      <a href="/controllers/recipeCtrl.php?genre=21">
-        <img src="/public/assets/img/imgs/bree.webp" alt="Describe Image">
-        <a href=""></a>
-    </div>-->
-
-    <a href="#section1" class="arrow__btn">›</a>
-  </section>
-</div>
+    

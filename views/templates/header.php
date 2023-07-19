@@ -16,6 +16,8 @@
     }
     ?>
     <title>Food Fictions</title>
+    <link rel="shortcut icon" href="/public/assets/img/logo/LOGO_Food_Fiction.png" />
+
 </head>
 
 <body>

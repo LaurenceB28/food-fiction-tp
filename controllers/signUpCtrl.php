@@ -87,40 +87,6 @@ try {
             $fileName = uniqid('picture_') . '.' . $extension;
             $to = $_SERVER["DOCUMENT_ROOT"] . '/public/uploads/gallery/medias/' . $fileName;
             move_uploaded_file($from, $to);
-
-            // A FAIRE APRES
-
-            // $filename = $to;
-            // $gdImage_original = imagecreatefromjpeg($filename);
-
-            // $width_original = getimagesize($filename)[0];
-            // $height_original = getimagesize($filename)[1];
-
-            // if ($width_original < 341 || $height_original < 192) {
-            //     throw new Exception("Image trop petite");
-            // }
-
-            // if ($height_original > $width_original) {
-            //     $width = 341;
-            //     $height = (int) round(($height_original * $width) / $width_original); //-1
-            // } else { //paysage
-            //     $height = 192;
-            //     $width = (int) round(($width_original * $height) / $height_original);
-            // }
-
-            // $type = IMG_BICUBIC; //IMG_NEAREST_NEIGHBOUR, IMG_BILINEAR_FIXED, IMG_BICUBIC, IMG_BICUBIC_FIXED ;
-
-            // $gdImage_scaled = imagescale($gdImage_original, $width, $height, $type);
-
-            // // imagejpeg($gdImage_scaled, $to);
-
-            // $size = 341;
-            // $x = ($width / 2) - ($size / 2);
-            // $y = ($height / 2) - ($size / 2);
-
-            // $gdImage_cropped = imagecrop($gdImage_scaled, ['x' => $x, 'y' => $y, 'width' => $size, 'height' => $size]);
-
-            // imagejpeg($gdImage_cropped, $to);
         } catch (\Throwable $th) {
         $error = $th->getMessage();
         }

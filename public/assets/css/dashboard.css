@@ -1,3 +1,11 @@
 #logoDash{
     width: 50%;
 }
+
+.d-none{
+    color:#438d97 !important;
+}
+
+.d-none:hover{
+    color:#f5a90d !important;
+}

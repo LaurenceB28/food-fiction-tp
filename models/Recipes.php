@@ -76,10 +76,9 @@ class Recipes
 	 * @param mixed $id_medias 
 	 * @return self
 	 */
-	public function setId_medias($id_medias): self
+	public function setId_medias($id_medias)
 	{
 		$this->id_medias = $id_medias;
-		return $this;
 	}
 
 	/**
@@ -96,7 +95,7 @@ class Recipes
 	 */
 	public function setDescription($description): self
 	{
-		$this->picture = $description;
+		$this->description = $description;
 		return $this;
 	}
 
@@ -264,41 +263,37 @@ class Recipes
 		return $sth->fetchAll();
 	}
 
-
-	
-
-	// public static function displayRecipes($id_medias)
+	// public static function displayRecipes($id_recipes)
 	// {
 	// 	$pdo = Database::getInstance();
-	// 	$sql = 'SELECT `medias`.`id_medias` AS `idMedias`,`medias`.`idRecipes` 
-    // 	FROM `medias` 
-    // 	WHERE  `idRecipes` = :idRecipes;';
+	// 	$sql = 'SELECT `recipes`.`id_recipes` AS `idRecipes`,`recipes`.`id_medias` 
+    // 	FROM `recipes` 
+    // 	WHERE  `id_medias` = :id_medias;';
 	// 	$sth = $pdo->prepare($sql);
-	// 	$sth->bindValue(':idRecipes', $id_medias, PDO::PARAM_INT);
+	// 	$sth->bindValue(':idRecipes', $id_recipes, PDO::PARAM_INT);
 	// 	return $sth->execute();
 	// }
 
-	public function updateRecipes(int $id_recipes): bool
+
+	public function update(int $id_recipes): bool
     {
+		$pdo = Database::getInstance();
         $sql = 'UPDATE `recipes` SET 
-                        `recipes`.`title`= :title,
+                        -- `recipes`.`title`= :title,
      					`recipes`.`ingredient`= :ingredient,
      					`recipes`.`description`= :description,
-	 					`recipes`.`id_medias` = :id_medias,  
-	 					`recipes`.`picture` = :picture,
+	 					`recipes`.`id_medias` = :id_medias  
+	 					-- `recipes`.`picture` = :picture
                 WHERE `recipes`.`id_recipes`= :id_recipes;';
 
-        $sth = $this->pdo->prepare($sql);
-        $sth->bindValue(':title', $this->getTitle());
+        $sth = $pdo->prepare($sql);
+        // $sth->bindValue(':title', $this->getTitle());
         $sth->bindValue(':ingredient', $this->getIngredient());
         $sth->bindValue(':description', $this->getDescription());
         $sth->bindValue(':id_medias', $this->getId_medias());
-        $sth->bindValue(':picture', $this->getPicture());
+        // $sth->bindValue(':picture', $this->getPicture());
         $sth->bindValue(':id_recipes', $id_recipes, PDO::PARAM_INT);
-        // return $sth->execute();
-		if ($sth->execute()) {
-            return ($sth->rowCount() > 0) ? true : false;
-        }
+        return $sth->execute();
     }
 
 	

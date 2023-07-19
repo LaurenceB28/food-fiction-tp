@@ -258,6 +258,22 @@ class Users
         return $this;
     }
 
+    public function insert()
+    {
+        $pdo = Database::getInstance();
+        $sql = 'INSERT INTO `users` (`lastname`, `firstname`, `email`, `password`,`picture`) 
+        VALUES (:lastname, :firstname, :email, :password, :picture);';
+        $sth = $pdo->prepare($sql);
+        //Affectation des valeurs aux marqueurs nominatifs
+        $sth->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
+        $sth->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
+        $sth->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+        $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+        $sth->bindValue(':picture', $this->getPicture(), PDO::PARAM_STR);
+        // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
+        return $sth->execute();
+    }
+
     public static function getAll(?string $search = '', int $limit = null, int $offset = 0)
     {
         $pdo = Database::getInstance();
@@ -297,21 +313,7 @@ class Users
         return $sth->fetchColumn();
     }
 
-    public function insert()
-    {
-        $pdo = Database::getInstance();
-        $sql = 'INSERT INTO `users` (`lastname`, `firstname`, `email`, `password`,`picture`) 
-        VALUES (:lastname, :firstname, :email, :password, :picture);';
-        $sth = $pdo->prepare($sql);
-        //Affectation des valeurs aux marqueurs nominatifs
-        $sth->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
-        $sth->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
-        $sth->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
-        $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
-        $sth->bindValue(':picture', $this->getPicture(), PDO::PARAM_STR);
-        // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
-        return $sth->execute();
-    }
+    
 
     /**
      * Summary of getByMail
@@ -327,6 +329,38 @@ class Users
         $sth->execute();
         return $sth->fetch();
     }
+
+    public function update(int $id_users): bool
+    {
+        $pdo = Database::getInstance();
+        $sql = 'UPDATE `users` SET 
+     					`users`.`lastname`= :lastname,
+     					`users`.`firstname`= :firstname,
+	 					`users`.`email` = :email,  
+	 					`users`.`password` = :password,  
+	 					`users`.`email` = :email,  
+	 					-- `users`.`picture` = :picture,
+                WHERE `users`.`id_users`= :id_users;';
+
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
+        $sth->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
+        $sth->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+        $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+        // $sth->bindValue(':picture', $this->getPicture(), PDO::PARAM_STR);
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        return $sth->execute();
+    }
+
+
+    public static function delete($id_users)
+	{
+		$pdo = Database::getInstance();
+		$sql = 'DELETE * FROM `users` WHERE `id_users` = :id_users ;';
+		$sth = $pdo->prepare($sql);
+		$sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+		return $sth->execute();
+	}
 
     
 }
