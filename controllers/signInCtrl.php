@@ -22,33 +22,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //PASSWORD
     $password = filter_input(INPUT_POST, 'password');
-    if (empty($password)) {
-        $error["password"] = "Le mot de passe est  obligatoire!!";
-    } else {
-        
-        if (password_verify($password, $user->password) == false) {
+    if ($user != false) {
+        if (empty($password)) {
+            $error["password"] = "Le mot de passe est  obligatoire!!";
+        } else {
 
-            $error["password"] = "Les mots de passe ne correspondent pas!!";
+            if (password_verify($password, $user->password) == false) {
+
+                $error["password"] = "Les mots de passe ne correspondent pas!!";
+            }
         }
+    }else{
+        $error ["email"] = "l'utilisateur n'existe pas";
     }
     // var_dump($error);
     // die;
 
     if (empty($error)) {
         $_SESSION['user'] = $user;
-        // var_dump( $_SESSION['user']);
+        header('location: /controllers/homeCtrl.php');
     }
 }
 
+
 // // Rendu des vues concernées
-include(__DIR__ . '/../views/templates/header.php');
+include __DIR__ . '/../views/templates/header.php';
 
 if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
     include(__DIR__ . '/../views/user/signIn.php');
 } else {
     include(__DIR__ . '/../views/user/display.php');
 }
-
-
-
-

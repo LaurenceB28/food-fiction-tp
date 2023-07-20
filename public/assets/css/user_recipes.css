@@ -23,8 +23,7 @@ p{
 .card_profile_img {
     width: 120px;
     height: 120px;
-    background-color: #868d9b;
-    background: url("../img/laula.jpg");
+    background-image: url(/public/assets/img/laula.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -34,16 +33,6 @@ p{
     margin-top: -60px;
 
 }
-
-/* .card_background_img {
-    width: 100%;
-    height: 180px;
-    background-color: #438d97;
-    background: url("../img/logo/LOGO_Food_Fiction_bleu.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-} */
 
 .user_details p {
     margin-bottom: 20px;

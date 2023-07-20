@@ -1,3 +1,4 @@
+
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -15,21 +16,27 @@
                     <a class="nav-link" href="/controllers/mediasCtrl.php?type=1">Séries</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/controllers/userDashboardCtrl.php">Mon espace</a>
+                    <a class="nav-link" href="/controllers/user_recipesCtrl.php">Mes Favoris</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/controllers/signInCtrl.php">Déconnecter</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/controllers/signUpCtrl.php">S'inscrire</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/controllers/dashboardCtrl.php">Dashboard</a>
-                </li>
+                <?php
+                if (isset($_SESSION['user']) && $_SESSION['user'] -> role == 1) { //Sinon s'il y a une session alors on verra les liens ci-dessous
+                ?>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/dashboardCtrl.php">Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li>
+                <?php
+                } elseif (isset($_SESSION['user']) && !$_SESSION['user']-> role ) { //Sinon s'il y a une session alors on verra les liens ci-dessous
+                ?>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/userDashboardCtrl.php">Mon compte</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li>
+                <?php
+                } else {
+                ?>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/signUpCtrl.php">Inscription</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a></li>
+                <?php
+                }
+                ?>
             </ul>
             <div>
                 <form method="post" class="d-flex" role="search"> <!-- method="post" pour $_SERVER request method, recupère les infos du formulaire ou champ de recherche-->

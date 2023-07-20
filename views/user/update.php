@@ -21,12 +21,10 @@
     <div class="form-group-mb-3">
         <label for="ingredient" class="form-label">Liste des ingredients*</label>
         <textarea class="form-control <?= isset($errors['ingredient']) ? 'is-invalid' : '' ?>"  name="ingredient" id="ingredient" rows="3" placeholder="" required pattern="<?= REGEX_TEXTAREA ?>"><?= $recipes->ingredient ?></textarea>
-        <!-- <input type="textarea" name="ingredient" class="form-control" placeholder="Liste des ingrédients" aria-label="ingredient" maxlength="50" required> -->
     </div>
     <div class="form-group-mb-3">
         <label for="description" class="form-label">Les étapes de préparations*</label>
         <textarea class="form-control <?= isset($errors['description']) ? 'is-invalid' : '' ?>"  name="description" id="description" rows="3" placeholder="" required pattern="<?= REGEX_TEXTAREA ?>"><?= $recipes->description  ?></textarea>
-        <!-- <input type="text" name="description" class="form-control" placeholder="Description" aria-label="description" maxlength="25" required> -->
     </div>
     <!-- <div><?= $error ?? '' ?></div> -->
     <!-- <label for="picture">Photo de la recette</label>

@@ -101,7 +101,8 @@ try {
             $response = $user->insert();
     
             if ($response) {
-                $errors['global'] = 'L\'utilisateur a bien été ajouté';
+                header('location: /controllers/signInCtrl.php');
+
             }
         }
     }
