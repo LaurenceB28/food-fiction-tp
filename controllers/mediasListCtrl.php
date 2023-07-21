@@ -7,6 +7,8 @@ try {
     // Récupération de la valeur recherchée et on nettoie
     //**** NETTOYAGE ****/
     $search = trim((string) filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
+
+    
     // On définit le nombre d'éléments par page grâce à une constante déclarée dans config.php
     $limit = NB_ELEMENTS_BY_PAGE;
 

@@ -23,7 +23,7 @@ p{
 .card_profile_img {
     width: 120px;
     height: 120px;
-    background-image: url(/public/assets/img/laula.jpg);
+    background-image: url(public/assets/img/laula.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

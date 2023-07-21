@@ -26,7 +26,19 @@
     <label for="picture">Photo de le recette</label>
     <input type="file" name="picture" id="picture" required accept="image/*">
     <button type="submit" class="btn btn-primary">Ajouter</button>
+    </div>
 </form>
+
+    <!-- <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroupFileAddon01">Télécharger</span>
+  </div>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile01"
+      aria-describedby="inputGroupFileAddon01">
+    <label class="custom-file-label" for="inputGroupFile01">Photo de la recette</label>
+  </div> -->
+
 
 <?php
 if (isset($block)) {

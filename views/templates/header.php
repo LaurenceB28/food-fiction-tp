@@ -21,14 +21,15 @@
 </head>
 
 <body>
-        <!-- HEADER -->
-        <header>
+    <!-- HEADER -->
+    <header>
         <div class="header">
-        <a class="logo" href="/controllers/homeCtrl.php">
-            <img id="logoHeader" src="/public/assets/img/logo/LOGO_Food_Fiction.png" alt="" /></a>
+            <a href="/controllers/homeCtrl.php">
+                <img style="display:block" id="logoHeader1" src="/public/assets/img/logo/LOGO_Food_Fiction.png" alt="" />
+            </a>
         </div>
     </header>
     <!-- Navbar -->
-    <?php 
+    <?php
     include(__DIR__ . '/../templates/navbar.php');
     ?>

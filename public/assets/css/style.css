@@ -24,12 +24,17 @@ a .logo #logoHeader {
   justify-content: center;
 }
 
-/* @media screen and (max-width: 500px){
-  a .logo #logoHeader {
-    width: 10%;
-    justify-content: center;
-  }
-} */
+
+@media screen and (max-width: 500px){
+a .hideOnMobile #logoHeader {
+  display: none !important;
+}
+.header{
+  background-color: #f5a90d;
+}
+}
+
+
 
 /*titres*/
 
@@ -58,7 +63,7 @@ h3 {
 }
 
 .navbar-brand {
-  width: 10%;
+  width: 15%;
 }
 
 .nav-item {
@@ -194,6 +199,14 @@ section {
 /* // Remove the arrow for Mobile */
 @media only screen and (max-width: 600px) {
   .arrow__btn {
+    display: none;
+  }
+
+  .wrapper{
+    display: none;
+  }
+
+  h2{
     display: none;
   }
 }
