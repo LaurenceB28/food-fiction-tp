@@ -356,7 +356,7 @@ class Users
     public static function delete($id_users)
 	{
 		$pdo = Database::getInstance();
-		$sql = 'DELETE * FROM `users` WHERE `id_users` = :id_users ;';
+		$sql = 'DELETE FROM `users` WHERE `id_users` = :id_users ;';
 		$sth = $pdo->prepare($sql);
 		$sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
 		return $sth->execute();

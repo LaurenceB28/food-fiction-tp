@@ -47,9 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // // Rendu des vues concernées
 include __DIR__ . '/../views/templates/header.php';
+include(__DIR__ . '/../views/user/signIn.php');
+include(__DIR__ . '/../views/user/display.php');
 
-if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
-    include(__DIR__ . '/../views/user/signIn.php');
-} else {
-    include(__DIR__ . '/../views/user/display.php');
-}
+// if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
+//     include(__DIR__ . '/../views/user/signIn.php');
+// } else {
+//     include(__DIR__ . '/../views/user/display.php');
+// }

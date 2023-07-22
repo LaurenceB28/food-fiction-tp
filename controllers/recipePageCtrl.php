@@ -5,6 +5,8 @@ require_once __DIR__ . '/../models/Recipes.php';
 require_once __DIR__ . '/../models/Medias.php';
 require_once __DIR__ . '/../config/config.php';
 
+session_start();
+
 $stylesheet = "buttonLike.css";
 try {
     $id_recipes = intval(filter_input(INPUT_GET, 'id_recipes', FILTER_SANITIZE_NUMBER_INT));

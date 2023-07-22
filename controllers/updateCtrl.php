@@ -6,6 +6,8 @@ require_once __DIR__ . '/../models/Medias.php';
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../helpers/sessionFlash.php';
 
+session_start();
+
 try {
     // Nettoyage de l'id passé en GET dans l'url
     $id_recipes = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));

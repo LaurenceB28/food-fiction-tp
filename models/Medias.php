@@ -211,11 +211,12 @@ class Medias
 	 */
 	public static function deleteMedias($id_medias)
 	{
-		$pdo = Database::getInstance();
 		$sql = 'DELETE FROM `medias` WHERE `id_medias` = :id_medias ;';
-		$sth = $pdo->prepare($sql);
+		$sth = Database::getInstance()->prepare($sql);
 		$sth->bindValue(':id_medias', $id_medias, PDO::PARAM_INT);
-		return $sth->execute();
+		if ($sth->execute()) {
+            return ($sth->rowCount() <= 0) ? false : true;
+        }
 	}
 
 

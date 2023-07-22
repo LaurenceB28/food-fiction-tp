@@ -4,6 +4,8 @@ $stylesheet = 'dashboard.css';
 require_once __DIR__ . '/../models/Users.php';
 require_once __DIR__ . '/../config/config.php';
 
+session_start();
+
 try {
     // Nettoyage de l'id passé en GET dans l'url
     $id_users = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));

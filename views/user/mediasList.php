@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
                     <th scope="row"><?= $media->title ?></th>
                     <td><a href="/controllers/updateCtrl.php?id=<?= $media->id_medias ?>"><span class="btn btn-outline-info border border-info">Modifier</span></a></td>
 
-                    <td><a href="/controllers/mediasListCtrl.php?id=<?= $media->id_medias ?>"><span class="btn btn-outline-danger border border-danger">Supprimer</span></a></td>
+                    <td><a href="/controllers/deleteMediaCtrl.php?id=<?= $media->id_medias ?>"><span class="btn btn-outline-danger border border-danger">Supprimer</span></a></td>
                     <td>
                 </tr>
             <?php } ?>

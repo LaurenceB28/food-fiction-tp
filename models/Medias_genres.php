@@ -65,7 +65,14 @@ class Medias_genres
     {
     }
 
-    public function delete()
-    {
-    }
+    public static function deleteGenre($id_genres, $id_medias)
+	{
+		$sql = 'DELETE FROM `medias_genres` WHERE `id_genres` = :id_genres AND `id_medias` = :id_medias ;';
+		$sth = Database::getInstance()->prepare($sql);
+		$sth->bindValue(':id_genres', $id_genres, PDO::PARAM_INT);
+		$sth->bindValue(':id_medias', $id_medias, PDO::PARAM_INT);
+		if ($sth->execute()) {
+            return ($sth->rowCount() <= 0) ? false : true;
+        }
+	}
 }

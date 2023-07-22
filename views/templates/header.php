@@ -31,5 +31,5 @@
     </header>
     <!-- Navbar -->
     <?php
-    include(__DIR__ . '/../templates/navbar.php');
+    // include(__DIR__ . '/../templates/navbar.php');
     ?>

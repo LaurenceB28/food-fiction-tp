@@ -6,6 +6,7 @@ require_once __DIR__ . '/../models/Medias.php';
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../helpers/sessionFlash.php';
 
+session_start();
 
 try {
 
@@ -73,10 +74,6 @@ try {
     }
 
     $id_medias = intval(filter_input(INPUT_POST, 'media', FILTER_SANITIZE_NUMBER_INT));
-    // var_dump($medias);
-    // die;
-
-
     $picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_SPECIAL_CHARS);
 
     try {
@@ -139,22 +136,15 @@ try {
         $error = $th->getMessage();
     }
 
-    // var_dump($error);
-    // die;
     if (empty($error)) {
         $recipes = new Recipes;
-        // $recipes->setId_recipes($id_recipes);
         $recipes->setTitle($title);
         $recipes->setIngredient($ingredient);
         $recipes->setDescription($description);
         $recipes->setId_medias($id_medias);
         $recipes->setPicture($fileName);
 
-
-        // $recipes->setId_medias($id_medias);
-
         $isExist = $recipes->isExist();
-        // var_dump($isExist);
         if ($isExist) {
             $message = 'Cette recette est déja enregistrée';
             $block = 1;
@@ -169,11 +159,6 @@ try {
 } catch (\Throwable $th) {
     var_dump($th);
 }
-
-
-// include __DIR__ . '/../views/templates/header.php';
-// include __DIR__ . '/../views/user/dashboard.php';
-
 
 include(__DIR__ . '/../views/templates/header.php'); // 
 include __DIR__ . '/../views/user/dashboard.php';

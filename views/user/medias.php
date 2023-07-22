@@ -6,9 +6,9 @@
         <?php
         foreach ($medias as $media) { ?>
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 ">
-                <img src="/public/uploads/gallery/medias/<?= $media->picture ?>" class="card-img-top" alt="">
+                <img src="/public/uploads/gallery/medias/<?= $media->picture ?>" class="card-img-top h-75" alt="">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $media->title ?></h5>
+                    <h5 class="card-title h-50"><?= $media->title ?></h5>
                     <a href="/controllers/recipesMediaCtrl.php?id_medias=<?= $media->id_medias ?>" class="btn btn-primary">Les recettes</a>
                 </div>
             </div>

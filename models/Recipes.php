@@ -297,13 +297,15 @@ class Recipes
     }
 
 	
-	public static function deleteRecipes($id_recipes)
+	public static function deleteRecipes($id)
 	{
-		$pdo = Database::getInstance();
+		
 		$sql = 'DELETE FROM `recipes` WHERE `id_recipes` = :id_recipes ;';
-		$sth = $pdo->prepare($sql);
-		$sth->bindValue(':id_recipes', $id_recipes, PDO::PARAM_INT);
-		return $sth->execute();
+		$sth = Database::getInstance()->prepare($sql);
+		$sth->bindValue(':id_recipes', $id, PDO::PARAM_INT);
+		if ($sth->execute()) {
+            return ($sth->rowCount() <= 0) ? false : true;
+        }
 	}
 }
 

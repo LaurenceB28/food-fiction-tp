@@ -7,6 +7,9 @@
                         <!-- <span class="fs-5 d-none d-sm-inline"><img id="logoDash" src="/public/assets/img/logo/LOGO_Food_Fiction.png" alt=""></span> -->
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li>
+                            <a href="/controllers/homeCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Accueil</span></a>
+                        </li>
                         <li>
                             <a href="/controllers/userInfosCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Mes Infos</span></a>
                         </li>

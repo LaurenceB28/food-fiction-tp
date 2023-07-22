@@ -3,10 +3,11 @@ $footer = true;
 $stylesheet = 'dashboard.css';
 require_once __DIR__ . '/../models/Medias.php';
 require_once __DIR__ . '/../config/config.php';
+session_start();
 try {
     // Récupération de la valeur recherchée et on nettoie
     //**** NETTOYAGE ****/
-    $search = trim((string) filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
+    $search = trim((string) filter_input(INPUT_POST, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
 
     
     // On définit le nombre d'éléments par page grâce à une constante déclarée dans config.php
@@ -39,6 +40,7 @@ try {
 }
 
 include(__DIR__ . '/../views/templates/header.php');
+include(__DIR__ . '/../views/templates/navbar.php');
 include(__DIR__ . '/../views/user/dashboard.php');
 include(__DIR__ . '/../views/user/mediasList.php');
 include(__DIR__ . '/../views/templates/footer.php');

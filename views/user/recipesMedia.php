@@ -4,7 +4,7 @@
         <?php foreach ($recipes as $recipe) { ?>
             <!-- <?php var_dump($recipe);
             ?> -->
-            <div class="card col-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card col-12 col-sm-6 col-md-4 col-lg-4 w-30">
                 <img src="/public/uploads/gallery/medias/<?= $recipe->recipePicture ?>" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title"><?= $recipe->recipeName ?></h5>

@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
                 <tr class="table-light">
                     <th scope="row"><?= $recipe->title ?></th>
                     <td><a href="/controllers/updateCtrl.php?id=<?= $recipe->id_recipes ?>"><span class="btn btn-outline-info border border-info">Modifier</span></a></td>
-                    <td><a href="/controllers/recipesListCtrl.php?id=<?= $recipe->id_recipes ?>"><span class="btn btn-outline-danger border border-danger">Supprimer</span></a></td>
+                    <td><a href="/controllers/deleteRecipeCtrl.php?id=<?= $recipe->id_recipes ?>"><span class="btn btn-outline-danger border border-danger">Supprimer</span></a></td>
                     <td>
                 </tr>
             <?php } ?>
@@ -42,14 +42,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
             <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
                 <a href="/controllers/recipesListCtrl.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
             </li>
-            <?php for ($page = 1; $page <= $nbrPages; $page++) : ?>
+            <?php for ($page = 1; $page <= $nbPages; $page++) : ?>
                 <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                 <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
                     <a id="page" href="/controllers/recipesListCtrl.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
                 </li>
             <?php endfor ?>
             <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
-            <li class="page-item <?= ($currentPage == $nbrPages) ? "disabled" : "" ?>">
+            <li class="page-item <?= ($currentPage == $nbPages) ? "disabled" : "" ?>">
                 <a href="/controllers/recipesListCtrl.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
             </li>
         </ul>

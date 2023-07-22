@@ -1,4 +1,3 @@
-
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -9,40 +8,48 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/controllers/mediasCtrl.php?type=2">Films</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/controllers/mediasCtrl.php?type=1">Séries</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/controllers/user_recipesCtrl.php">Mes Favoris</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="/controllers/mediasCtrl.php?type=2">Films</a></li>
+                <li class="nav-item"><a class="nav-link" href="/controllers/mediasCtrl.php?type=1">Séries</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="/controllers/user_recipesCtrl.php">Mes Favoris</a></li>
+                <li class="nav-item"><a class="nav-link" href="/controllers/userDashboardCtrl.php">Mon compte</a></li> -->
 
                 <?php
-                if (isset($_SESSION['user']) && $_SESSION['user'] -> role == 1) { //Sinon s'il y a une session alors on verra les liens ci-dessous
+                if (!empty($_SESSION['user']) && $_SESSION['user']->role === 1) {
                 ?>
                     <li class="nav-item"><a class="nav-link" href="/controllers/dashboardCtrl.php">Admin</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li>  -->
+                <?php } ?>
+
                 <?php
-                } elseif (isset($_SESSION['user']) && !$_SESSION['user']-> role ) { //Sinon s'il y a une session alors on verra les liens ci-dessous
-                ?>
+                if (!empty($_SESSION['user']) && $_SESSION['user']->role!=1) { ?>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/user_recipesCtrl.php">Mes Favoris</a></li>
                     <li class="nav-item"><a class="nav-link" href="/controllers/userDashboardCtrl.php">Mon compte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li> -->
                 <?php
-                } else {
-                ?>
-                    <li class="nav-item"><a class="nav-link" href="/controllers/signUpCtrl.php">Inscription</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a></li>
-                <?php
-                }
-                ?>
+                } else { ?>
+                    <?php
+                    if (empty($_SESSION['user']) && $_SESSION['user']->role === 1 || $_SESSION['user']->role!=1)  { ?>
+                        <li class="nav-item"><a class="nav-link" href="/controllers/signUpCtrl.php">S'inscrire</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a></li>
+                    <?php } ?>
+                <?php } ?>
+                <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li>
             </ul>
+
+
             <div>
-                <form method="post" class="d-flex" role="search"> <!-- method="post" pour $_SERVER request method, recupère les infos du formulaire ou champ de recherche-->
-                    <input class="form-control-sm-info" type="search" name="search" placeholder="Rechercher" aria-label="Search">
-                    <button class="btn btn-outline-info" type="submit">GO!</button>
-                </form>
+                <?php
+                if (isset($_SESSION['user']) && $_SESSION['user']->role === 1) { ?>
+                    <!-- method="post" pour $_SERVER request method, recupère les infos du formulaire ou champ de recherche-->
+                    <form method="post" class="d-flex" role="search">
+                        <input class="form-control-sm-info" type="search" name="search" placeholder="Rechercher" aria-label="Search">
+                        <button class="btn btn-outline-info" type="submit">GO!</button>
+                    </form>
+                <?php
+                } else { ?>
+
+                <?php } ?>
+
             </div>
         </div>
     </div>
