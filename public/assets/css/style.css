@@ -43,12 +43,16 @@ h1 {
   color: #438d97;
   text-align: center;
   margin-top: 2%;
+  text-transform: uppercase;
 }
 
 h2 {
   font-family: 'Montserrat', sans-serif;
   color: #438d97;
   margin-top: 2%;
+  margin-left: 2%;
+  text-transform: uppercase;
+
 }
 
 h3 {

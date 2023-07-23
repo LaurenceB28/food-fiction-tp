@@ -1,4 +1,3 @@
-<!-- <a href="/controllers/addUserCtrl.php">Ajouter un utilisateur</a> --><!-- PREMIER CONTAINER -->
 <!-- FILMS OU SERIES-->
 <div class="cont1">
   <a href="/controllers/mediasCtrl.php?type=2">
@@ -28,10 +27,9 @@
         </div>
       </div>
     </div>
-
-
-
   </a>
+
+  
   <a href="/controllers/recipesGenresCtrl.php?genre=2">
     <div class="col">
       <div class="card" style="width: 18rem">
@@ -185,7 +183,7 @@
 </div>
 
 
-<h2>Les Tendances actuelles</h2>
+<h2>Les Tendances du mois</h2>
 <div class="wrapper">
   <section id="section7">
     <a href="#section9" class="arrow__btn">‹</a>
