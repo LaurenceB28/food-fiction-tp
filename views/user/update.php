@@ -1,10 +1,10 @@
-<?php if (isset($errors['global'])) { ?>
+<!-- <?php if (isset($errors['global'])) { ?>
 
 <div class="alert alert-warning" role="alert">
     <?= nl2br($errors['global']) ?>
 </div>
 
-<?php } ?>
+<?php } ?> -->
 
 <form method="post" enctype="multipart/form-data">
     <h2>Modifier la recette</h2>
@@ -20,11 +20,11 @@
     </select> 
     <div class="form-group-mb-3">
         <label for="ingredient" class="form-label">Liste des ingredients*</label>
-        <textarea class="form-control <?= isset($errors['ingredient']) ? 'is-invalid' : '' ?>"  name="ingredient" id="ingredient" rows="3" placeholder="" required pattern="<?= REGEX_TEXTAREA ?>"><?= $recipes->ingredient ?></textarea>
+        <textarea class="form-control <?= isset($errors['ingredient']) ? 'is-invalid' : '' ?>"  name="ingredient" id="ingredient" rows="3" placeholder="" required pattern="<?= REGEX_TEXTAREA ?>"><?= $recipe->ingredient ?></textarea>
     </div>
     <div class="form-group-mb-3">
         <label for="description" class="form-label">Les étapes de préparations*</label>
-        <textarea class="form-control <?= isset($errors['description']) ? 'is-invalid' : '' ?>"  name="description" id="description" rows="3" placeholder="" required pattern="<?= REGEX_TEXTAREA ?>"><?= $recipes->description  ?></textarea>
+        <textarea class="form-control <?= isset($errors['description']) ? 'is-invalid' : '' ?>"  name="description" id="description" rows="3" placeholder="" required pattern="<?= REGEX_TEXTAREA ?>"><?= $recipe->description  ?></textarea>
     </div>
     <!-- <div><?= $error ?? '' ?></div> -->
     <!-- <label for="picture">Photo de la recette</label>

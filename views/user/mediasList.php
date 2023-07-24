@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
         <thead>
             <tr class="table-dark">
                 <th scope="col">Nom du média</th>
-                <th scope="col">Modifier</th>
+                <th scope="col"></th>
                 <th scope="col">Supprimer</th>
                 <th>
             </tr>
@@ -31,8 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
             foreach ($medias as $media) { ?>
                 <tr class="table-light">
                     <th scope="row"><?= $media->title ?></th>
-                    <td><a href="/controllers/updateCtrl.php?id=<?= $media->id_medias ?>"><span class="btn btn-outline-info border border-info">Modifier</span></a></td>
-
+                    <td></td>
                     <td><a href="/controllers/deleteMediaCtrl.php?id=<?= $media->id_medias ?>"><span class="btn btn-outline-danger border border-danger">Supprimer</span></a></td>
                     <td>
                 </tr>

@@ -19,7 +19,7 @@
   <label for="floatingPassword">Mot de passe</label>
 </div>
 <!-- <a href="/controllers/updateUserCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Modifier mon compte</span></a> -->
-<button type="submit" class="btn btn-light"><a href="/controllers/updateUserCtrl.php" class="nav-link px-0"> <span id="idbtn" class="d-none d-sm-inline">Modifier mon compte</span></a>
-<button type="submit" class="btn btn-danger"><a href="/controllers/userInfosCtrl.php" class="nav-link px-0"> <span id="idbtn" class="d-none d-sm-inline">Supprimer mon compte</span></a>
+<button type="button" class="btn btn-primary"><a href="/controllers/updateUserCtrl.php" class="nav-link px-0">Valider les modifications</a></button>
+<button type="button" class="btn btn-danger"><a href="/controllers/updateUserCtrl.php" class="nav-link px-0">Supprimer mon compte</a></button>
 </button>
 </form>

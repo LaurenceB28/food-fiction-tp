@@ -17,7 +17,7 @@
                         <input type="password" name="password" id="password" placeholder="Mot de passe" class="form-control" />
                     </div>
                     <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">mot de passe oublié?</a></p>
-                    <button class="btn btn-outline-warning btn-lg px-5" type="submit">connexion</button>
+                    <button class="btn btn-warning btn-lg px-5" type="submit">connexion</button>
                 </div>
                 <div>
                     <p class="mb-0 text-dark">Pas encore de compte? <a href="/controllers/signUpCtrl.php" class="text-dark-50 fw-bold">S'inscrire</a></p>

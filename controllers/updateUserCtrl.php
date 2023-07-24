@@ -99,5 +99,6 @@ try {
 
 
 include __DIR__ . '/../views/templates/header.php';
+include(__DIR__ . '/../views/templates/navbar.php');
 include __DIR__ . '/../views/user/userDashboard.php';
 include __DIR__ . '/../views/user/updateUser.php';

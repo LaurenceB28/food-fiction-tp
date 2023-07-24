@@ -8,8 +8,8 @@
     <div class="card_count">
         <div class="count justify-content-center">
             <div class="following">
-                <h3>15</h3>
-                <p class="text-center">Recttes Likées</p>
+                <h3>6</h3>
+                <p class="text-center">Recettes Likées</p>
             </div>
         </div>
     </div>

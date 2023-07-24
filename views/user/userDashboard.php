@@ -17,7 +17,7 @@
                             <a href="/controllers/updateUserCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Modifier mon compte</span></a>
                         </li>
                         <li>
-                            <a href="/controllers/user_recipesCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Mes recettes préférées</span></a>
+                            <a href="/controllers/user_recipes_listCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Mes recettes préférées</span></a>
                         </li>
 
                     </ul>

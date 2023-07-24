@@ -1,4 +1,4 @@
-<h5>MODIFIER MES INFOS</h5>
+<h5>MODIFIER LES INFOS</h5>
 <form class="form-floating">
 <div class="row g-3">
   <div class="form-floating">
@@ -19,7 +19,6 @@
   <label for="floatingPassword">Mot de passe</label>
 </div>
 <!-- <a href="/controllers/updateUserCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Modifier mon compte</span></a> -->
-<button type="submit" class="btn btn-warning"><a href="/controllers/updateUserCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Modifier mon compte</span></a>
-<button type="submit" class="btn btn-danger"><a href="/controllers/userInfosCtrl.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Supprimer mon compte</span></a>
-</button>
+<button type="button" class="btn btn-primary"><a href="/controllers/updateUserCtrl.php" class="nav-link px-0">Valider les modifications</a></button>
+<button type="button" class="btn btn-danger"><a href="/controllers/updateUserCtrl.php" class="nav-link px-0">Supprimer le compte</a></button>
 </form>

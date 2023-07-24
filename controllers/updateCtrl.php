@@ -17,6 +17,7 @@ try {
     // var_dump($recipes);
     // die;
     $id_medias = $recipes->id_medias;
+
     $allRecipes = Recipes::getRecipes();
     // $updateRecipes->update($id_recipes);
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,9 +35,9 @@ try {
         //     }
         // }
 
-
         /*ingredients : nettoyage et validation*/
         $ingredient = trim(filter_input(INPUT_POST, 'ingredient', FILTER_SANITIZE_SPECIAL_CHARS));
+       
         // On vérifie que ce n'est pas vide
         if (empty($ingredient)) {
             $error["ingredient"] = "Vous devez entrer les étapes de préparation!!";
@@ -50,6 +51,7 @@ try {
         /*preparation : nettoyage et validation*/
 
         $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
+       
        
         // On vérifie que ce n'est pas vide
         if (empty($description)) {
@@ -72,6 +74,7 @@ try {
         $recipes->setIngredient($ingredient);
         $recipes->setDescription($description);
         $recipes->setId_medias($id_medias);
+
         // $recipes->setPicture($fileName);
         $isUpdated = $recipes->update($id_recipes);
         if ($isUpdated == true) {
