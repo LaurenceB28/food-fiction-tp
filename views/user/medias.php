@@ -9,9 +9,14 @@
                 <img src="/public/uploads/gallery/medias/<?= $media->picture ?>" class="card-img-top h-75" alt="">
                 <div class="card-body">
                     <h5 class="card-title h-30"><?= $media->title ?></h5>
+
+                    <?php if (empty($_SESSION['user'])) { ?>
+                        <a href="/controllers/SignInCtrl.php" class="btn btn-warning">Les recettes</a>
+                    <?php } else { ?>
                     <a href="/controllers/recipesMediaCtrl.php?id_medias=<?= $media->id_medias ?>" class="btn btn-warning">Les recettes</a>
+                    <?php } ?>
                 </div>
             </div>
-        <?php } ?>
+    <?php } ?>
     </div>
 </div>

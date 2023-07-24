@@ -1,4 +1,5 @@
 <?php
+
 $footer = true;
 $stylesheet = 'films.css';
 require_once __DIR__ . '/../models/Types.php';

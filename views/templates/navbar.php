@@ -21,19 +21,19 @@
                 <?php } ?>
 
                 <?php
-                if (!empty($_SESSION['user']) && $_SESSION['user']->role!=1) { ?>
+                if (!empty($_SESSION['user']) && $_SESSION['user']->role != 1) { ?>
                     <li class="nav-item"><a class="nav-link" href="/controllers/user_recipesCtrl.php">Mes Favoris</a></li>
                     <li class="nav-item"><a class="nav-link" href="/controllers/userDashboardCtrl.php">Mon compte</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li> -->
                 <?php
-                } else { ?>
-                    <?php
-                    if (empty($_SESSION['user']) && $_SESSION['user']->role === 1 || $_SESSION['user']->role!=1)  { ?>
-                        <li class="nav-item"><a class="nav-link" href="/controllers/signUpCtrl.php">S'inscrire</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a></li>
-                    <?php } ?>
+                } ?>
+                <?php
+                if (!empty($_SESSION['user'])) { ?>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li>
+                <?php } else { ?>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/signUpCtrl.php">S'inscrire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a></li>
                 <?php } ?>
-                <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li>
             </ul>
 
 
@@ -45,9 +45,6 @@
                         <input class="form-control-sm-info" type="search" name="search" placeholder="Rechercher" aria-label="Search">
                         <button class="btn btn-outline-info" type="submit">GO!</button>
                     </form>
-                <?php
-                } else { ?>
-
                 <?php } ?>
 
             </div>

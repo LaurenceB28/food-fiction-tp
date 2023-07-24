@@ -33,9 +33,7 @@
     <label for="picture">Photo du Média</label>
     <!-- <input type="file" name="picture" id="picture" required accept="image/jpeg, image/jpg, image/png, image/webp"> -->
     <input type="file" name="picture" id="picture" required accept="image/*">
-
     <!-- <input type="submit" value="Envoyer"> -->
-
     <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 <?php

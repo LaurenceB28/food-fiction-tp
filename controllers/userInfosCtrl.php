@@ -1,4 +1,5 @@
 <?php
+
 $footer = true;
 $stylesheet = 'dashboard.css';
 require_once __DIR__ . '/../models/Users.php';

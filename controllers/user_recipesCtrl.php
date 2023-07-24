@@ -1,4 +1,5 @@
 <?php
+
 $footer = true;
 $stylesheet = 'user_recipes.css';
 require_once __DIR__ . '/../models/Recipes.php';

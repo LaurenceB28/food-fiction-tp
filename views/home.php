@@ -18,38 +18,78 @@
 <!--CATEGORIES-->
 <h1>Nos recommandations de la semaine</h1>
 <div class="container ">
-  <a href="/controllers/recipesGenresCtrl.php?genre=9">
+  <?php if (empty($_SESSION['user'])) { ?>
+    <a href="/controllers/SignInCtrl.php">
     <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="/public/assets/img/SERIES/Hannibal/hannibal1.webp" class="object-fit-fill border rounded" alt="..." />
-        <div class="card-body">
-          <p class="card-text text-center">R.I.Pailles</p>
+          <div class="card" style="width: 18rem">
+            <img src="/public/assets/img/SERIES/Hannibal/hannibal1.webp" class="object-fit-fill border rounded" alt="..." />
+            <div class="card-body">
+              <p class="card-text text-center">R.I.Pailles</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </a>
+    </a>
+    <?php } else { ?>
+      <a href="/controllers/recipesGenresCtrl.php?genre=9">
+        <div class="col">
+          <div class="card" style="width: 18rem">
+            <img src="/public/assets/img/SERIES/Hannibal/hannibal1.webp" class="object-fit-fill border rounded" alt="..." />
+            <div class="card-body">
+              <p class="card-text text-center">R.I.Pailles</p>
+            </div>
+          </div>
+        </div>
+      </a>
+      <?php } ?>
 
-  
-  <a href="/controllers/recipesGenresCtrl.php?genre=2">
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="/public/assets/img/SERIES/Friends/ross sandwish.png" class="object-fit-fill border rounded" alt="..." />
-        <div class="card-body">
-          <p class="card-text text-center">Mon sandwish</p>
-        </div>
-      </div>
-    </div>
-  </a>
-  <a href="/controllers/recipesGenresCtrl.php?genre=21">
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="/public/assets/img/SERIES/Desperate Housewives/bree.jpg" class="object-fit-fill border rounded" alt="..." />
-        <div class="card-body">
-          <p class="card-text text-center">Recettes désesperées</p>
-        </div>
-      </div>
-    </div>
-  </a>
+
+      <?php if (empty($_SESSION['user'])) { ?>
+        <a href="/controllers/SignInCtrl.php">
+        <div class="col">
+              <div class="card" style="width: 18rem">
+                <img src="/public/assets/img/SERIES/Friends/ross sandwish.png" class="object-fit-fill border rounded" alt="..." />
+                <div class="card-body">
+                  <p class="card-text text-center">Mon sandwish</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        <?php } else { ?>
+          <a href="/controllers/recipesGenresCtrl.php?genre=2">
+            <div class="col">
+              <div class="card" style="width: 18rem">
+                <img src="/public/assets/img/SERIES/Friends/ross sandwish.png" class="object-fit-fill border rounded" alt="..." />
+                <div class="card-body">
+                  <p class="card-text text-center">Mon sandwish</p>
+                </div>
+              </div>
+            </div>
+          </a>
+          <?php } ?>
+
+          <?php if (empty($_SESSION['user'])) { ?>
+            <a href="/controllers/SignInCtrl.php">
+            <div class="col">
+                  <div class="card" style="width: 18rem">
+                    <img src="/public/assets/img/SERIES/Desperate Housewives/bree.jpg" class="object-fit-fill border rounded" alt="..." />
+                    <div class="card-body">
+                      <p class="card-text text-center">Recettes désesperées</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            <?php } else { ?>
+              <a href="/controllers/recipesGenresCtrl.php?genre=21">
+                <div class="col">
+                  <div class="card" style="width: 18rem">
+                    <img src="/public/assets/img/SERIES/Desperate Housewives/bree.jpg" class="object-fit-fill border rounded" alt="..." />
+                    <div class="card-body">
+                      <p class="card-text text-center">Recettes désesperées</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <?php } ?>
 </div>
 
 

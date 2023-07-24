@@ -1,4 +1,5 @@
 <?php
+
 $footer = true;
 $stylesheet = 'series.css';
 require_once __DIR__ . '/../models/Recipes.php';
@@ -12,5 +13,6 @@ $id_genres = intval(filter_input(INPUT_GET, 'genre', FILTER_SANITIZE_NUMBER_INT)
 $recipes = Recipes::getAllbyGenre($id_genres);
 
 include(__DIR__ . '/../views/templates/header.php');
+include(__DIR__ . '/../views/templates/navbar.php');
 include(__DIR__ . '/../views/user/recipesGenres.php');
 include(__DIR__ . '/../views/templates/footer.php');

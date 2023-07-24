@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ . '/../models/Users.php';
 require_once __DIR__ . '/../config/config.php';
 $styleSheet = 'stylesheet.css';

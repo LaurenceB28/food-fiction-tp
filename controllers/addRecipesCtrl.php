@@ -1,10 +1,12 @@
 <?php
+
 $footer = true;
 $stylesheet = 'dashboard.css';
 require_once __DIR__ . '/../models/Recipes.php';
 require_once __DIR__ . '/../models/Medias.php';
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../helpers/sessionFlash.php';
+
 
 session_start();
 

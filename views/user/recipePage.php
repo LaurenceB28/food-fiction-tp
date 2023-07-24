@@ -8,11 +8,11 @@
     </div>
     <div>
         <p>INGR&Eacute;DIENTS</p>
-        <p><?= $recipe->ingredient ?></p>
+        <p><?= nl2br(html_entity_decode($recipe->ingredient)) ?></p>
     </div>
     <div>
     <p>PR&Eacute;PARATION</p>
-        <p><?= $recipe->description ?></p>
+        <p><?= nl2br($recipe->description )?></p>
     </div>
 </div>
 
