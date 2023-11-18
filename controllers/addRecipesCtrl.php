@@ -15,6 +15,9 @@ try {
     $medias = Medias::getAllMedias();
     $recipes = Recipes::getRecipes();
 
+    /* $_SERVER = superglobalet un tableau contenant des informations telles que les en-têtes, les chemins et les emplacements de script. 
+    Les entrées de cet array sont créées par le serveur web
+    'REQUEST_METHOD' = Méthode de requête utilisée pour accéder à la page ; par exemple GET, HEAD, POST, PUT.  */
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
@@ -134,6 +137,7 @@ try {
         // $gdImage_cropped = imagecrop($gdImage_scaled, ['x' => $x, 'y' => $y, 'width' => $size, 'height' => $size]);
 
         // imagejpeg($gdImage_cropped, $to);
+
     } catch (\Throwable $th) {
         $error = $th->getMessage();
     }

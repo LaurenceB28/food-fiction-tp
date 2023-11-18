@@ -62,7 +62,7 @@ try {
                 $error["description"] = "La longueur du nom n'est pas bon";
             }
         }
-    }
+    
 
     $picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_SPECIAL_CHARS);
     $medias = Medias::getAllMedias();
@@ -82,7 +82,11 @@ try {
         } else {
             $errors['global'] = ERRORS[4];
         }
-    }$recipes = Recipes::get($id_recipes);  
+    }
+    
+} $recipes = Recipes::get($id_recipes);
+// var_dump($recipes);
+// die; 
 } catch (\Throwable $th) {
     var_dump($th);
 }

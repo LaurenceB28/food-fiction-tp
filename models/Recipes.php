@@ -138,9 +138,16 @@ class Recipes
 	 */
 	public function add(): bool
 	{
+		/*  méthode « getInstance » est un modèle de conception utilisé dans le développement d'applications PHP 
+		qui implique la création et le renvoi d'une instance d'une classe. Il est couramment utilisé dans les applications
+		pour gérer les connexions aux bases de données et améliorer les performances en utilisant un modèle de conception singleton.
+        Dans cet exemple, la méthode « getInstance » est utilisée pour créer une instance singleton de la classe « Database », 
+		qui contient une connexion PDO privée. */
 		$pdo = Database::getInstance();
+		/* requête sql */
 		$sql = 'INSERT INTO `recipes` (`title`, `ingredient`, `description`,`id_medias`, `picture`) 
         VALUES (:title, :ingredient, :description, :id_medias, :picture);';
+		/* on prepare la requête*/
 		$sth = $pdo->prepare($sql);
 		//Affectation des valeurs aux marqueurs nominatifs
 		$sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR_CHAR);
@@ -148,7 +155,7 @@ class Recipes
 		$sth->bindValue(':description', $this->getDescription(), PDO::PARAM_STR_CHAR);
 		$sth->bindValue(':picture', $this->getPicture(), PDO::PARAM_STR_CHAR);
 		$sth->bindValue(':id_medias', $this->getId_medias(), PDO::PARAM_INT);
-		// On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
+		/*on execute la requête. On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire*/
 		return $sth->execute();
 	}
 
