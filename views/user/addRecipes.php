@@ -1,6 +1,8 @@
+<!-- on sécurise l'envoi des données des formulaires en méthodes POST-->
 <form method="post" enctype="multipart/form-data">
     <h2>Ajouter une recette</h2>
     <div class="form-group-mb-3">
+        <!-- ajout de l'attributs 'name ="" (ici 'title')' qui contient le même nom que l'id et le for du label-->
         <label for="title" class="form-label">Nom de la recette*</label>
         <input type="textarea" class="form-control <?= isset($errors['title']) ? 'is-invalid' : '' ?>" value="<?= $title ?? '' ?>" name="title" placeholder="Nom de la recette" aria-label="title" maxlength="255" required pattern="<?= REGEX_NO_NUMBER ?>">
     </div>
@@ -29,16 +31,7 @@
     </div>
 </form>
 
-    <!-- <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroupFileAddon01">Télécharger</span>
-  </div>
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01"
-      aria-describedby="inputGroupFileAddon01">
-    <label class="custom-file-label" for="inputGroupFile01">Photo de la recette</label>
-  </div> -->
-
+   
 
 <?php
 if (isset($block)) {
@@ -50,3 +43,28 @@ if (isset($block)) {
 
     <?php endif ?>
 <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroupFileAddon01">Télécharger</span>
+  </div>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile01"
+      aria-describedby="inputGroupFileAddon01">
+    <label class="custom-file-label" for="inputGroupFile01">Photo de la recette</label>
+  </div> -->

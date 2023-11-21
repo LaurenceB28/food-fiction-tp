@@ -2,6 +2,9 @@
 
 $footer = true;
 $stylesheet = 'dashboard.css';
+
+/* require_once = inclure un fichier dans un script, en s'assurant qu'il n'est inclus qu'une seule fois, 
+même s'il est requis à plusieurs endroits*/
 require_once __DIR__ . '/../models/Medias.php';
 require_once __DIR__ . '/../models/Genres.php';
 require_once __DIR__ . '/../models/Medias_genres.php';
@@ -9,24 +12,30 @@ require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../helpers/sessionFlash.php';
 
 
-
+/* démarre une session existante ou en crée une nouvelle / PHP utilise un identifiant de session unique pour identifier un utilisateur 
+spécifique pendant sa visite sur un site web*/
 session_start();
 
 try {
+    /* appele la méthode statique getAll() de la classe Genres*/
     $genreAll = Genres::getAll();
+     /* $_SERVER = superglobale acceder au serveur et environnement d'exécution().
+    'REQUEST_METHOD' = Méthode de requête utilisée pour accéder à la page.  */
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /*$title : nettoyage et validation*/
+        /*  on stock la donnée dans la variable via le champ du formulaire qui contient la valeur 'title' 
+        attribut NAME*/
         $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
         // On vérifie que ce n'est pas vide
         if (empty($title)) {
             $error["title"] = "Vous devez entrer un nom valide!!";
         } else { // Pour les champs obligatoires, on retourne une erreur
             $isOk = filter_var($title, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-            // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
+            // Avec une regex (constante DEFINE déclarée config.php), on vérifie si c'est le format attendu 
             if (!$isOk) {
                 $error["title"] = "Le nom du média n'est pas au bon format!!";
             } else {
-                // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
+                // Dans ce cas précis, on vérifie aussi la longueur de chaine
                 if (strlen($title) <= 2 || strlen($title) >= 70) {
                     $error["title"] = "La longueur du nom n'est pas bon";
                 }
@@ -60,8 +69,7 @@ try {
             $to = $_SERVER["DOCUMENT_ROOT"] . '/public/uploads/gallery/medias/' . $fileName;
             move_uploaded_file($from, $to);
 
-            // A FAIRE APRES
-
+           
             // $filename = $to;
             // $gdImage_original = imagecreatefromjpeg($filename);
 

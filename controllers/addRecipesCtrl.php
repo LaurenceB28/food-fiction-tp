@@ -15,9 +15,8 @@ try {
     $medias = Medias::getAllMedias();
     $recipes = Recipes::getRecipes();
 
-    /* $_SERVER = superglobalet un tableau contenant des informations telles que les en-têtes, les chemins et les emplacements de script. 
-    Les entrées de cet array sont créées par le serveur web
-    'REQUEST_METHOD' = Méthode de requête utilisée pour accéder à la page ; par exemple GET, HEAD, POST, PUT.  */
+    /* $_SERVER = superglobale acceder au serveur et environnement d'exécution().
+    'REQUEST_METHOD' = Méthode de requête utilisée pour accéder à la page.  */
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
@@ -28,7 +27,7 @@ try {
         if (empty($title)) {
             $error["title"] = "Vous devez entrer un nom de recette!!";
         } else {
-                // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
+                // Dans ce cas précis, on vérifie aussi la longueur de chaine
                 if (strlen($title) >= 500) {
                     $error["title"] = "La longueur du nom n'est pas bon";
                 }
