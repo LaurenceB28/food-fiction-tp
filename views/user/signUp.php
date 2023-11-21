@@ -1,4 +1,4 @@
-<form id="form" action="" method="post" enctype="multipart/form-data">
+<form class="form" action="" method="post" enctype="multipart/form-data">
     <div class="col-12 col-md-8 col-lg-4">
         <div class="card bg-light text-white">
             <div class="card-body text-center">

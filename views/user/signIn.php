@@ -1,4 +1,4 @@
-<form class="form " action="" method="post">
+<form class="form" action="" method="post">
     <div class="col-12 col-md-8 col-lg-4">
         <div class="card bg-light text-white" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">

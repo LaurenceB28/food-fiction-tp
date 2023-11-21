@@ -161,19 +161,25 @@
   <section id="section4">
     <a href="#section6" class="arrow__btn">‹</a>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/american pie.jpg" alt="Describe Image">
+    
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/ailes de poulet Susperia.jpg" alt="Describe Image"> 
+      <p>Ailes de poulet Susperia</p>
     </div>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/avengers.jpg" alt="Describe Image">
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/big kahuna burger.jpeg" alt="Describe Image">
+      <p>Big kahuna burger Pulp Fiction</p>
     </div>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/beetlejuice.jpg" alt="Describe Image">
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/bolognese le parrain.jpg" alt="Describe Image">
+      <p>La bolo du Parrain</p>
     </div>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/breaking bad.jpg" alt="Describe Image">
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/crevettes BeetleJuice.jpg" alt="Describe Image">
+      <p>Les crevettes de BeetleJuice</p>
     </div>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/buffy.jpg" alt="Describe Image">
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/feves d'hannibal.jpg" alt="Describe Image">
+      <p>Les fèves d'Hannibal</p>
     </div>
     <a href="#section5" class="arrow__btn">›</a>
   </section>
@@ -204,19 +210,24 @@
   <section id="section6">
     <a href="#section5" class="arrow__btn">‹</a>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/harry potter.jpg" alt="Describe Image">
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/ailes de poulet Susperia.jpg" alt="Describe Image">
+      <p>Ailes de poulet Susperia</p>
     </div>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/indiana jones.jpg" alt="Describe Image">
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/big kahuna burger.jpeg" alt="Describe Image">
+      <p>Big kahuna burger Pulp Fiction</p>
     </div>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/izombies.jpg" alt="Describe Image">
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/bolognese le parrain.jpg" alt="Describe Image">
+      <p>La bolo du Parrain</p>
     </div>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/jane the virgin.jpg" alt="Describe Image">
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/crevettes BeetleJuice.jpg" alt="Describe Image">
+      <p>Les crevettes de BeetleJuice</p>
     </div>
     <div class="item">
-      <img width="341px" height="192px" src="/public/assets/img/le parrain.jpg" alt="Describe Image">
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/feves d'hannibal.jpg" alt="Describe Image">
+      <p>Les fèves d'Hannibal</p>
     </div>
     <a href="#section4" class="arrow__btn">›</a>
   </section>

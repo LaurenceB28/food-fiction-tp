@@ -1,0 +1,16 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh; /* Prend toute la hauteur de la vue */
+    margin: 0; /* Supprimer les marges par défaut */
+  }
+  
+  .col-12.col-md-8.col-lg-4 {
+    width: 100%; /* Définir une largeur maximale pour le formulaire */
+    max-width: 800px; /* Changer la largeur maximale du formulaire selon vos préférences */
+  }
+
+  #logo {
+    width: 20%;
+  }

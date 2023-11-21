@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . '/../models/Users.php';
 require_once __DIR__ . '/../config/config.php';
-$stylesheet = 'form.css';
+/* RAPPEL DU CSS */
+$stylesheet = 'signup.css';
 
 try {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
