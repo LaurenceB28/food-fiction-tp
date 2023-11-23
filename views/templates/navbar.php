@@ -29,7 +29,7 @@
                 } ?>
                 <?php
                 if (!empty($_SESSION['user'])) { ?>
-                    <li class="nav-item"><a class="nav-link" href="/controllers/signInCtrl.php">Déconnexion</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a></li>
                 <?php } else { ?>
                     <li class="nav-item"><a class="nav-link" href="/controllers/signUpCtrl.php">S'inscrire</a></li>
                     <li class="nav-item"><a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a></li>

@@ -26,9 +26,15 @@
     <!-- HEADER -->
     <header>
         <div class="header">
+        <?php if (empty($_SESSION['user'])) { ?>
             <a href="/controllers/homeCtrl.php">
+                <img style="display:block" id="logoHeader1" src="/public/assets/img/logo/LOGO_Food_Fiction.png" alt="" />                
+            </a>
+            <?php } else { ?>
+                <a href="/controllers/homeCtrl.php">
                 <img style="display:block" id="logoHeader1" src="/public/assets/img/logo/LOGO_Food_Fiction.png" alt="" />
             </a>
+            <?php } ?>
         </div>
     </header>
     <!-- Navbar -->

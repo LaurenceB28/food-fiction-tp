@@ -20,76 +20,76 @@
 <div class="container ">
   <?php if (empty($_SESSION['user'])) { ?>
     <a href="/controllers/SignInCtrl.php">
-    <div class="col">
-          <div class="card" style="width: 18rem">
-            <img src="/public/assets/img/SERIES/Hannibal/hannibal1.webp" class="object-fit-fill border rounded" alt="..." />
-            <div class="card-body">
-              <p class="card-text text-center">R.I.Pailles</p>
-            </div>
+      <div class="col">
+        <div class="card" style="width: 18rem">
+          <img src="/public/assets/img/SERIES/Hannibal/hannibal1.webp" class="object-fit-fill border rounded" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">R.I.Pailles</p>
           </div>
         </div>
+      </div>
     </a>
-    <?php } else { ?>
-      <a href="/controllers/recipesGenresCtrl.php?genre=9">
-        <div class="col">
-          <div class="card" style="width: 18rem">
-            <img src="/public/assets/img/SERIES/Hannibal/hannibal1.webp" class="object-fit-fill border rounded" alt="..." />
-            <div class="card-body">
-              <p class="card-text text-center">R.I.Pailles</p>
-            </div>
+  <?php } else { ?>
+    <a href="/controllers/recipesGenresCtrl.php?genre=9">
+      <div class="col">
+        <div class="card" style="width: 18rem">
+          <img src="/public/assets/img/SERIES/Hannibal/hannibal1.webp" class="object-fit-fill border rounded" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">R.I.Pailles</p>
           </div>
         </div>
-      </a>
-      <?php } ?>
+      </div>
+    </a>
+  <?php } ?>
 
 
-      <?php if (empty($_SESSION['user'])) { ?>
-        <a href="/controllers/SignInCtrl.php">
-        <div class="col">
-              <div class="card" style="width: 18rem">
-                <img src="/public/assets/img/SERIES/Friends/ross sandwish.png" class="object-fit-fill border rounded" alt="..." />
-                <div class="card-body">
-                  <p class="card-text text-center">Mon sandwish</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        <?php } else { ?>
-          <a href="/controllers/recipesGenresCtrl.php?genre=2">
-            <div class="col">
-              <div class="card" style="width: 18rem">
-                <img src="/public/assets/img/SERIES/Friends/ross sandwish.png" class="object-fit-fill border rounded" alt="..." />
-                <div class="card-body">
-                  <p class="card-text text-center">Mon sandwish</p>
-                </div>
-              </div>
-            </div>
-          </a>
-          <?php } ?>
+  <?php if (empty($_SESSION['user'])) { ?>
+    <a href="/controllers/SignInCtrl.php">
+      <div class="col">
+        <div class="card" style="width: 18rem">
+          <img src="/public/assets/img/SERIES/Friends/ross sandwish.png" class="object-fit-fill border rounded" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">Mon sandwish</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  <?php } else { ?>
+    <a href="/controllers/recipesGenresCtrl.php?genre=2">
+      <div class="col">
+        <div class="card" style="width: 18rem">
+          <img src="/public/assets/img/SERIES/Friends/ross sandwish.png" class="object-fit-fill border rounded" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">Mon sandwish</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  <?php } ?>
 
-          <?php if (empty($_SESSION['user'])) { ?>
-            <a href="/controllers/SignInCtrl.php">
-            <div class="col">
-                  <div class="card" style="width: 18rem">
-                    <img src="/public/assets/img/SERIES/Desperate Housewives/bree.jpg" class="object-fit-fill border rounded" alt="..." />
-                    <div class="card-body">
-                      <p class="card-text text-center">Recettes désesperées</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            <?php } else { ?>
-              <a href="/controllers/recipesGenresCtrl.php?genre=21">
-                <div class="col">
-                  <div class="card" style="width: 18rem">
-                    <img src="/public/assets/img/SERIES/Desperate Housewives/bree.jpg" class="object-fit-fill border rounded" alt="..." />
-                    <div class="card-body">
-                      <p class="card-text text-center">Recettes désesperées</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <?php } ?>
+  <?php if (empty($_SESSION['user'])) { ?>
+    <a href="/controllers/SignInCtrl.php">
+      <div class="col">
+        <div class="card" style="width: 18rem">
+          <img src="/public/assets/img/SERIES/Desperate Housewives/bree.jpg" class="object-fit-fill border rounded" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">Recettes désesperées</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  <?php } else { ?>
+    <a href="/controllers/recipesGenresCtrl.php?genre=21">
+      <div class="col">
+        <div class="card" style="width: 18rem">
+          <img src="/public/assets/img/SERIES/Desperate Housewives/bree.jpg" class="object-fit-fill border rounded" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">Recettes désesperées</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  <?php } ?>
 </div>
 
 
@@ -99,6 +99,7 @@
   <section id="section1">
     <a href="#section3" class="arrow__btn">‹</a>
     <div class="item">
+
       <img width="341px" height="192px" src="/public/assets/img/american pie.jpg" alt="Describe Image">
     </div>
     <div class="item">
@@ -161,8 +162,7 @@
   <section id="section4">
     <a href="#section6" class="arrow__btn">‹</a>
     <div class="item">
-    
-      <img width="341px" height="192px" src="/public/assets/img/img food fictions/ailes de poulet Susperia.jpg" alt="Describe Image"> 
+      <img width="341px" height="192px" src="/public/assets/img/img food fictions/ailes de poulet Susperia.jpg" alt="Describe Image">
       <p>Ailes de poulet Susperia</p>
     </div>
     <div class="item">
